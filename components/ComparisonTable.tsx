@@ -135,11 +135,26 @@ export default function ComparisonTable() {
           </table>
         </motion.div>
 
+        {/* Tidal Wave Quote - Above Info Cards */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          viewport={{ once: true }}
+          className="text-center max-w-4xl mx-auto bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-800/30 p-12 rounded-3xl mb-24"
+        >
+          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
+            &quot;AI is a tidal wave, not a trend.&quot;
+          </h3>
+          <p className="text-xl text-blue-200">
+            Learn to surf it or get dragged under while your competitors ride past you smiling.
+          </p>
+        </motion.div>
+
         {/* Info Grid / Copy Section */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-24">
-          
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+
           {/* Card 1: AI Systems */}
-          <InfoCard 
+          <InfoCard
             icon={<BrainCircuit className="w-8 h-8 text-blue-400" />}
             title="AI Visibility Systems"
             delay={0}
@@ -153,7 +168,7 @@ export default function ComparisonTable() {
           </InfoCard>
 
           {/* Card 2: Window of Opportunity */}
-          <InfoCard 
+          <InfoCard
             icon={<Hourglass className="w-8 h-8 text-purple-400" />}
             title="The Window of Opportunity"
             delay={0.1}
@@ -167,7 +182,7 @@ export default function ComparisonTable() {
           </InfoCard>
 
           {/* Card 3: Milestone Reporting */}
-          <InfoCard 
+          <InfoCard
             icon={<LineChart className="w-8 h-8 text-green-400" />}
             title="Milestone Reporting"
             delay={0.2}
@@ -181,7 +196,7 @@ export default function ComparisonTable() {
           </InfoCard>
 
           {/* Card 4: Trust & Safety */}
-          <InfoCard 
+          <InfoCard
             icon={<ShieldCheck className="w-8 h-8 text-teal-400" />}
             title="Trust & Safety"
             delay={0.3}
@@ -195,21 +210,6 @@ export default function ComparisonTable() {
           </InfoCard>
 
         </div>
-
-        {/* Closing Quote */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          whileInView={{ opacity: 1, scale: 1 }}
-          viewport={{ once: true }}
-          className="text-center max-w-4xl mx-auto bg-gradient-to-r from-blue-900/20 to-purple-900/20 border border-blue-800/30 p-12 rounded-3xl"
-        >
-          <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 leading-tight">
-            &quot;AI is a tidal wave, not a trend.&quot;
-          </h3>
-          <p className="text-xl text-blue-200">
-            Learn to surf it or get dragged under while your competitors ride past you smiling.
-          </p>
-        </motion.div>
 
       </div>
     </section>
