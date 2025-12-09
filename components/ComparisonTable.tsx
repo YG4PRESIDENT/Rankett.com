@@ -96,7 +96,7 @@ export default function ComparisonTable() {
             <thead>
               <tr className="border-b border-slate-800 bg-slate-900/80">
                 <th className="p-6 text-sm font-bold text-slate-300 uppercase tracking-wider min-w-[200px]">Platform</th>
-                <th className="p-6 text-sm font-bold text-slate-300 uppercase tracking-wider min-w-[150px]">Monthly Cost</th>
+                <th className="p-6 text-sm font-bold text-slate-300 uppercase tracking-wider min-w-[150px]">Tool Costs</th>
                 <th className="p-6 text-sm font-bold text-slate-300 uppercase tracking-wider text-center">AI Search Tracking</th>
                 <th className="p-6 text-sm font-bold text-slate-300 uppercase tracking-wider text-center">Done-For-You Engine</th>
                 <th className="p-6 text-sm font-bold text-slate-300 uppercase tracking-wider text-center">Milestone Reporting</th>
