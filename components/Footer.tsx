@@ -53,15 +53,11 @@ export default function Footer() {
           
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-6">
-            <Link href="/" className="inline-block hover:opacity-90 transition-all duration-300 hover:scale-105">
+            <Link href="/" className="inline-block hover:opacity-90 transition-all duration-300">
               <img
                 src="/images/Rankett_Logo.png"
                 alt="Rankett"
-                className="h-12 md:h-14 w-auto object-contain"
-                style={{ 
-                  filter: 'drop-shadow(0 0 20px rgba(139, 92, 246, 0.3))',
-                  mixBlendMode: 'screen'
-                }}
+                className="h-16 md:h-20 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
