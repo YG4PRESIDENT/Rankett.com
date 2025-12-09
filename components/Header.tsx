@@ -61,7 +61,7 @@ export default function Header() {
           <img
             src="/images/Rankett_Logo.png"
             alt="Rankett"
-            className="h-16 sm:h-20 md:h-24 w-auto object-contain"
+            className="h-20 sm:h-28 md:h-32 w-auto object-contain"
           />
         </Link>
 

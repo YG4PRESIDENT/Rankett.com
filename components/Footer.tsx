@@ -57,7 +57,7 @@ export default function Footer() {
               <img
                 src="/images/Rankett_Logo.png"
                 alt="Rankett"
-                className="h-16 md:h-20 w-auto object-contain"
+                className="h-20 md:h-24 w-auto object-contain"
               />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
