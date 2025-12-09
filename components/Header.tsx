@@ -57,11 +57,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex-shrink-0 flex items-center hover:opacity-90 transition-all duration-300 hover:scale-105">
           <img
             src="/images/Rankett_Logo.png"
             alt="Rankett"
-            className="h-12 w-auto"
+            className="h-10 sm:h-12 md:h-14 w-auto object-contain"
+            style={{ 
+              filter: 'drop-shadow(0 0 20px rgba(139, 92, 246, 0.3))',
+              mixBlendMode: 'screen'
+            }}
           />
         </Link>
 
