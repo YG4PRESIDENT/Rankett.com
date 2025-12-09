@@ -60,13 +60,12 @@ export default function Hero() {
             <form onSubmit={handleSubmit} className="space-y-6">
               <div className="space-y-2">
                 <div className="relative">
-                  <Input
-                    placeholder="acme.com"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                    className="pl-11"
-                    icon={<Globe size={18} />}
-                  />
+              <Input
+                placeholder="rankett.com"
+                value={url}
+                onChange={(e) => setUrl(e.target.value)}
+                className="h-12 text-lg bg-white/5 border-white/10 text-white placeholder:text-white/20 pl-11 focus:border-primary/50 focus:ring-primary/20"
+              />
                 </div>
                 {error && <p className="text-xs text-red-400">{error}</p>}
               </div>
