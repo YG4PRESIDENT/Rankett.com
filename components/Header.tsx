@@ -57,13 +57,12 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
         
         {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center gap-3 hover:opacity-80 transition-opacity">
+        <Link href="/" className="flex-shrink-0 flex items-center hover:opacity-80 transition-opacity">
           <img
-            src="/images/Official logo.png"
+            src="/images/Rankett_Logo.png"
             alt="Rankett"
-            className="h-10 w-auto brightness-0 invert"
+            className="h-12 w-auto"
           />
-          <span className="text-2xl font-bold text-gradient">Rankett</span>
         </Link>
 
         {/* Desktop Navigation */}

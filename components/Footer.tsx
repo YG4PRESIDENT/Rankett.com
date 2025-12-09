@@ -55,9 +55,9 @@ export default function Footer() {
           <div className="lg:col-span-5 space-y-6">
             <Link href="/" className="inline-block hover:opacity-80 transition-opacity">
               <img
-                src="/images/Official logo.png"
-                alt="True Insights AI"
-                className="h-10 w-auto brightness-0 invert"
+                src="/images/Rankett_Logo.png"
+                alt="Rankett"
+                className="h-12 w-auto"
               />
             </Link>
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
