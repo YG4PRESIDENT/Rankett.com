@@ -30,54 +30,40 @@ export const quizFlow: QuizQuestion[] = [
     placeholder: 'John Smith'
   },
   
-  // Phase 2: New Discovery Questions
+  // Phase 2: Lead Qualification Questions
   {
-    id: 'ai_first_appearance',
+    id: 'revenue_per_client',
     type: 'choice',
-    question: "1. If a potential client asked AI today for your service, who would show up first, you or your competitor?",
-    options: ["I appear first every time (I’m confident)", "Competitor appears first most of the time", "Sometimes me, sometimes competitor", "I have no idea / don’t track"],
+    question: "1. What's your average revenue per client/project?",
+    options: ["Under $5K", "$5K - $20K", "$20K - $50K", "$50K+"],
     required: true
   },
   {
-    id: 'missing_clients',
+    id: 'client_retention',
     type: 'choice',
-    question: "2. How many clients do you think you’re missing each month because AI can’t find you?",
-    options: ["Almost none / 0–5", "A few (6–20)", "Some (21–50)", "Many (50+)"],
+    question: "2. How long does your average client stay with you?",
+    options: ["One-time transaction", "6-12 months", "1-3 years", "3+ years"],
     required: true
   },
   {
-    id: 'marketing_spend',
+    id: 'competitor_awareness',
     type: 'choice',
-    question: "3. How much do you currently spend on marketing or SEO each month?",
-    options: ["<$500", "$500–2,000", "$2,000–10,000", "$10,000+"],
+    question: "3. Have you noticed competitors appearing in AI searches you're not showing up in?",
+    options: ["No, we dominate", "Occasionally", "Frequently", "Don't track it"],
     required: true
   },
   {
-    id: 'business_change_ai_leads',
+    id: 'buying_intent',
     type: 'choice',
-    question: "4. How would your business change if AI search drove 30–50% more qualified leads in the next 90 days?",
-    options: ["Not much, we’re already maxed out", "Some increase, but we could handle it", "Significant impact — would grow revenue / reach", "Game-changing — could dominate our market"],
+    question: "4. If we could guarantee you ranked #1 in AI for your service in your city in 90 days, and it brought 20% more qualified leads monthly, how interested would you be?",
+    options: ["Not interested / we're maxed out", "Somewhat interested", "Very interested", "Extremely interested / we'd want to move immediately"],
     required: true
   },
   {
-    id: 'competitor_ai_visibility',
+    id: 'brand_reach',
     type: 'choice',
-    question: "5. Have you noticed competitors appearing for AI searches that you’re invisible in?",
-    options: ["No, we dominate search visibility", "Occasionally, yes", "Frequently — they outrank us", "I don’t know"],
-    required: true
-  },
-  {
-    id: 'content_optimization_confidence',
-    type: 'choice',
-    question: "6. How confident are you that your website and content are optimized for the questions potential clients actually ask AI platforms?",
-    options: ["Very confident — everything’s optimized", "Somewhat confident — could be better", "Not confident — probably not optimized", "No idea / haven’t checked"],
-    required: true
-  },
-  {
-    id: 'start_urgency',
-    type: 'choice',
-    question: "7. If we could guarantee visibility in AI searches before your competitor does, how quickly would you want to start?",
-    options: ["Immediately — we want to move fast", "Within the next 30 days", "Within 90 days", "Not sure / would wait"],
+    question: "5. What's your brand's reach?",
+    options: ["Worldwide", "Nationwide", "Regional", "State", "City", "Neighborhood"],
     required: true
   }
 ];
@@ -85,13 +71,11 @@ export const quizFlow: QuizQuestion[] = [
 export interface QuizAnswers {
   email?: string;
   name?: string;
-  ai_first_appearance?: string;
-  missing_clients?: string;
-  marketing_spend?: string;
-  business_change_ai_leads?: string;
-  competitor_ai_visibility?: string;
-  content_optimization_confidence?: string;
-  start_urgency?: string;
+  revenue_per_client?: string;
+  client_retention?: string;
+  competitor_awareness?: string;
+  buying_intent?: string;
+  brand_reach?: string;
   websiteUrl?: string; // From Hero form
 }
 

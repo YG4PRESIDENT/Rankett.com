@@ -13,107 +13,96 @@ export function calculateTier(answers: QuizAnswers): TierRecommendation {
   let score = 0;
   const reasons: string[] = [];
 
-  // 1. AI First Appearance
-  switch (answers.ai_first_appearance) {
-    case "Competitor appears first most of the time":
+  // 1. Revenue Per Client (higher revenue = more qualified)
+  switch (answers.revenue_per_client) {
+    case "$50K+":
+      score += 4;
+      reasons.push("High-value client relationships.");
+      break;
+    case "$20K - $50K":
       score += 3;
-      reasons.push("Competitors consistently outrank you in AI search.");
+      reasons.push("Strong client revenue potential.");
       break;
-    case "Sometimes me, sometimes competitor":
+    case "$5K - $20K":
       score += 2;
-      reasons.push("Inconsistent AI search visibility compared to competitors.");
+      reasons.push("Solid client revenue base.");
       break;
-    case "I have no idea / don’t track":
+    case "Under $5K":
       score += 1;
-      reasons.push("Lack of visibility into AI search performance.");
       break;
   }
 
-  // 2. Missing Clients
-  switch (answers.missing_clients) {
-    case "Many (50+)":
+  // 2. Client Retention (longer retention = higher LTV)
+  switch (answers.client_retention) {
+    case "3+ years":
+      score += 4;
+      reasons.push("Excellent client retention and LTV.");
+      break;
+    case "1-3 years":
       score += 3;
-      reasons.push("Significant client loss due to AI invisibility.");
+      reasons.push("Strong client retention.");
       break;
-    case "Some (21–50)":
+    case "6-12 months":
       score += 2;
-      reasons.push("Noticeable client loss due to AI invisibility.");
+      reasons.push("Moderate client retention period.");
       break;
-    case "A few (6–20)":
+    case "One-time transaction":
       score += 1;
-      reasons.push("Some client loss due to AI invisibility.");
       break;
   }
 
-  // 3. Marketing Spend
-  switch (answers.marketing_spend) {
-    case "$10,000+":
+  // 3. Competitor Awareness (pain point indicator)
+  switch (answers.competitor_awareness) {
+    case "Frequently":
       score += 3;
-      reasons.push("High marketing spend with potential AI search inefficiency.");
+      reasons.push("Competitors frequently appearing in AI searches you're not in.");
       break;
-    case "$2,000–10,000":
+    case "Occasionally":
       score += 2;
-      reasons.push("Moderate marketing spend with potential AI search inefficiency.");
+      reasons.push("Some competitor visibility gaps in AI search.");
       break;
-    case "$500–2,000":
+    case "Don't track it":
       score += 1;
-      reasons.push("Lower marketing spend, opportunity for AI search leverage.");
+      reasons.push("AI search visibility not currently tracked.");
+      break;
+    case "No, we dominate":
+      score += 0;
       break;
   }
 
-  // 4. Business Change with AI Leads
-  switch (answers.business_change_ai_leads) {
-    case "Game-changing — could dominate our market":
+  // 4. Buying Intent (urgency indicator)
+  switch (answers.buying_intent) {
+    case "Extremely interested / we'd want to move immediately":
+      score += 4;
+      reasons.push("Ready to take immediate action.");
+      break;
+    case "Very interested":
       score += 3;
-      reasons.push("High potential for market dominance with increased AI leads.");
+      reasons.push("High interest in improving AI visibility.");
       break;
-    case "Significant impact — would grow revenue / reach":
-      score += 2;
-      reasons.push("Significant revenue and reach growth potential with AI leads.");
-      break;
-  }
-
-  // 5. Competitor AI Visibility
-  switch (answers.competitor_ai_visibility) {
-    case "Frequently — they outrank us":
-      score += 3;
-      reasons.push("Frequent competitor outranking in AI searches.");
-      break;
-    case "Occasionally, yes":
-      score += 2;
-      reasons.push("Occasional competitor outranking in AI searches.");
-      break;
-    case "I don’t know":
+    case "Somewhat interested":
       score += 1;
-      reasons.push("Uncertainty about competitor AI search visibility.");
+      break;
+    case "Not interested / we're maxed out":
+      score += 0;
       break;
   }
 
-  // 6. Content Optimization Confidence
-  switch (answers.content_optimization_confidence) {
-    case "Not confident — probably not optimized":
+  // 5. Brand Reach (scope indicator - local businesses may need different approach)
+  switch (answers.brand_reach) {
+    case "Worldwide":
+    case "Nationwide":
       score += 3;
-      reasons.push("Low confidence in current content AI optimization.");
+      reasons.push("Broad market reach requiring comprehensive AI visibility.");
       break;
-    case "Somewhat confident — could be better":
+    case "Regional":
+    case "State":
       score += 2;
-      reasons.push("Partial confidence in current content AI optimization.");
+      reasons.push("Regional presence with growth opportunity.");
       break;
-    case "No idea / haven’t checked":
+    case "City":
+    case "Neighborhood":
       score += 1;
-      reasons.push("No assessment of current content AI optimization.");
-      break;
-  }
-
-  // 7. Start Urgency
-  switch (answers.start_urgency) {
-    case "Immediately — we want to move fast":
-      score += 3;
-      reasons.push("High urgency to improve AI search visibility.");
-      break;
-    case "Within the next 30 days":
-      score += 2;
-      reasons.push("Moderate urgency to improve AI search visibility.");
       break;
   }
   
@@ -121,7 +110,8 @@ export function calculateTier(answers: QuizAnswers): TierRecommendation {
   let tier: TierType;
   let benefits: string[] = [];
   
-  if (score <= 6) { // Adjusted thresholds based on new max score (approx 20)
+  // Max score: 4+4+3+4+3 = 18
+  if (score <= 6) {
     tier = 'Basic';
     benefits = [
       "Directory optimization across major platforms",
@@ -130,7 +120,7 @@ export function calculateTier(answers: QuizAnswers): TierRecommendation {
       "AI crawl audit",
       "Monthly reporting"
     ];
-  } else if (score <= 12) {
+  } else if (score <= 11) {
     tier = 'Advanced';
     benefits = [
       "Everything in Basic",
