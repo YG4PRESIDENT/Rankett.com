@@ -15,79 +15,59 @@ interface QuizAnswer {
 const questions = [
   {
     id: 1,
-    question: "If a potential client asked AI today for your service, who would show up first, you or your competitor?",
+    question: "What's your average revenue per client/project?",
     type: "multiple",
     options: [
-      "I appear first every time (I’m confident)",
-      "Competitor appears first most of the time",
-      "Sometimes me, sometimes competitor",
-      "I have no idea / don’t track"
+      "Under $5K",
+      "$5K - $20K",
+      "$20K - $50K",
+      "$50K+"
     ]
   },
   {
     id: 2,
-    question: "How many clients do you think you’re missing each month because AI can’t find you?",
+    question: "How long does your average client stay with you?",
     type: "multiple",
     options: [
-      "Almost none / 0–5",
-      "A few (6–20)",
-      "Some (21–50)",
-      "Many (50+)"
+      "One-time transaction",
+      "6-12 months",
+      "1-3 years",
+      "3+ years"
     ]
   },
   {
     id: 3,
-    question: "How much do you currently spend on marketing or SEO each month?",
+    question: "Have you noticed competitors appearing in AI searches you're not showing up in?",
     type: "multiple",
     options: [
-      "<$500",
-      "$500–2,000",
-      "$2,000–10,000",
-      "$10,000+"
+      "No, we dominate",
+      "Occasionally",
+      "Frequently",
+      "Don't track it"
     ]
   },
   {
     id: 4,
-    question: "How would your business change if AI search drove 30–50% more qualified leads in the next 90 days?",
+    question: "If we could guarantee you ranked #1 in AI for your service in your city in 90 days, and it brought 20% more qualified leads monthly, how interested would you be?",
     type: "multiple",
     options: [
-      "Not much, we’re already maxed out",
-      "Some increase, but we could handle it",
-      "Significant impact — would grow revenue / reach",
-      "Game-changing — could dominate our market"
+      "Not interested / we're maxed out",
+      "Somewhat interested",
+      "Very interested",
+      "Extremely interested / we'd want to move immediately"
     ]
   },
   {
     id: 5,
-    question: "Have you noticed competitors appearing for AI searches that you’re invisible in?",
+    question: "What's your brand's reach?",
     type: "multiple",
     options: [
-      "No, we dominate search visibility",
-      "Occasionally, yes",
-      "Frequently — they outrank us",
-      "I don’t know"
-    ]
-  },
-  {
-    id: 6,
-    question: "How confident are you that your website and content are optimized for the questions potential clients actually ask AI platforms?",
-    type: "multiple",
-    options: [
-      "Very confident — everything’s optimized",
-      "Somewhat confident — could be better",
-      "Not confident — probably not optimized",
-      "No idea / haven’t checked"
-    ]
-  },
-  {
-    id: 7,
-    question: "If we could guarantee visibility in AI searches before your competitor does, how quickly would you want to start?",
-    type: "multiple",
-    options: [
-      "Immediately — we want to move fast",
-      "Within the next 30 days",
-      "Within 90 days",
-      "Not sure / would wait"
+      "Worldwide",
+      "Nationwide",
+      "Regional",
+      "State",
+      "City",
+      "Neighborhood"
     ]
   }
 ];
