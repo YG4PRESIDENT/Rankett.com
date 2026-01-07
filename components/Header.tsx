@@ -1,0 +1,125 @@
+"use client";
+
+import { useState, useEffect } from "react";
+import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import { cn } from "@/lib/utils";
+import { Button } from "./ui/Button";
+import { COMPANY_NAME, NAV_LINKS, CONTACT } from "@/lib/constants";
+import { useRouter } from 'next/navigation';
+import Link from 'next/link';
+
+export default function Header() {
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const router = useRouter();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+  const handleNavClick = (href: string) => {
+    if (href.startsWith("#")) {
+      const isHomePage = window.location.pathname === '/';
+      if (isHomePage) {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+          setIsMobileMenuOpen(false);
+        }
+      } else {
+        router.push(`/${href}`); // Use router.push for hash links on other pages
+      }
+    } else if (href.startsWith("http")) { // Assume external link if it starts with http
+      window.open(href, "_blank", "noopener,noreferrer");
+    } else {
+      router.push(href); // Use router.push for internal navigation
+    }
+  };
+
+  const handleBookCall = () => {
+    window.open("https://calendly.com/rankett/30min", "_blank", "noopener,noreferrer");
+  }
+
+  return (
+    <header
+      className={cn(
+        "fixed top-0 left-0 right-0 z-50 transition-all duration-300 border-b",
+        isScrolled 
+          ? "bg-slate-950/80 backdrop-blur-md border-slate-800/50" 
+          : "bg-transparent border-transparent"
+      )}
+    >
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+        
+        {/* Logo */}
+        <Link href="/" className="flex-shrink-0 flex items-center hover:opacity-90 transition-all duration-300">
+          <img
+            src="/images/Rankett_Logo.png"
+            alt="Rankett"
+            className="h-20 sm:h-28 md:h-32 w-auto object-contain"
+          />
+        </Link>
+
+        {/* Desktop Navigation */}
+        <nav className="hidden lg:flex items-center gap-8">
+          {NAV_LINKS.map((link) => (
+            <button
+              key={link.href}
+              onClick={() => handleNavClick(link.href)}
+              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+            >
+              {link.label}
+            </button>
+          ))}
+        </nav>
+
+        {/* CTA Button - Desktop */}
+        <div className="hidden lg:block">
+          <Button 
+            onClick={handleBookCall}
+            variant="primary"
+          >
+            <Sparkles className="w-4 h-4 mr-2 text-white/70" />
+            Book Strategy Call
+          </Button>
+        </div>
+
+        {/* Mobile Menu Button */}
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="lg:hidden p-2 text-slate-300 hover:text-white"
+        >
+          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+        </button>
+      </div>
+
+      {/* Mobile Menu */}
+      {isMobileMenuOpen && (
+        <div className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 p-4 absolute w-full shadow-2xl">
+          <div className="flex flex-col space-y-4">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-left text-lg font-medium text-slate-300 hover:text-white py-2"
+              >
+                {link.label}
+              </button>
+            ))}
+            <Button 
+              onClick={handleBookCall}
+              className="w-full bg-white text-slate-950 hover:bg-slate-200 font-bold mt-4"
+            >
+              Book Strategy Call
+            </Button>
+          </div>
+        </div>
+      )}
+    </header>
+  );
+}
