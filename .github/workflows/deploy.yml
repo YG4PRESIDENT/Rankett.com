@@ -30,7 +30,8 @@ jobs:
       
     - name: Build Next.js app
       env:
-        NEXT_PUBLIC_WEB3FORMS_KEY: ${{ secrets.NEXT_PUBLIC_WEB3FORMS_KEY }}
+        # Hardcoded for immediate fix - this is a public client-side key anyway
+        NEXT_PUBLIC_WEB3FORMS_KEY: "81c3796c-1049-4d2b-8848-6ea98d4d14b6"
       run: npm run build
       
     - name: Setup Pages
