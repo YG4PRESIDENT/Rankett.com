@@ -28,7 +28,7 @@ export default function PrivacyPolicyPage() {
 
               <div className="prose prose-invert max-w-none text-slate-300"> {/* prose-invert for dark mode typography */}
                 <p className="text-lg leading-relaxed">
-                  Think Outside The Box Ventures, LLC d/b/a Rankett (&quot;Rankett,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides a white-label AI visibility platform for agencies (&quot;Service&quot;). This Privacy Policy explains how we collect, use, and protect data when you visit our marketing website (Rankett.com) or use our Agency Platform.
+                  Rankett LLC (&quot;Rankett,&quot; &quot;we,&quot; &quot;us,&quot; or &quot;our&quot;) provides a white-label AI visibility platform for agencies (&quot;Service&quot;). This Privacy Policy explains how we collect, use, and protect data when you visit our marketing website (Rankett.com) or use our Agency Platform.
                 </p>
 
                 <p className="text-lg leading-relaxed">
