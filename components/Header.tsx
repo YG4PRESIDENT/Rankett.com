@@ -1,10 +1,10 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, ArrowRight, Sparkles } from "lucide-react";
+import { Menu, X, Sparkles } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
-import { COMPANY_NAME, NAV_LINKS, CONTACT } from "@/lib/constants";
+import { NAV_LINKS } from "@/lib/constants";
 import { useRouter } from 'next/navigation';
 import Link from 'next/link';
 
@@ -22,18 +22,27 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
-            >
-              {link.label}
-            </button>
-          ))}
-        </nav>
+  const handleNavClick = (href: string) => {
+    setIsMobileMenuOpen(false); // Close mobile menu if open
+
+    if (href.startsWith("mailto:")) {
+      window.location.href = href;
+    } else if (href.startsWith("http")) {
+      window.open(href, "_blank", "noopener,noreferrer");
+    } else if (href.startsWith("#")) {
+      const isHomePage = window.location.pathname === '/';
+      if (isHomePage) {
+        const element = document.querySelector(href);
+        if (element) {
+          element.scrollIntoView({ behavior: "smooth" });
+        }
+      } else {
+        router.push(`/${href}`); // Use router.push for hash links on other pages
+      }
+    } else {
+      router.push(href); // Use router.push for internal navigation
+    }
+  };
 
   const handleBookCall = () => {
     window.open("https://calendly.com/rankett/30min", "_blank", "noopener,noreferrer");
