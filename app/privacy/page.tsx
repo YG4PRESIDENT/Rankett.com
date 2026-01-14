@@ -127,9 +127,8 @@ export default function PrivacyPolicyPage() {
               <section className="space-y-4">
                 <h2 className="text-2xl font-bold text-white mt-8">8. Contact Us</h2>
                 <p>
-                  Think Outside The Box Ventures, LLC<br />
-                  d/b/a Rankett<br />
-                  <a href="mailto:team@rankett.com" className="text-blue-400 font-medium hover:text-blue-300">team@rankett.com</a> {/* Styled links */}
+                  Rankett LLC<br />
+                  <a href="mailto:info@Rankett.com" className="text-blue-400 font-medium hover:text-blue-300">info@Rankett.com</a> {/* Styled links */}
                 </p>
               </section>
             </div>
