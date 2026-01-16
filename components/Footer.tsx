@@ -103,16 +103,16 @@ export default function Footer() {
           <div className="lg:col-span-2">
             <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Resources</h3>
             <ul className="space-y-3">
-              <li>
-                <button onClick={() => handleNavClick("#faq")} className="text-sm text-slate-400 hover:text-blue-400 transition-colors">
-                  FAQ
-                </button>
-              </li>
-              <li>
-                <button onClick={() => handleNavClick("/blog")} className="text-sm text-slate-400 hover:text-blue-400 transition-colors">
-                  Blog
-                </button>
-              </li>
+              {FOOTER_LINKS.resources.map((link) => (
+                <li key={link.href}>
+                  <button
+                    onClick={() => handleNavClick(link.href)}
+                    className="text-sm text-slate-400 hover:text-blue-400 transition-colors"
+                  >
+                    {link.label}
+                  </button>
+                </li>
+              ))}
             </ul>
           </div>
 

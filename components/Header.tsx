@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, Sparkles } from "lucide-react";
+import { Menu, X, LogIn } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
@@ -44,8 +44,10 @@ export default function Header() {
     }
   };
 
-  const handleBookCall = () => {
-    window.open("https://calendly.com/rankett/30min", "_blank", "noopener,noreferrer");
+  const handleLogin = () => {
+    // TODO: Update with actual login URL
+    const toolBaseUrl = process.env.NEXT_PUBLIC_TOOL_URL || 'http://localhost:3001';
+    window.location.href = toolBaseUrl;
   }
 
   return (
@@ -83,12 +85,12 @@ export default function Header() {
 
         {/* CTA Button - Desktop */}
         <div className="hidden lg:block">
-          <Button 
-            onClick={handleBookCall}
+          <Button
+            onClick={handleLogin}
             variant="primary"
           >
-            <Sparkles className="w-4 h-4 mr-2 text-white/70" />
-            Book Strategy Call
+            <LogIn className="w-4 h-4 mr-2 text-white/70" />
+            Login
           </Button>
         </div>
 
@@ -114,11 +116,12 @@ export default function Header() {
                 {link.label}
               </button>
             ))}
-            <Button 
-              onClick={handleBookCall}
+            <Button
+              onClick={handleLogin}
               className="w-full bg-white text-slate-950 hover:bg-slate-200 font-bold mt-4"
             >
-              Book Strategy Call
+              <LogIn className="w-4 h-4 mr-2" />
+              Login
             </Button>
           </div>
         </div>

@@ -4,10 +4,9 @@ export const COMPANY_TAGLINE = "GEO SEO & Local Search Intelligence";
 
 // Navigation Links
 export const NAV_LINKS = [
-  { label: "Partner Portal", href: "/partner" },
-  { label: "Our Story", href: "/team" },
-  // { label: "Blog", href: "/blog" },
-  { label: "Resources", href: "#faq" },
+  { label: "Features", href: "/features" },
+  { label: "Pricing", href: "/pricing" },
+  { label: "Case Studies", href: "/casestudies" },
 ];
 
 // CTA Buttons
@@ -44,13 +43,13 @@ export const FOOTER_DESCRIPTION = "We are your one-stop AI presence partner to h
 
 export const FOOTER_LINKS = {
   resources: [
+    { label: "Features", href: "/features" },
+    { label: "Pricing", href: "/pricing" },
+    { label: "Case Studies", href: "/casestudies" },
     { label: "FAQ", href: "#faq" },
-    { label: "AI Crawlability Checker", href: "#tools" },
-    { label: "LLM.txt Generator", href: "#tools" },
-    { label: "Sentiment Checker", href: "#tools" },
-    { label: "Product Visibility", href: "#tools" },
   ],
   company: [
+    { label: "Founders", href: "/team" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
     { label: "Contact Us", href: "https://calendly.com/rankett/30min" },

@@ -30,10 +30,19 @@ export function Button({
         `,
         
         // Dark Slate
-        secondary: 'bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700',
-        
+        secondary: `
+            bg-slate-800 text-slate-200 hover:bg-slate-700 border border-slate-700
+            shadow-[0_4px_12px_rgba(0,0,0,0.2)]
+            hover:shadow-[0_6px_16px_rgba(0,0,0,0.3)]
+            hover:-translate-y-0.5 active:translate-y-0
+        `,
+
         // Transparent Outline
-        outline: 'border border-slate-700 bg-transparent hover:bg-slate-800 hover:text-white',
+        outline: `
+            border border-slate-700 bg-transparent hover:bg-slate-800/50 hover:text-white
+            hover:border-slate-600 hover:-translate-y-0.5 active:translate-y-0
+            hover:shadow-[0_4px_12px_rgba(0,0,0,0.15)]
+        `,
         
         // Ghost
         ghost: 'hover:bg-slate-800 hover:text-white',
