@@ -56,17 +56,18 @@ Replace `placeholderStudies` array with real case study data when available.
 
 ## Verified Working
 
-- [x] Homepage with all sections
-- [x] /features page
-- [x] /pricing page
-- [x] /casestudies page
-- [x] Navigation (Features, Pricing, Case Studies)
+- [x] One-page scroll layout with all sections
+- [x] #features section (smooth scroll from nav)
+- [x] #pricing section (smooth scroll from nav)
+- [x] #casestudies section (smooth scroll from nav)
+- [x] #faq section
+- [x] Navigation scrolls to sections on same page
 - [x] Login button → tool.rankett.com
-- [x] Smooth scroll
+- [x] Smooth scroll with Lenis
 - [x] All animations
 - [x] Build passes
 - [x] Pushed to GitHub
-- [x] Auto-deploys
+- [x] Auto-deploys via GitHub Actions
 
 ---
 
