@@ -15,12 +15,10 @@ import StealSpotlight from "@/components/features/StealSpotlight";
 import FeaturesMatrix from "@/components/home/FeaturesMatrix";
 
 // Pricing Section
-import AccessTiers from "@/components/pricing/AccessTiers";
-import FulfillmentTiers from "@/components/pricing/FulfillmentTiers";
-import TheMathSection from "@/components/home/TheMathSection";
+import PricingTiers from "@/components/pricing/PricingTiers";
 
 // Case Studies Section
-import CaseStudyCard from "@/components/casestudies/CaseStudyCard";
+import CaseStudyCarousel from "@/components/casestudies/CaseStudyCarousel";
 import IndustryCoverage from "@/components/casestudies/IndustryCoverage";
 
 // How It Works & CTA
@@ -50,16 +48,14 @@ export default function Home() {
 
         {/* Pricing Section */}
         <section id="pricing">
-          <TheMathSection />
-          <AccessTiers />
-          <FulfillmentTiers />
+          <PricingTiers />
         </section>
 
         <Testimonial slot={3} />
 
         {/* Case Studies Section */}
         <section id="casestudies">
-          <CaseStudyCard />
+          <CaseStudyCarousel />
           <IndustryCoverage />
         </section>
 

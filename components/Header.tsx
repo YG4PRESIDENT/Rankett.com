@@ -59,48 +59,62 @@ export default function Header() {
           : "bg-transparent border-transparent"
       )}
     >
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
-        
-        {/* Logo */}
-        <Link href="/" className="flex-shrink-0 flex items-center hover:opacity-90 transition-all duration-300">
-          <img
-            src="/images/Rankett_Logo.png"
-            alt="Rankett"
-            className="h-20 sm:h-28 md:h-32 w-auto object-contain"
-          />
-        </Link>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20">
+        {/* Desktop: 3-column grid for perfect centering */}
+        <div className="hidden lg:grid lg:grid-cols-3 items-center h-full">
+          {/* Logo - Left */}
+          <div className="justify-self-start">
+            <Link href="/" className="flex items-center hover:opacity-90 transition-all duration-300">
+              <img
+                src="/images/Rankett_Logo.png"
+                alt="Rankett"
+                className="h-12 w-auto object-contain"
+              />
+            </Link>
+          </div>
 
-        {/* Desktop Navigation */}
-        <nav className="hidden lg:flex items-center gap-8">
-          {NAV_LINKS.map((link) => (
-            <button
-              key={link.href}
-              onClick={() => handleNavClick(link.href)}
-              className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+          {/* Desktop Navigation - Center */}
+          <nav className="justify-self-center flex items-center gap-8">
+            {NAV_LINKS.map((link) => (
+              <button
+                key={link.href}
+                onClick={() => handleNavClick(link.href)}
+                className="text-sm font-medium text-slate-300 hover:text-white transition-colors"
+              >
+                {link.label}
+              </button>
+            ))}
+          </nav>
+
+          {/* CTA Button - Right */}
+          <div className="justify-self-end">
+            <Button
+              onClick={handleLogin}
+              variant="primary"
             >
-              {link.label}
-            </button>
-          ))}
-        </nav>
-
-        {/* CTA Button - Desktop */}
-        <div className="hidden lg:block">
-          <Button
-            onClick={handleLogin}
-            variant="primary"
-          >
-            <LogIn className="w-4 h-4 mr-2 text-white/70" />
-            Login
-          </Button>
+              <LogIn className="w-4 h-4 mr-2 text-white/70" />
+              Login
+            </Button>
+          </div>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-          className="lg:hidden p-2 text-slate-300 hover:text-white"
-        >
-          {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+        {/* Mobile: Simple flex layout */}
+        <div className="lg:hidden flex items-center justify-between h-full">
+          <Link href="/" className="flex items-center hover:opacity-90 transition-all duration-300">
+            <img
+              src="/images/Rankett_Logo.png"
+              alt="Rankett"
+              className="h-10 w-auto object-contain"
+            />
+          </Link>
+
+          <button
+            onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            className="p-2 text-slate-300 hover:text-white"
+          >
+            {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
       </div>
 
       {/* Mobile Menu */}
