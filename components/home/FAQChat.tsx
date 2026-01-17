@@ -1,6 +1,6 @@
 'use client'
 
-import { useState, useEffect, useRef } from 'react'
+import { useState, useEffect } from 'react'
 import { Sparkles } from 'lucide-react'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
@@ -33,140 +33,55 @@ const faqs = [
 
 interface TypewriterTextProps {
   text: string
-  isVisible: boolean
-  delay?: number
+  onComplete?: () => void
 }
 
-function TypewriterText({ text, isVisible, delay = 0 }: TypewriterTextProps) {
+function TypewriterText({ text, onComplete }: TypewriterTextProps) {
   const [displayedText, setDisplayedText] = useState('')
-  const [hasStarted, setHasStarted] = useState(false)
 
   useEffect(() => {
-    if (!isVisible) return
-
-    // Apply initial delay
-    const startTimer = setTimeout(() => {
-      setHasStarted(true)
-    }, delay)
-
-    return () => clearTimeout(startTimer)
-  }, [isVisible, delay])
-
-  useEffect(() => {
-    if (!hasStarted) {
-      setDisplayedText('')
-      return
-    }
-
+    setDisplayedText('')
     let index = 0
+
     const interval = setInterval(() => {
       if (index <= text.length) {
         setDisplayedText(text.slice(0, index))
         index++
       } else {
         clearInterval(interval)
+        onComplete?.()
       }
     }, 8)
 
     return () => clearInterval(interval)
-  }, [text, hasStarted])
+  }, [text, onComplete])
 
   return (
     <span>
       {displayedText}
-      {hasStarted && displayedText.length < text.length && (
+      {displayedText.length < text.length && (
         <span className="animate-pulse">|</span>
       )}
     </span>
   )
 }
 
-interface ChatMessageProps {
-  question: string
-  answer: string
-  index: number
-}
-
-function ChatMessage({ question, answer, index }: ChatMessageProps) {
-  const [isVisible, setIsVisible] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setIsVisible(true)
-          observer.disconnect()
-        }
-      },
-      { threshold: 0.3 }
-    )
-
-    if (ref.current) {
-      observer.observe(ref.current)
-    }
-
-    return () => observer.disconnect()
-  }, [])
-
-  return (
-    <div ref={ref} className="space-y-4">
-      {/* User Question - Right aligned */}
-      <div
-        className="flex justify-end opacity-0 translate-y-4 transition-all duration-500"
-        style={{
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-          transitionDelay: '0ms',
-        }}
-      >
-        <div
-          className="max-w-[85%] md:max-w-[70%] px-5 py-3 rounded-2xl rounded-br-md"
-          style={{
-            background: 'linear-gradient(135deg, rgba(51, 65, 85, 0.8) 0%, rgba(30, 41, 59, 0.9) 100%)',
-            border: '1px solid rgba(71, 85, 105, 0.5)',
-          }}
-        >
-          <p className="text-white font-medium text-sm md:text-base">{question}</p>
-        </div>
-      </div>
-
-      {/* AI Answer - Left aligned */}
-      <div
-        className="flex gap-3 opacity-0 translate-y-4 transition-all duration-500"
-        style={{
-          opacity: isVisible ? 1 : 0,
-          transform: isVisible ? 'translateY(0)' : 'translateY(16px)',
-          transitionDelay: '200ms',
-        }}
-      >
-        {/* AI Avatar */}
-        <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center">
-          <Sparkles className="w-4 h-4 text-white" />
-        </div>
-
-        {/* Answer Bubble */}
-        <div
-          className="max-w-[85%] md:max-w-[75%] px-5 py-4 rounded-2xl rounded-tl-md"
-          style={{
-            background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
-            border: '1px solid rgba(51, 65, 85, 0.3)',
-          }}
-        >
-          <p className="text-slate-300 text-sm md:text-base leading-relaxed">
-            <TypewriterText
-              text={answer}
-              isVisible={isVisible}
-              delay={400}
-            />
-          </p>
-        </div>
-      </div>
-    </div>
-  )
-}
-
 export default function FAQChat() {
+  const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [animatingIndex, setAnimatingIndex] = useState<number | null>(null)
+
+  const handleQuestionClick = (index: number) => {
+    if (openIndex === index) {
+      // Close if clicking same question
+      setOpenIndex(null)
+      setAnimatingIndex(null)
+    } else {
+      // Open new question and start animation
+      setOpenIndex(index)
+      setAnimatingIndex(index)
+    }
+  }
+
   return (
     <section id="faq" className="py-20 md:py-32 relative overflow-hidden">
       {/* Background accent */}
@@ -187,7 +102,7 @@ export default function FAQChat() {
               Got <span className="text-gradient">Questions?</span>
             </h2>
             <p className="text-lg text-slate-400">
-              Here&apos;s what agencies typically ask us
+              Click a question to get your answer
             </p>
           </div>
         </FadeInOnScroll>
@@ -216,15 +131,62 @@ export default function FAQChat() {
             </div>
           </div>
 
-          {/* Chat Messages */}
-          <div className="space-y-8">
+          {/* Questions List */}
+          <div className="space-y-4">
             {faqs.map((faq, index) => (
-              <ChatMessage
-                key={index}
-                question={faq.question}
-                answer={faq.answer}
-                index={index}
-              />
+              <FadeInOnScroll key={index} direction="up" delay={index * 0.05}>
+                <div className="space-y-3">
+                  {/* Question - Clickable */}
+                  <button
+                    onClick={() => handleQuestionClick(index)}
+                    className="w-full flex justify-end"
+                  >
+                    <div
+                      className={`max-w-[85%] md:max-w-[70%] px-5 py-3 rounded-2xl rounded-br-md text-left transition-all duration-200 ${
+                        openIndex === index
+                          ? 'ring-2 ring-blue-500/50'
+                          : 'hover:ring-2 hover:ring-slate-600/50'
+                      }`}
+                      style={{
+                        background: 'linear-gradient(135deg, rgba(51, 65, 85, 0.8) 0%, rgba(30, 41, 59, 0.9) 100%)',
+                        border: '1px solid rgba(71, 85, 105, 0.5)',
+                      }}
+                    >
+                      <p className="text-white font-medium text-sm md:text-base">{faq.question}</p>
+                    </div>
+                  </button>
+
+                  {/* Answer - Shows on click with typewriter */}
+                  {openIndex === index && (
+                    <div className="flex gap-3 animate-in slide-in-from-bottom-2 duration-300">
+                      {/* AI Avatar */}
+                      <div className="flex-shrink-0 w-8 h-8 rounded-full bg-gradient-to-br from-blue-500 to-violet-500 flex items-center justify-center">
+                        <Sparkles className="w-4 h-4 text-white" />
+                      </div>
+
+                      {/* Answer Bubble */}
+                      <div
+                        className="max-w-[85%] md:max-w-[75%] px-5 py-4 rounded-2xl rounded-tl-md"
+                        style={{
+                          background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
+                          border: '1px solid rgba(51, 65, 85, 0.3)',
+                        }}
+                      >
+                        <p className="text-slate-300 text-sm md:text-base leading-relaxed">
+                          {animatingIndex === index ? (
+                            <TypewriterText
+                              text={faq.answer}
+                              onComplete={() => setAnimatingIndex(null)}
+                            />
+                          ) : (
+                            faq.answer
+                          )}
+                        </p>
+                      </div>
+                    </div>
+                  )}
+                </div>
+              </FadeInOnScroll>
             ))}
           </div>
         </div>
