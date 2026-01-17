@@ -2,11 +2,11 @@
 export const COMPANY_NAME = "Rankett.com";
 export const COMPANY_TAGLINE = "GEO SEO & Local Search Intelligence";
 
-// Navigation Links
+// Navigation Links (anchor links for one-page scroll)
 export const NAV_LINKS = [
-  { label: "Features", href: "/features" },
-  { label: "Pricing", href: "/pricing" },
-  { label: "Case Studies", href: "/casestudies" },
+  { label: "Features", href: "#features" },
+  { label: "Pricing", href: "#pricing" },
+  { label: "Case Studies", href: "#casestudies" },
 ];
 
 // CTA Buttons
@@ -43,9 +43,9 @@ export const FOOTER_DESCRIPTION = "We are your one-stop AI presence partner to h
 
 export const FOOTER_LINKS = {
   resources: [
-    { label: "Features", href: "/features" },
-    { label: "Pricing", href: "/pricing" },
-    { label: "Case Studies", href: "/casestudies" },
+    { label: "Features", href: "#features" },
+    { label: "Pricing", href: "#pricing" },
+    { label: "Case Studies", href: "#casestudies" },
     { label: "FAQ", href: "#faq" },
   ],
   company: [
