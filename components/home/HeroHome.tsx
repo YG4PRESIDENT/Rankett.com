@@ -47,7 +47,7 @@ export default function HeroHome() {
 
           <FadeInOnScroll direction="up" delay={0.15}>
             <p className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto leading-relaxed">
-              Launch tomorrow. Charge 3x what you pay us.
+              Launch tomorrow. Charge your price and
               <br className="hidden sm:block" />
               <span className="text-white font-medium">Do none of the work.</span>
             </p>

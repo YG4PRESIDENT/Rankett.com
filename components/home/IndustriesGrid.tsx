@@ -17,59 +17,77 @@ import {
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
 const industries = [
-  { name: 'Professional Services', icon: Building2, examples: 'Accountants, Consultants' },
-  { name: 'Healthcare', icon: Stethoscope, examples: 'Dentists, Doctors, Clinics' },
-  { name: 'Legal', icon: Scale, examples: 'Law Firms, Attorneys' },
-  { name: 'Real Estate', icon: Home, examples: 'Agents, Brokerages' },
-  { name: 'Automotive', icon: Car, examples: 'Dealerships, Repair Shops' },
-  { name: 'Restaurants', icon: UtensilsCrossed, examples: 'Restaurants, Bars, Cafes' },
-  { name: 'Fitness', icon: Dumbbell, examples: 'Gyms, Personal Trainers' },
-  { name: 'Financial', icon: Briefcase, examples: 'Insurance, Wealth Management' },
-  { name: 'Education', icon: GraduationCap, examples: 'Tutoring, Trade Schools' },
-  { name: 'Home Services', icon: Wrench, examples: 'Plumbers, HVAC, Electricians' },
-  { name: 'Beauty & Wellness', icon: Sparkles, examples: 'Salons, Spas, Med Spas' },
-  { name: 'Retail', icon: ShoppingBag, examples: 'Boutiques, Specialty Stores' },
+  { name: 'Professional Services', icon: Building2 },
+  { name: 'Healthcare', icon: Stethoscope },
+  { name: 'Legal', icon: Scale },
+  { name: 'Real Estate', icon: Home },
+  { name: 'Automotive', icon: Car },
+  { name: 'Restaurants', icon: UtensilsCrossed },
+  { name: 'Fitness', icon: Dumbbell },
+  { name: 'Financial', icon: Briefcase },
+  { name: 'Education', icon: GraduationCap },
+  { name: 'Home Services', icon: Wrench },
+  { name: 'Beauty & Wellness', icon: Sparkles },
+  { name: 'Retail', icon: ShoppingBag },
 ]
 
 export default function IndustriesGrid() {
+  // Duplicate for seamless loop
+  const duplicatedIndustries = [...industries, ...industries]
+
   return (
-    <section className="py-20 md:py-32 relative overflow-hidden">
+    <section className="py-12 md:py-16 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <FadeInOnScroll direction="up">
-          <div className="text-center mb-16">
-            <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Industries Your <span className="text-gradient">Clients Serve</span>
-            </h2>
-            <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Every local business needs AI visibility. Here are the verticals agencies target most.
-            </p>
-          </div>
+          <p className="text-center text-sm text-slate-500 uppercase tracking-wider mb-8">
+            Trusted across industries
+          </p>
         </FadeInOnScroll>
 
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-          {industries.map((industry, index) => {
-            const Icon = industry.icon
-            return (
-              <FadeInOnScroll key={industry.name} direction="up" delay={index * 0.05}>
+        {/* Marquee container */}
+        <div className="relative overflow-hidden">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+
+          {/* Scrolling strip */}
+          <div className="flex animate-marquee">
+            {duplicatedIndustries.map((industry, index) => {
+              const Icon = industry.icon
+              return (
                 <div
-                  className="p-5 rounded-xl text-center transition-all duration-300 hover:-translate-y-1 hover:border-blue-500/30 group cursor-default"
-                  style={{
-                    background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.3) 0%, rgba(15, 23, 42, 0.5) 100%)',
-                    backdropFilter: 'blur(8px)',
-                    border: '1px solid rgba(51, 65, 85, 0.3)',
-                  }}
+                  key={`${industry.name}-${index}`}
+                  className="flex items-center gap-2 px-6 py-2 flex-shrink-0"
                 >
-                  <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mx-auto mb-3 group-hover:bg-blue-500/20 transition-colors">
-                    <Icon className="w-6 h-6 text-blue-400" />
+                  <div className="w-8 h-8 rounded-lg bg-slate-800/50 flex items-center justify-center">
+                    <Icon className="w-4 h-4 text-slate-400" />
                   </div>
-                  <h3 className="text-white font-semibold text-sm mb-1">{industry.name}</h3>
-                  <p className="text-slate-500 text-xs">{industry.examples}</p>
+                  <span className="text-slate-400 text-sm font-medium whitespace-nowrap">
+                    {industry.name}
+                  </span>
                 </div>
-              </FadeInOnScroll>
-            )
-          })}
+              )
+            })}
+          </div>
         </div>
       </div>
+
+      <style jsx>{`
+        @keyframes marquee {
+          0% {
+            transform: translateX(0);
+          }
+          100% {
+            transform: translateX(-50%);
+          }
+        }
+        .animate-marquee {
+          animation: marquee 30s linear infinite;
+        }
+        .animate-marquee:hover {
+          animation-play-state: paused;
+        }
+      `}</style>
     </section>
   )
 }
