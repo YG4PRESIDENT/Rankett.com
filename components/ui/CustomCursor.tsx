@@ -1,129 +1,143 @@
 'use client'
 
-import { useEffect, useState, useRef } from 'react'
+import { useEffect, useRef, useState } from 'react'
+
+interface TrailDot {
+  x: number
+  y: number
+  opacity: number
+}
 
 export default function CustomCursor() {
-  const cursorRef = useRef<HTMLDivElement>(null)
-  const [isVisible, setIsVisible] = useState(false)
-  const [isHovering, setIsHovering] = useState(false)
   const [isTouchDevice, setIsTouchDevice] = useState(true)
+  const [isVisible, setIsVisible] = useState(false)
+  const trailRef = useRef<TrailDot[]>([])
+  const canvasRef = useRef<HTMLCanvasElement>(null)
+  const mousePos = useRef({ x: 0, y: 0 })
+  const animationRef = useRef<number | null>(null)
 
   useEffect(() => {
-    // Check if it's a touch device
+    // Check if touch device
     const checkTouchDevice = () => {
-      setIsTouchDevice(
-        'ontouchstart' in window ||
-        navigator.maxTouchPoints > 0
-      )
+      const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
+      setIsTouchDevice(isTouch)
     }
     checkTouchDevice()
+  }, [])
 
+  useEffect(() => {
     if (isTouchDevice) return
 
-    const cursor = cursorRef.current
-    if (!cursor) return
+    const canvas = canvasRef.current
+    if (!canvas) return
 
-    let mouseX = 0
-    let mouseY = 0
-    let currentX = 0
-    let currentY = 0
+    const ctx = canvas.getContext('2d')
+    if (!ctx) return
+
+    // Set canvas size
+    const resizeCanvas = () => {
+      canvas.width = window.innerWidth
+      canvas.height = window.innerHeight
+    }
+    resizeCanvas()
+    window.addEventListener('resize', resizeCanvas)
+
+    // Trail configuration
+    const trailLength = 20
+    const dotSpacing = 3 // Frames between new dots
+
+    let frameCount = 0
+
+    // Initialize trail
+    trailRef.current = []
 
     const handleMouseMove = (e: MouseEvent) => {
-      mouseX = e.clientX
-      mouseY = e.clientY
+      mousePos.current = { x: e.clientX, y: e.clientY }
       if (!isVisible) setIsVisible(true)
     }
 
-    const handleMouseEnter = () => setIsVisible(true)
     const handleMouseLeave = () => setIsVisible(false)
+    const handleMouseEnter = () => setIsVisible(true)
 
-    // Track hover on interactive elements
-    const handleElementMouseEnter = () => setIsHovering(true)
-    const handleElementMouseLeave = () => setIsHovering(false)
+    document.addEventListener('mousemove', handleMouseMove)
+    document.addEventListener('mouseleave', handleMouseLeave)
+    document.addEventListener('mouseenter', handleMouseEnter)
 
-    // Smooth animation loop
+    // Animation loop
     const animate = () => {
-      const ease = 0.15
-      currentX += (mouseX - currentX) * ease
-      currentY += (mouseY - currentY) * ease
+      ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-      if (cursor) {
-        cursor.style.transform = `translate(${currentX - 20}px, ${currentY - 20}px) scale(${isHovering ? 1.5 : 1})`
+      frameCount++
+
+      // Add new dot at interval
+      if (frameCount % dotSpacing === 0 && isVisible) {
+        trailRef.current.unshift({
+          x: mousePos.current.x,
+          y: mousePos.current.y,
+          opacity: 1,
+        })
+
+        // Limit trail length
+        if (trailRef.current.length > trailLength) {
+          trailRef.current.pop()
+        }
       }
 
-      requestAnimationFrame(animate)
+      // Draw and update trail
+      trailRef.current.forEach((dot, index) => {
+        // Fade out based on position in trail
+        dot.opacity = 1 - (index / trailLength)
+
+        // Calculate size (larger at front, smaller at back)
+        const size = Math.max(2, 8 - (index * 0.3))
+
+        // Draw dot with gradient
+        const gradient = ctx.createRadialGradient(
+          dot.x, dot.y, 0,
+          dot.x, dot.y, size
+        )
+
+        // Blue to violet gradient matching your brand
+        gradient.addColorStop(0, `rgba(96, 165, 250, ${dot.opacity * 0.6})`)
+        gradient.addColorStop(0.5, `rgba(139, 92, 246, ${dot.opacity * 0.4})`)
+        gradient.addColorStop(1, `rgba(139, 92, 246, 0)`)
+
+        ctx.beginPath()
+        ctx.arc(dot.x, dot.y, size, 0, Math.PI * 2)
+        ctx.fillStyle = gradient
+        ctx.fill()
+      })
+
+      animationRef.current = requestAnimationFrame(animate)
     }
 
-    // Add event listeners
-    document.addEventListener('mousemove', handleMouseMove)
-    document.addEventListener('mouseenter', handleMouseEnter)
-    document.addEventListener('mouseleave', handleMouseLeave)
-
-    // Add hover listeners to interactive elements
-    const interactiveElements = document.querySelectorAll('a, button, [role="button"], input, textarea, select')
-    interactiveElements.forEach((el) => {
-      el.addEventListener('mouseenter', handleElementMouseEnter)
-      el.addEventListener('mouseleave', handleElementMouseLeave)
-    })
-
-    // Start animation
-    const animationId = requestAnimationFrame(animate)
+    animate()
 
     return () => {
+      window.removeEventListener('resize', resizeCanvas)
       document.removeEventListener('mousemove', handleMouseMove)
-      document.removeEventListener('mouseenter', handleMouseEnter)
       document.removeEventListener('mouseleave', handleMouseLeave)
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleElementMouseEnter)
-        el.removeEventListener('mouseleave', handleElementMouseLeave)
-      })
-      cancelAnimationFrame(animationId)
+      document.removeEventListener('mouseenter', handleMouseEnter)
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current)
+      }
     }
-  }, [isTouchDevice, isVisible, isHovering])
-
-  // Re-attach hover listeners when DOM changes
-  useEffect(() => {
-    if (isTouchDevice) return
-
-    const handleElementMouseEnter = () => setIsHovering(true)
-    const handleElementMouseLeave = () => setIsHovering(false)
-
-    const observer = new MutationObserver(() => {
-      const interactiveElements = document.querySelectorAll('a, button, [role="button"], input, textarea, select')
-      interactiveElements.forEach((el) => {
-        el.removeEventListener('mouseenter', handleElementMouseEnter)
-        el.removeEventListener('mouseleave', handleElementMouseLeave)
-        el.addEventListener('mouseenter', handleElementMouseEnter)
-        el.addEventListener('mouseleave', handleElementMouseLeave)
-      })
-    })
-
-    observer.observe(document.body, { childList: true, subtree: true })
-
-    return () => observer.disconnect()
-  }, [isTouchDevice])
+  }, [isTouchDevice, isVisible])
 
   // Don't render on touch devices
   if (isTouchDevice) return null
 
   return (
-    <div
-      ref={cursorRef}
-      className="custom-cursor"
+    <canvas
+      ref={canvasRef}
       style={{
         position: 'fixed',
         top: 0,
         left: 0,
-        width: '40px',
-        height: '40px',
+        width: '100%',
+        height: '100%',
         pointerEvents: 'none',
         zIndex: 9999,
-        opacity: isVisible ? 1 : 0,
-        transition: 'opacity 0.3s ease, transform 0.15s ease-out',
-        background: 'radial-gradient(circle, rgba(96, 165, 250, 0.4) 0%, rgba(139, 92, 246, 0.2) 50%, transparent 70%)',
-        borderRadius: '50%',
-        filter: 'blur(2px)',
-        mixBlendMode: 'screen',
       }}
     />
   )
