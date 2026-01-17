@@ -6,6 +6,9 @@ interface TrailDot {
   x: number
   y: number
   opacity: number
+  size: number
+  vx: number // slight drift
+  vy: number
 }
 
 export default function CustomCursor() {
@@ -17,7 +20,6 @@ export default function CustomCursor() {
   const animationRef = useRef<number | null>(null)
 
   useEffect(() => {
-    // Check if touch device
     const checkTouchDevice = () => {
       const isTouch = 'ontouchstart' in window || navigator.maxTouchPoints > 0
       setIsTouchDevice(isTouch)
@@ -34,7 +36,6 @@ export default function CustomCursor() {
     const ctx = canvas.getContext('2d')
     if (!ctx) return
 
-    // Set canvas size
     const resizeCanvas = () => {
       canvas.width = window.innerWidth
       canvas.height = window.innerHeight
@@ -42,13 +43,12 @@ export default function CustomCursor() {
     resizeCanvas()
     window.addEventListener('resize', resizeCanvas)
 
-    // Trail configuration
-    const trailLength = 20
-    const dotSpacing = 3 // Frames between new dots
+    // Pixie dust configuration - subtle and light
+    const trailLength = 12
+    const dotSpacing = 2
 
     let frameCount = 0
 
-    // Initialize trail
     trailRef.current = []
 
     const handleMouseMove = (e: MouseEvent) => {
@@ -63,48 +63,48 @@ export default function CustomCursor() {
     document.addEventListener('mouseleave', handleMouseLeave)
     document.addEventListener('mouseenter', handleMouseEnter)
 
-    // Animation loop
     const animate = () => {
       ctx.clearRect(0, 0, canvas.width, canvas.height)
 
       frameCount++
 
-      // Add new dot at interval
+      // Add new particle
       if (frameCount % dotSpacing === 0 && isVisible) {
         trailRef.current.unshift({
-          x: mousePos.current.x,
-          y: mousePos.current.y,
-          opacity: 1,
+          x: mousePos.current.x + (Math.random() - 0.5) * 4,
+          y: mousePos.current.y + (Math.random() - 0.5) * 4,
+          opacity: 0.4,
+          size: Math.random() * 2 + 1, // 1-3px
+          vx: (Math.random() - 0.5) * 0.3,
+          vy: (Math.random() - 0.5) * 0.3 - 0.2, // slight upward drift
         })
 
-        // Limit trail length
         if (trailRef.current.length > trailLength) {
           trailRef.current.pop()
         }
       }
 
-      // Draw and update trail
+      // Draw particles
       trailRef.current.forEach((dot, index) => {
-        // Fade out based on position in trail
-        dot.opacity = 1 - (index / trailLength)
+        // Update position with drift
+        dot.x += dot.vx
+        dot.y += dot.vy
 
-        // Calculate size (larger at front, smaller at back)
-        const size = Math.max(2, 8 - (index * 0.3))
+        // Fade based on age
+        dot.opacity = 0.35 * (1 - index / trailLength)
 
-        // Draw dot with gradient
-        const gradient = ctx.createRadialGradient(
-          dot.x, dot.y, 0,
-          dot.x, dot.y, size
-        )
-
-        // Blue to violet gradient matching your brand
-        gradient.addColorStop(0, `rgba(96, 165, 250, ${dot.opacity * 0.6})`)
-        gradient.addColorStop(0.5, `rgba(139, 92, 246, ${dot.opacity * 0.4})`)
-        gradient.addColorStop(1, `rgba(139, 92, 246, 0)`)
-
+        // Draw tiny glowing dot
         ctx.beginPath()
-        ctx.arc(dot.x, dot.y, size, 0, Math.PI * 2)
-        ctx.fillStyle = gradient
+        ctx.arc(dot.x, dot.y, dot.size, 0, Math.PI * 2)
+
+        // Subtle white/blue glow
+        ctx.fillStyle = `rgba(180, 200, 255, ${dot.opacity})`
+        ctx.fill()
+
+        // Tiny bright center
+        ctx.beginPath()
+        ctx.arc(dot.x, dot.y, dot.size * 0.4, 0, Math.PI * 2)
+        ctx.fillStyle = `rgba(255, 255, 255, ${dot.opacity * 0.8})`
         ctx.fill()
       })
 
@@ -124,7 +124,6 @@ export default function CustomCursor() {
     }
   }, [isTouchDevice, isVisible])
 
-  // Don't render on touch devices
   if (isTouchDevice) return null
 
   return (
