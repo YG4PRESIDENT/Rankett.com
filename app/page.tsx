@@ -35,7 +35,7 @@ export default function Home() {
         <OneLineQualifier />
         <LoomVideoSection />
 
-        <Testimonial slot={1} />
+        <Testimonial slot={1} size="compact" />
 
         {/* Features Section */}
         <section id="features">
@@ -43,8 +43,6 @@ export default function Home() {
           <AIBrandPortrayal />
           <StealSpotlight />
         </section>
-
-        <Testimonial slot={2} />
 
         {/* Pricing Section */}
         <section id="pricing">
