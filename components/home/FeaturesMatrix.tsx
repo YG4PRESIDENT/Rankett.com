@@ -16,14 +16,14 @@ export default function FeaturesMatrix() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header */}
+        {/* Section Header - More Compact */}
         <div className="text-center mb-6">
           <FadeInOnScroll direction="up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
-              Uncover What AI Says <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">About Your Brand</span>
+              Uncover What AI Says <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">About Your Clients</span>
             </h2>
             <p className="text-slate-400 text-sm max-w-xl mx-auto">
-              Know exactly how ChatGPT, Claude, and other AI models portray your brand—and steal the spotlight from competitors.
+              Know exactly how ChatGPT, Claude, and other AI models portray the brands you manage—and help them steal the spotlight.
             </p>
           </FadeInOnScroll>
         </div>
@@ -35,9 +35,9 @@ export default function FeaturesMatrix() {
           <FadeInOnScroll direction="up" delay={0.1}>
             <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
-                <h3 className="text-lg font-bold text-white mb-1">Compare Visibility Across LLMs</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Track Client Visibility</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Unite your favorite tools for effortless connectivity. Boost productivity through interconnected workflows.
+                  Monitor visibility across all major LLMs. Prove to clients that you are watching every channel.
                 </p>
               </div>
               
@@ -79,9 +79,9 @@ export default function FeaturesMatrix() {
           <FadeInOnScroll direction="up" delay={0.2}>
             <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
-                <h3 className="text-lg font-bold text-white mb-1">Understand AI's Sentiment</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Monitor Brand Sentiment</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Set it, forget it. Your AI Agent tackles repetitive tasks so you can focus on strategy, innovation, and growth.
+                  See how AI feels about your client's brand. Shift the narrative before it becomes a problem.
                 </p>
               </div>
 
@@ -128,9 +128,9 @@ export default function FeaturesMatrix() {
           <FadeInOnScroll direction="up" delay={0.3}>
             <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
-                <h3 className="text-lg font-bold text-white mb-1">See What AI Actually Says</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Audit Real Responses</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Track mentions across real AI answers. Know exactly how you appear in the conversation.
+                  See exactly what AI models answer when users ask for recommendations in your client's niche.
                 </p>
               </div>
 
@@ -163,9 +163,9 @@ export default function FeaturesMatrix() {
           <FadeInOnScroll direction="up" delay={0.4}>
             <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
-                <h3 className="text-lg font-bold text-white mb-1">Real-Time Competitor Tracking</h3>
+                <h3 className="text-lg font-bold text-white mb-1">Benchmark vs Competitors</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
-                  Transform raw data into clear insights in seconds. See who is winning the visibility war.
+                  Show clients exactly where they win and lose against their top competitors.
                 </p>
               </div>
 
