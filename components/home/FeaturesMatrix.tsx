@@ -16,7 +16,7 @@ export default function FeaturesMatrix() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        {/* Section Header - More Compact */}
+        {/* Section Header */}
         <div className="text-center mb-6">
           <FadeInOnScroll direction="up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
@@ -28,10 +28,10 @@ export default function FeaturesMatrix() {
           </FadeInOnScroll>
         </div>
 
-        {/* 2x2 Bento Grid - Dense */}
+        {/* 2x2 Bento Grid */}
         <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
           
-          {/* Card 1: Visibility & Connectivity */}
+          {/* Card 1: Visibility & Connectivity (SOLAR ORBIT) */}
           <FadeInOnScroll direction="up" delay={0.1}>
             <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
@@ -41,36 +41,36 @@ export default function FeaturesMatrix() {
                 </p>
               </div>
               
-              {/* Visual: Denser Central Hub */}
               <div className="relative h-[100px] flex items-center justify-center bg-slate-950/50 rounded-xl border border-slate-800/50">
                 <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 bg-[size:20px_20px]" />
                 
                 {/* Center Node */}
-                <div className="relative z-10 w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)]">
+                <div className="relative z-20 w-10 h-10 bg-blue-500 rounded-lg flex items-center justify-center shadow-[0_0_15px_rgba(59,130,246,0.4)]">
                   <Globe className="w-5 h-5 text-white" />
                 </div>
 
-                {/* Orbiting Satellites - Even Tighter Radius */}
-                {['chatgpt', 'claude', 'gemini', 'perplexity'].map((platform, i) => (
-                  <div 
-                    key={platform}
-                    className="absolute w-8 h-8 bg-slate-800 border border-slate-700 rounded-md flex items-center justify-center shadow-lg"
-                    style={{
-                      top: '50%',
-                      left: '50%',
-                      transform: `rotate(${i * 90}deg) translate(50px) rotate(-${i * 90}deg) translate(-50%, -50%)`,
-                    }}
-                  >
-                    <BrandLogo platform={platform} size={16} />
-                    {/* Connection Line */}
-                    <div 
-                      className="absolute top-1/2 left-1/2 w-[50px] h-[1px] bg-gradient-to-r from-blue-500/50 to-transparent -z-10 origin-left"
-                      style={{
-                        transform: `rotate(${180 + (i * 90) * -1}deg)`,
-                      }}
-                    />
+                {/* Orbiting Container */}
+                <div className="absolute inset-0 flex items-center justify-center animate-orbit">
+                  <div className="relative w-[140px] h-[140px] rounded-full border border-white/5">
+                    
+                    {/* Satellites */}
+                    {['chatgpt', 'claude', 'gemini', 'perplexity'].map((platform, i) => (
+                      <div 
+                        key={platform}
+                        className="absolute top-1/2 left-1/2 w-8 h-8 -ml-4 -mt-4"
+                        style={{
+                          transform: `rotate(${i * 90}deg) translate(50px) rotate(-${i * 90}deg)`
+                        }}
+                      >
+                        {/* Counter-rotating Wrapper to keep logo upright */}
+                        <div className="w-full h-full bg-slate-800 border border-slate-700 rounded-md flex items-center justify-center shadow-lg animate-counter-orbit">
+                          <BrandLogo platform={platform} size={16} />
+                        </div>
+                      </div>
+                    ))}
+
                   </div>
-                ))}
+                </div>
               </div>
             </div>
           </FadeInOnScroll>
@@ -211,6 +211,20 @@ export default function FeaturesMatrix() {
         }
         .animate-grow-bar {
           animation: grow-bar 1.5s ease-out forwards;
+        }
+        @keyframes orbit {
+          from { transform: rotate(0deg); }
+          to { transform: rotate(360deg); }
+        }
+        .animate-orbit {
+          animation: orbit 30s linear infinite;
+        }
+        @keyframes counter-orbit {
+          from { transform: rotate(360deg); }
+          to { transform: rotate(0deg); }
+        }
+        .animate-counter-orbit {
+          animation: counter-orbit 30s linear infinite;
         }
       `}</style>
     </section>
