@@ -36,9 +36,7 @@ export default function WholesalePricing() {
         {/* Explicit Header */}
         <FadeInOnScroll direction="up">
           <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6">
-              <span className="text-blue-400 text-xs font-bold uppercase tracking-wider">Simple Pricing</span>
-            </div>
+
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               One Price. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Total Fulfillment.</span>
             </h2>
