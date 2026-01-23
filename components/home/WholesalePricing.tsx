@@ -1,8 +1,30 @@
 'use client'
 
+import { useRef, useState } from 'react'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
 export default function WholesalePricing() {
+  const divRef = useRef<HTMLDivElement>(null)
+  const [position, setPosition] = useState({ x: 0, y: 0 })
+  const [opacity, setOpacity] = useState(0)
+
+  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>) => {
+    if (!divRef.current) return
+
+    const div = divRef.current
+    const rect = div.getBoundingClientRect()
+
+    setPosition({ x: e.clientX - rect.left, y: e.clientY - rect.top })
+  }
+
+  const handleFocus = () => {
+    setOpacity(1)
+  }
+
+  const handleBlur = () => {
+    setOpacity(0)
+  }
+
   return (
     <section className="py-32 relative overflow-hidden bg-slate-950">
       
@@ -26,31 +48,47 @@ export default function WholesalePricing() {
           </div>
         </FadeInOnScroll>
 
-        {/* The Card */}
+        {/* The Spotlight Card */}
         <FadeInOnScroll direction="up" delay={0.1}>
           <div className="flex justify-center">
-            <div className="bg-slate-900/60 backdrop-blur-2xl border border-blue-500/20 rounded-3xl p-12 md:p-20 text-center max-w-3xl w-full shadow-[0_0_50px_-10px_rgba(59,130,246,0.15)] relative overflow-hidden group hover:border-blue-500/40 transition-colors duration-500">
+            <div 
+              ref={divRef}
+              onMouseMove={handleMouseMove}
+              onMouseEnter={handleFocus}
+              onMouseLeave={handleBlur}
+              className="bg-slate-900/60 backdrop-blur-3xl border border-white/10 rounded-3xl p-12 md:p-20 text-center max-w-3xl w-full shadow-[0_0_50px_-10px_rgba(59,130,246,0.15)] relative overflow-hidden group transition-colors duration-500"
+            >
               
-              <div className="absolute top-0 left-0 right-0 h-1 bg-gradient-to-r from-blue-500 via-violet-500 to-emerald-500" />
+              {/* Spotlight Effect */}
+              <div
+                className="pointer-events-none absolute -inset-px transition-opacity duration-300"
+                style={{
+                  opacity,
+                  background: `radial-gradient(600px circle at ${position.x}px ${position.y}px, rgba(255,255,255,0.06), transparent 40%)`,
+                }}
+              />
 
-              <h3 className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-8">
-                All-Inclusive Infrastructure Rate
+              {/* Noise Texture */}
+              <div className="absolute inset-0 opacity-[0.03] pointer-events-none bg-[url('/noise.png')] bg-repeat" />
+
+              <h3 className="text-slate-400 text-sm font-bold uppercase tracking-widest mb-8 relative z-10">
+                Fulfillment Infrastructure
               </h3>
               
-              <div className="flex items-baseline justify-center gap-2 mb-10">
-                <span className="text-7xl md:text-9xl font-bold text-white tracking-tight">$998</span>
+              <div className="flex items-baseline justify-center gap-2 mb-10 relative z-10">
+                <span className="text-7xl md:text-9xl font-bold text-white tracking-tight drop-shadow-2xl">$998</span>
                 <div className="text-left flex flex-col justify-center">
                     <span className="text-slate-500 text-lg font-medium leading-none">/client</span>
                     <span className="text-slate-500 text-lg font-medium leading-none">/month</span>
                 </div>
               </div>
               
-              <div className="space-y-2">
+              <div className="space-y-4 relative z-10">
                   <p className="text-white text-xl md:text-2xl font-medium">
-                    We execute the entire fulfillment backend.
+                    Fixed Platform Rate.
                   </p>
                   <p className="text-slate-400 text-lg">
-                    You charge the retail price and keep 100% of the margin.
+                    We do the work. You own the client. You keep the spread.
                   </p>
               </div>
 
