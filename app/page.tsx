@@ -18,7 +18,7 @@ import WholesalePricing from "@/components/home/WholesalePricing"; // New
 import IndustriesGrid from "@/components/home/IndustriesGrid";
 import FAQChat from "@/components/home/FAQChat";
 
-export default function Home() {
+export default function RankettHome() {
   return (
     <>
       <Header />
