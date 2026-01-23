@@ -39,7 +39,7 @@ export const CONTACT = {
 };
 
 // Footer Content
-export const FOOTER_DESCRIPTION = "We are your one-stop AI presence partner to help your business succeed in the new age of search";
+export const FOOTER_DESCRIPTION = "Your dedicated white-label backend. We handle the AI search optimization; you manage the client and the revenue.";
 
 export const FOOTER_LINKS = {
   resources: [
