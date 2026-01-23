@@ -22,7 +22,7 @@ export default function RankettHome() {
   return (
     <>
       <Header />
-      <main className="overflow-hidden">
+      <main>
         <HeroHome />
         
         {/* 1. Partner Benefits (Now immediately after Hero) */}
