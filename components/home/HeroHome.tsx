@@ -100,18 +100,17 @@ export default function HeroHome() {
             Launch Tomorrow. <span className="text-white font-medium">Do none of the work.</span>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-4 justify-center pt-8 pb-12">
-            <Link href="https://tool.rankett.com/dashboard" className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
+          <div className="flex flex-col items-center gap-3 pt-8 pb-12">
+            <p className="text-slate-400 text-sm md:text-base">
+              Get access now. <span className="text-white font-medium">No card required.</span>
+            </p>
+            <a 
+              href="https://tool.rankett.com" 
+              className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
               style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)', boxShadow: '0 4px 20px rgba(59, 130, 246, 0.3)' }}
             >
-              <Power className="w-4 h-4 mr-2" />
               Start Free Trial
-            </Link>
-            <Link href="#pricing" className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-slate-300 rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg hover:text-white"
-              style={{ border: '1px solid rgba(139, 92, 246, 0.5)' }}
-            >
-              Learn More <ArrowRight className="w-4 h-4 ml-2" />
-            </Link>
+            </a>
           </div>
 
           <div className="pt-8 pb-8">
