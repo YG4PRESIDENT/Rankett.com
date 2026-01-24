@@ -16,9 +16,9 @@ const mono = JetBrains_Mono({
   display: "swap",
 });
 
-export const metadata: Metadata = {
-  title: "Rankett - Dominate AI Search",
-  description: "The Search Console for the AI Era. Audit your visibility on ChatGPT, Claude, and Gemini for free.",
+export const metadata = {
+  title: "Rankett | AI Visibility. Your Brand. Our Backend.",
+  description: "Launch tomorrow. Do none of the work. The invisible AI search fulfillment partner for modern agencies.",
 };
 
 export default function RootLayout({
