@@ -6,6 +6,7 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger'
 import { Power, ArrowRight } from 'lucide-react'
 import Link from 'next/link'
 import BrandLogo from '../ui/BrandLogo'
+import { Button } from '@/components/ui/Button'
 
 gsap.registerPlugin(ScrollTrigger)
 
