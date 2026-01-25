@@ -11,7 +11,7 @@ import { Button } from '@/components/ui/Button'
 gsap.registerPlugin(ScrollTrigger)
 
 const LLM_LOGOS = [
-  { name: 'ChatGPT', platform: 'openai' },
+  { name: 'ChatGPT', platform: 'chatgpt' },
   { name: 'Anthropic', platform: 'claude' },
   { name: 'Gemini', platform: 'gemini' },
   { name: 'Google Overviews', platform: 'google' },
