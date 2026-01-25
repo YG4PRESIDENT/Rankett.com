@@ -4,7 +4,8 @@ export const COMPANY_TAGLINE = "GEO SEO & Local Search Intelligence";
 
 // Navigation Links (anchor links for one-page scroll)
 export const NAV_LINKS = [
-  { label: "Benefits", href: "#benefits" },
+  { label: "Process", href: "#process" },
+  { label: "Features", href: "#features" },
   { label: "Pricing", href: "#pricing" },
   { label: "FAQ", href: "#faq" },
 ];

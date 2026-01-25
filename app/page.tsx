@@ -26,17 +26,21 @@ export default function RankettHome() {
         <HeroHome />
         
         {/* 1. Partner Benefits (Now immediately after Hero) */}
-        <section id="benefits">
+        <section>
           <PartnerBenefits />
         </section>
 
         <OneLineQualifier />
 
         {/* 2. The Business Model Stack Narrative */}
-        <GhostModelStack />
+        <section id="process">
+          <GhostModelStack />
+        </section>
 
         {/* 3. Visual Matrix ("Uncover what AI says") */}
-        <FeaturesMatrix />
+        <section id="features">
+          <FeaturesMatrix />
+        </section>
 
         {/* 4. Industries (Marquee) - Moved here */}
         <IndustriesGrid />
