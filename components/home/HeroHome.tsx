@@ -100,17 +100,17 @@ export default function HeroHome() {
             Launch Tomorrow. <span className="text-white font-medium">Do none of the work.</span>
           </div>
 
-          <div className="flex flex-col items-center gap-3 pt-8 pb-12">
-            <p className="text-slate-400 text-sm md:text-base">
-              Get access now. <span className="text-white font-medium">No card required.</span>
-            </p>
+          <div className="flex flex-col items-center gap-4 pt-8 pb-12">
             <a 
               href="https://tool.rankett.com" 
-              className="inline-flex items-center justify-center px-8 py-3 text-base font-semibold text-white rounded-xl transition-all duration-300 hover:scale-105 hover:shadow-lg"
-              style={{ background: 'linear-gradient(135deg, #3b82f6 0%, #8b5cf6 100%)', boxShadow: '0 4px 20px rgba(59, 130, 246, 0.3)' }}
+              className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-950 bg-white rounded-full transition-all duration-300 hover:bg-blue-50 hover:scale-105 shadow-[0_0_20px_-5px_rgba(255,255,255,0.5)]"
             >
-              Start Free Trial
+              Get Started
+              <ArrowRight className="w-5 h-5 ml-2 text-slate-950 group-hover:translate-x-1 transition-transform" />
             </a>
+            <p className="text-slate-500 text-sm">
+              No credit card required.
+            </p>
           </div>
 
           <div className="pt-8 pb-8">
