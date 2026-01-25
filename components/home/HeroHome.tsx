@@ -103,10 +103,10 @@ export default function HeroHome() {
           <div className="flex flex-col items-center gap-4 pt-8 pb-12">
             <a 
               href="https://tool.rankett.com" 
-              className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-slate-950 bg-white rounded-full transition-all duration-300 hover:bg-blue-50 hover:scale-105 shadow-[0_0_20px_-5px_rgba(255,255,255,0.5)]"
+              className="group inline-flex items-center justify-center px-8 py-4 text-lg font-bold text-white bg-gradient-to-r from-blue-600 to-violet-600 rounded-full transition-all duration-300 hover:brightness-110 hover:scale-105 shadow-lg shadow-blue-500/50"
             >
               Get Started
-              <ArrowRight className="w-5 h-5 ml-2 text-slate-950 group-hover:translate-x-1 transition-transform" />
+              <ArrowRight className="w-5 h-5 ml-2 text-white group-hover:translate-x-1 transition-transform" />
             </a>
             <p className="text-slate-500 text-sm">
               No credit card required.
