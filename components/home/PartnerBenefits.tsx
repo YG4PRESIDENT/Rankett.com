@@ -17,13 +17,13 @@ const perks = [
   },
   {
     icon: Users,
-    title: 'Day One Authority',
-    description: 'Leverage the aggregated data of 500+ agencies instantly.'
+    title: 'Built to Scale',
+    description: 'Add clients without adding headcount. Same infrastructure at 1 client or 100.'
   },
   {
     icon: Lock,
-    title: 'Zero Technical Debt',
-    description: 'No APIs to maintain. No scrapers to patch. Just revenue.'
+    title: 'Zero Overhead',
+    description: 'No developers to hire. No tools to build. Add a new service line overnight.'
   }
 ]
 
@@ -48,7 +48,7 @@ export default function PartnerBenefits() {
                 The Operating System for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Modern Agencies</span>.
               </h2>
               <p className="text-slate-400 text-lg mb-8 leading-relaxed">
-                Deploy a complete AI visibility practice in seconds. We provide the infrastructure, you retain the equity.
+                The complete infrastructure for AI search optimization. Your brand, your clients, your revenue.
               </p>
               
               <div className="grid sm:grid-cols-2 gap-x-6 gap-y-8 mb-10">
