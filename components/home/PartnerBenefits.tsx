@@ -45,7 +45,7 @@ export default function PartnerBenefits() {
               </div>
               
               <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-6 leading-tight">
-                The Operating System for <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Modern Agencies</span>.
+                Sell AI Visibility <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">Under Your Brand</span>.
               </h2>
               <p className="text-slate-400 text-lg mb-8 leading-relaxed">
                 The complete infrastructure for AI search optimization. Your brand, your clients, your revenue.
