@@ -127,8 +127,7 @@ function QuizContent() {
         console.error('Failed to submit quiz:', error);
 
         // Fallback: Redirect without session token
-        const toolBaseUrl = process.env.NEXT_PUBLIC_TOOL_URL || 'https://tool.rankett.com';
-        const redirectUrl = new URL(toolBaseUrl);
+        const redirectUrl = new URL('https://app.rankett.com/sign-up');
         if (websiteUrl) redirectUrl.searchParams.append('url', websiteUrl);
 
         console.log("Fallback redirect to:", redirectUrl.toString());

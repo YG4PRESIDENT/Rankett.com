@@ -46,9 +46,7 @@ export default function AccessTiers() {
   const router = useRouter()
 
   const handleCTA = (tier: string) => {
-    // TODO: Implement actual signup flow
-    const toolBaseUrl = process.env.NEXT_PUBLIC_TOOL_URL || 'http://localhost:3001'
-    router.push(toolBaseUrl)
+    router.push('https://app.rankett.com/sign-up')
   }
 
   return (

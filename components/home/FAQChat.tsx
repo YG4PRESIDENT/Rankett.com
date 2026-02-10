@@ -22,7 +22,7 @@ const faqs = [
   },
   {
     question: 'How do I price this to clients?',
-    answer: 'Most partners charge $3,000-$15,000/month depending on the client size and scope. Our fulfillment tiers start at $998/month per client. The typical margin is 200-400%.',
+    answer: 'Most partners charge $1,500-$15,000/month depending on the client size and scope. Our fulfillment tiers start at $498/month per client. The typical margin is 200-400%.',
     align: 'right' as const,
   },
   {

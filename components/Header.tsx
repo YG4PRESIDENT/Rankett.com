@@ -45,9 +45,7 @@ export default function Header() {
   };
 
   const handleLogin = () => {
-    // TODO: Update with actual login URL
-    const toolBaseUrl = process.env.NEXT_PUBLIC_TOOL_URL || 'http://localhost:3001';
-    window.location.href = toolBaseUrl;
+    window.location.href = 'https://app.rankett.com/sign-in';
   }
 
   return (

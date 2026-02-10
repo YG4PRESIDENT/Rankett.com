@@ -66,7 +66,7 @@ export default function PartnerBenefits() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://tool.rankett.com/dashboard" className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-950 font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]">
+                <Link href="https://app.rankett.com/sign-up" className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-950 font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]">
                   Start For Free
                 </Link>
               </div>

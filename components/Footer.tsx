@@ -31,8 +31,7 @@ export default function Footer() {
   };
 
   const handleRunAudit = () => {
-    const toolBaseUrl = process.env.NEXT_PUBLIC_TOOL_URL || 'http://localhost:3001'
-    router.push(toolBaseUrl); // Use router.push for navigation
+    router.push('https://app.rankett.com/sign-up')
   }
 
   return (

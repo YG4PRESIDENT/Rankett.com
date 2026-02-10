@@ -17,7 +17,7 @@ const steps = [
   {
     icon: Rocket,
     title: 'Add Fulfillment',
-    description: 'Pay per-client fulfillment ($998-$2,498/mo) and keep the margin',
+    description: 'Pay per-client fulfillment ($498-$2,498/mo) and keep the margin',
   },
 ]
 

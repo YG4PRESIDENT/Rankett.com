@@ -92,8 +92,7 @@ export default function PricingTiers() {
     if (tier === 'Enterprise') {
       window.open(CONTACT.calendly, '_blank', 'noopener,noreferrer')
     } else {
-      const toolBaseUrl = process.env.NEXT_PUBLIC_TOOL_URL || 'http://localhost:3001'
-      router.push(toolBaseUrl)
+      router.push('https://app.rankett.com/sign-up')
     }
   }
 
@@ -255,7 +254,7 @@ export default function PricingTiers() {
               {/* Fulfillment add-on note */}
               <div className="mt-8 text-center">
                 <p className="text-slate-400 text-sm">
-                  <span className="text-white font-medium">Done-for-you fulfillment available</span> starting at $998/client/month.{' '}
+                  <span className="text-white font-medium">Done-for-you fulfillment available</span> starting at $498/client/month.{' '}
                   <button
                     onClick={() => window.open(CONTACT.calendly, '_blank', 'noopener,noreferrer')}
                     className="text-blue-400 hover:text-blue-300 underline transition-colors"
