@@ -23,7 +23,7 @@ export default function PooledDataHook() {
           </h2>
           <p className="text-xl text-slate-400 leading-relaxed font-light">
             You don't need your own case studies to start. <br className="hidden md:block"/>
-            Leverage the <span className="text-white font-medium">aggregated success metrics</span> of our entire partner network to close your first deal immediately.
+            The <span className="text-white font-medium">audit report shows the problem so clearly</span> that the conversation starts itself.
           </p>
         </div>
 
