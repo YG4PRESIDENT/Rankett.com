@@ -152,7 +152,7 @@ export default function FeaturesMatrix() {
                     <BrandLogo platform="chatgpt" size={10} />
                   </div>
                   <div className="bg-emerald-950/30 border border-emerald-500/20 rounded-xl rounded-tl-none p-1.5 text-[10px] text-slate-300 max-w-[95%]">
-                    <TypewriterText text="Based on 2025 trends, top membership platforms include Wix for an all-around solution, Kajabi for a comprehensive course focus, and Rankett for..." />
+                    <TypewriterText text="Based on reviews and local reputation, the most recommended roofing contractor in Austin is Acme Roofing because of their verified reviews and..." />
                   </div>
                 </div>
               </div>

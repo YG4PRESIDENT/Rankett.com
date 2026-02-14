@@ -42,7 +42,7 @@ export default function PromptsVsKeywords() {
                     <h3 className="text-2xl font-bold text-slate-300">The Old Way</h3>
                   </div>
                   <span className="px-3 py-1 rounded-full bg-red-500/10 text-red-400 text-sm font-medium border border-red-500/20">
-                    Dying Model
+                    Legacy Model
                   </span>
                 </div>
 

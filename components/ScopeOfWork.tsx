@@ -34,9 +34,9 @@ export default function ScopeOfWork() {
                   "Platform Setup & White-Labeling",
                   "Weekly Reporting (First 4 Weeks)",
                   "Monthly Analysis & PDF Reports",
-                  "Schema & LLM.txt Updates",
-                  "Directory Management (50+ Sites)",
-                  "Pooled Network Data Access"
+                  "Technical SEO & AI Configuration",
+                  "Business Profile Management (50+ Sites)",
+                  "Ongoing Performance Monitoring"
                 ].map((item, i) => (
                   <li key={i} className="flex items-start space-x-3">
                     <Check className="w-5 h-5 text-white shrink-0 mt-0.5" />

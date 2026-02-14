@@ -13,7 +13,7 @@ export default function AgencyVideoDemo() {
             Your New Backend <span className="text-gradient">Operations Center</span>
           </h2>
           <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-            Watch how 100+ agencies use our fulfillment system to upsell clients and deliver results without hiring new staff.
+            Watch how agencies use our fulfillment system to deliver results without hiring new staff.
           </p>
         </div>
 

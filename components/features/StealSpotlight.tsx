@@ -87,7 +87,7 @@ export default function StealSpotlight() {
             </div>
             <ArrowRight className="w-5 h-5 text-slate-600" />
             <div className="px-5 py-3 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-medium text-sm">
-              You Keep The Margin
+              You Set Your Price
             </div>
           </div>
         </FadeInOnScroll>
