@@ -28,5 +28,5 @@ Rankett is a done-for-you AI visibility fulfillment platform. We help marketing 
 
 ## Contact
 - Website: https://rankett.com
-- Email: hello@rankett.com
+- Email: info@rankett.com
 - Book a call: https://calendly.com/rankett/30min

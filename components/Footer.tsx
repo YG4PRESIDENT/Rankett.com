@@ -72,12 +72,12 @@ export default function Footer() {
               >
                 <Linkedin size={18} />
               </a>
-              <a
+              <Link
                 href={SOCIAL_LINKS.email}
                 className="p-2 bg-slate-900 rounded-full text-slate-400 hover:text-white hover:bg-slate-800 transition-all"
               >
                 <Mail size={18} />
-              </a>
+              </Link>
             </div>
           </div>
 

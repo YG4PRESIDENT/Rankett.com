@@ -28,12 +28,12 @@ export const PLATFORMS = [
 export const SOCIAL_LINKS = {
   tiktok: "https://tiktok.com/@rankett",
   linkedin: "https://linkedin.com/company/rankett",
-  email: "mailto:hello@rankett.com",
+  email: "/contact",
 };
 
 // Contact Information
 export const CONTACT = {
-  email: "hello@rankett.com",
+  email: "info@rankett.com",
   supportEmail: "team@rankett.com",
   phone: "", // Optional
   calendly: "https://calendly.com/rankett/30min",
@@ -44,7 +44,7 @@ export const FOOTER_DESCRIPTION = "Your dedicated white-label backend. We handle
 
 export const FOOTER_LINKS = {
   resources: [
-    { label: "Benefits", href: "#benefits" },
+    { label: "Demo", href: "/demo" },
     { label: "Pricing", href: "#pricing" },
     { label: "FAQ", href: "/faq" },
   ],
@@ -52,6 +52,6 @@ export const FOOTER_LINKS = {
     { label: "Founders", href: "/team" },
     { label: "Privacy Policy", href: "/privacy" },
     { label: "Terms of Service", href: "/terms" },
-    { label: "Contact Us", href: "https://calendly.com/rankett/30min" },
+    { label: "Contact Us", href: "/contact" },
   ],
 };

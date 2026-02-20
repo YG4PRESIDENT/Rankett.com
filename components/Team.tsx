@@ -1,8 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Button } from "./ui/Button";
-import { Linkedin, Mail, Sparkles } from "lucide-react";
+import { Linkedin, Mail } from "lucide-react";
 
 interface TeamMember {
   name: string;
@@ -33,10 +32,6 @@ const teamMembers: TeamMember[] = [
 ];
 
 export default function Team() {
-  const handleBookCall = () => {
-    window.open("https://calendly.com/rankett/30min", "_blank", "noopener,noreferrer");
-  }
-
   return (
     <section id="team" className="relative bg-slate-950 py-32 overflow-hidden border-t border-slate-800">
       {/* Subtle Transition Gradient at top */}
@@ -114,24 +109,8 @@ export default function Team() {
           ))}
         </div>
 
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          className="text-center mt-24"
-        >
-          <Button 
-            onClick={() => {
-              window.open("https://calendly.com/rankett/30min", "_blank", "noopener,noreferrer");
-            }} 
-            size="lg"
-            variant="primary"
-          >
-            <Sparkles className="w-4 h-4 mr-2 text-white/70" />
-            Work With Us
-          </Button>
-        </motion.div>
+        {/* Spacer (CTA removed) */}
+        <div className="mt-12" />
       </div>
     </section>
   );
