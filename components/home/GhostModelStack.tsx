@@ -15,7 +15,162 @@ const LLM_LOGOS = [
   { name: 'DeepSeek', platform: 'deepseek' },
 ]
 
-const phases = [
+// ─── Scroll-linked 3D Book Flap Visual ────────────────────────────
+// Panels unfold like book pages as user scrolls through Phase 03
+function BookFlapVisual({ progress }: { progress: MotionValue<number> }) {
+  // Phase 03 is index 2 of 3 cards. It becomes visible ~0.5 scroll progress.
+  // Unfold panels sequentially between 0.45 and 0.75
+  const panel1Rotate = useTransform(progress, [0.42, 0.55], [-90, 0])
+  const panel1Opacity = useTransform(progress, [0.42, 0.50], [0, 1])
+
+  const panel2Rotate = useTransform(progress, [0.50, 0.63], [-90, 0])
+  const panel2Opacity = useTransform(progress, [0.50, 0.56], [0, 1])
+
+  const panel3Rotate = useTransform(progress, [0.58, 0.71], [-90, 0])
+  const panel3Opacity = useTransform(progress, [0.58, 0.64], [0, 1])
+
+  // Subtle glow that fades in after all panels open
+  const glowOpacity = useTransform(progress, [0.70, 0.80], [0, 1])
+
+  // Spine line draws in
+  const spineHeight = useTransform(progress, [0.42, 0.60], ['0%', '100%'])
+
+  const panels = [
+    {
+      icon: BarChart3,
+      label: 'Pitch Deck',
+      sublabel: 'Auto-branded slides',
+      rotate: panel1Rotate,
+      opacity: panel1Opacity,
+    },
+    {
+      icon: FileSignature,
+      label: 'Service Agreement',
+      sublabel: 'Legal MSA templates',
+      rotate: panel2Rotate,
+      opacity: panel2Opacity,
+    },
+    {
+      icon: ClipboardList,
+      label: 'Client Onboarding',
+      sublabel: '5-min intake survey',
+      rotate: panel3Rotate,
+      opacity: panel3Opacity,
+    },
+  ]
+
+  return (
+    <div className="relative h-full w-full flex items-center justify-center p-4">
+      <div className="relative">
+        {/* 3D Perspective Container */}
+        <div style={{ perspective: '1200px' }}>
+          <div className="flex items-stretch" style={{ transformStyle: 'preserve-3d' }}>
+
+            {/* Spine / Book Edge */}
+            <div className="relative w-[3px] flex items-center justify-center mr-1 self-stretch">
+              <motion.div
+                className="w-full bg-gradient-to-b from-emerald-500/60 via-emerald-400/80 to-emerald-500/60 rounded-full"
+                style={{ height: spineHeight }}
+              />
+            </div>
+
+            {/* Panels */}
+            {panels.map((panel, i) => (
+              <motion.div
+                key={panel.label}
+                style={{
+                  rotateY: panel.rotate,
+                  opacity: panel.opacity,
+                  transformOrigin: 'left center',
+                  transformStyle: 'preserve-3d',
+                }}
+                className="relative"
+              >
+                {/* The panel itself */}
+                <div className={`
+                  w-[100px] sm:w-[120px] h-[220px] sm:h-[280px]
+                  bg-gradient-to-b from-slate-800/80 to-slate-850/90
+                  backdrop-blur-sm
+                  border border-slate-700/30
+                  ${i === 2 ? 'rounded-r-xl' : ''}
+                  flex flex-col items-center justify-center
+                  relative overflow-hidden
+                `}>
+                  {/* Fold crease shadow on left edge */}
+                  <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-black/25 to-transparent pointer-events-none" />
+
+                  {/* Subtle inner glow */}
+                  <motion.div
+                    className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.04] to-transparent pointer-events-none"
+                    style={{ opacity: glowOpacity }}
+                  />
+
+                  {/* Top decorative line */}
+                  <div className="absolute top-0 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/25 to-transparent" />
+
+                  {/* Icon */}
+                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
+                    <panel.icon className="w-6 h-6 text-emerald-400" />
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-center px-3">
+                    <div className="text-[11px] sm:text-xs font-semibold text-white leading-tight tracking-wide">{panel.label}</div>
+                    <div className="text-[9px] sm:text-[10px] text-slate-500 mt-1.5 leading-tight">{panel.sublabel}</div>
+                  </div>
+
+                  {/* Decorative bottom element */}
+                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
+                    <div className="w-6 h-[1px] bg-emerald-500/20" />
+                  </div>
+
+                  {/* Bottom decorative line */}
+                  <div className="absolute bottom-0 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/25 to-transparent" />
+                </div>
+
+                {/* Inter-panel depth shadow */}
+                {i < 2 && (
+                  <div
+                    className="absolute right-0 top-0 bottom-0 w-3 bg-gradient-to-r from-black/15 to-transparent pointer-events-none"
+                    style={{ transform: 'translateX(100%)' }}
+                  />
+                )}
+              </motion.div>
+            ))}
+          </div>
+        </div>
+
+        {/* Geometric accent lines beneath — angular, Perplexity-style */}
+        <motion.div
+          className="absolute -bottom-10 left-0 right-0 flex justify-center"
+          style={{ opacity: glowOpacity }}
+        >
+          <svg width="280" height="24" viewBox="0 0 280 24" fill="none" className="overflow-visible">
+            {/* Center chevron */}
+            <path d="M90 2 L140 20 L190 2" stroke="rgba(16, 185, 129, 0.25)" strokeWidth="1" fill="none" />
+            {/* Outer chevron */}
+            <path d="M60 2 L140 22 L220 2" stroke="rgba(16, 185, 129, 0.12)" strokeWidth="0.5" fill="none" />
+          </svg>
+        </motion.div>
+      </div>
+    </div>
+  )
+}
+
+// ─── Phase Data ───────────────────────────────────────────────────
+interface PhaseData {
+  id: number
+  title: string
+  subtitle: string
+  body: string[]
+  bullets: string[]
+  icon: React.ComponentType<{ className?: string }>
+  accent: 'blue' | 'violet' | 'emerald'
+  visual?: React.ReactNode
+  visualComponent?: 'bookflap'
+}
+
+const phases: PhaseData[] = [
   {
     id: 1,
     title: "Your AI Visibility Audit Tool",
@@ -31,7 +186,7 @@ const phases = [
       "Automatic email capture to track leads."
     ],
     icon: Search,
-    accent: 'blue' as const,
+    accent: 'blue',
     visual: (
       <div className="relative h-full w-full flex flex-col items-center justify-center">
         <p className="text-sm text-slate-500 uppercase tracking-wider mb-6">Tracking visibility across</p>
@@ -65,7 +220,7 @@ const phases = [
       "Every new success from the network becomes another proof asset you can use."
     ],
     icon: Award,
-    accent: 'violet' as const,
+    accent: 'violet',
     visual: (
       <div className="relative h-full w-full flex items-center justify-center p-4">
         <div className="w-full max-w-[280px]">
@@ -119,92 +274,8 @@ const phases = [
       "Monthly white-label reports with your logo and colors, ready to send to clients."
     ],
     icon: FileText,
-    accent: 'emerald' as const,
-    visual: (
-      <div className="relative h-full w-full flex items-center justify-center p-4">
-        {/* Accordion Book-Flap Container */}
-        <div className="relative" style={{ perspective: '1200px' }}>
-          <div className="flex" style={{ transformStyle: 'preserve-3d' }}>
-            {[
-              { icon: BarChart3, label: 'Pitch Deck', sublabel: 'Auto-branded slides', delay: 0 },
-              { icon: FileSignature, label: 'Service Agreement', sublabel: 'Legal MSA templates', delay: 0.15 },
-              { icon: ClipboardList, label: 'Client Onboarding', sublabel: '5-min intake survey', delay: 0.3 },
-            ].map((panel, i) => (
-              <motion.div
-                key={panel.label}
-                initial={{ rotateY: -90, opacity: 0 }}
-                whileInView={{ rotateY: 0, opacity: 1 }}
-                viewport={{ once: true }}
-                transition={{
-                  duration: 0.7,
-                  delay: panel.delay,
-                  ease: [0.25, 0.46, 0.45, 0.94],
-                }}
-                style={{
-                  transformOrigin: 'left center',
-                  transformStyle: 'preserve-3d',
-                }}
-                className="relative"
-              >
-                {/* Panel */}
-                <div className={`
-                  w-[90px] sm:w-[100px] h-[200px] sm:h-[240px]
-                  bg-slate-800/60 backdrop-blur-sm
-                  border border-slate-700/40
-                  ${i === 0 ? 'rounded-l-lg' : ''} ${i === 2 ? 'rounded-r-lg' : ''}
-                  flex flex-col items-center justify-center gap-4
-                  relative overflow-hidden
-                  group
-                `}>
-                  {/* Fold edge accent line */}
-                  {i > 0 && (
-                    <div className="absolute left-0 top-[10%] bottom-[10%] w-[1px] bg-gradient-to-b from-transparent via-emerald-500/40 to-transparent" />
-                  )}
-
-                  {/* Geometric corner accents */}
-                  <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-emerald-500/30" />
-                  <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-emerald-500/30" />
-
-                  {/* Icon */}
-                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
-                    <panel.icon className="w-5 h-5 text-emerald-400" />
-                  </div>
-
-                  {/* Label */}
-                  <div className="text-center px-2">
-                    <div className="text-[10px] sm:text-[11px] font-semibold text-white leading-tight">{panel.label}</div>
-                    <div className="text-[8px] sm:text-[9px] text-slate-500 mt-1 leading-tight">{panel.sublabel}</div>
-                  </div>
-
-                  {/* Bottom geometric line */}
-                  <div className="absolute bottom-0 left-[20%] right-[20%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
-                </div>
-
-                {/* Panel shadow for depth between folds */}
-                {i < 2 && (
-                  <div className="absolute right-0 top-0 bottom-0 w-2 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" style={{ transform: 'translateX(100%)' }} />
-                )}
-              </motion.div>
-            ))}
-          </div>
-
-          {/* Connecting angular lines underneath — Perplexity-style geometry */}
-          <motion.svg
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="absolute -bottom-8 left-0 right-0 h-8 w-full"
-            viewBox="0 0 300 32"
-            fill="none"
-            preserveAspectRatio="none"
-          >
-            <path d="M50 2 L150 28 L250 2" stroke="rgba(16, 185, 129, 0.2)" strokeWidth="1" fill="none" />
-            <path d="M100 2 L150 18 L200 2" stroke="rgba(16, 185, 129, 0.15)" strokeWidth="1" fill="none" />
-          </motion.svg>
-        </div>
-      </div>
-    )
+    accent: 'emerald',
+    visualComponent: 'bookflap',
   }
 ]
 
@@ -243,7 +314,7 @@ function Card({
   range,
   targetScale
 }: {
-  phase: typeof phases[0],
+  phase: PhaseData,
   index: number,
   progress: MotionValue<number>,
   range: number[],
@@ -274,7 +345,11 @@ function Card({
             {/* Visual Side */}
             <div className="bg-slate-950/30 border-r border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute top-4 left-4 text-xs font-mono text-slate-500">PHASE 0{phase.id}</div>
-                {phase.visual}
+                {phase.visualComponent === 'bookflap' ? (
+                  <BookFlapVisual progress={progress} />
+                ) : (
+                  phase.visual
+                )}
             </div>
 
             {/* Text Side */}
@@ -339,8 +414,6 @@ export default function GhostModelStack() {
             )
         })}
       </div>
-
-
     </section>
   )
 }
