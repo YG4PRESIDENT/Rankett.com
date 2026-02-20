@@ -3,22 +3,11 @@
 import { useRef, useEffect, useState } from 'react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
-import { Power, ArrowRight } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
-import BrandLogo from '../ui/BrandLogo'
 import { Button } from '@/components/ui/Button'
 
 gsap.registerPlugin(ScrollTrigger)
-
-const LLM_LOGOS = [
-  { name: 'ChatGPT', platform: 'chatgpt' },
-  { name: 'Anthropic', platform: 'claude' },
-  { name: 'Gemini', platform: 'gemini' },
-  { name: 'Google Overviews', platform: 'google' },
-  { name: 'Perplexity', platform: 'perplexity' },
-  { name: 'Grok', platform: 'grok' },
-  { name: 'DeepSeek', platform: 'deepseek' },
-]
 
 export default function HeroHome() {
   const heroRef = useRef(null)
@@ -110,21 +99,6 @@ export default function HeroHome() {
             </Link>
           </div>
 
-          <div className="pt-8 pb-8">
-            <p className="text-sm text-slate-500 uppercase tracking-wider mb-6">Tracking visibility across</p>
-            <div className="w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 15%, black 85%, transparent)' }}>
-              <div className="flex will-change-transform animate-marquee-fast" style={{ animationPlayState: 'running' }}>
-                {LLM_LOGOS.concat(LLM_LOGOS).map((llm, index) => (
-                  <div key={index} className="flex items-center gap-3 mx-8 shrink-0 transition-opacity duration-300">
-                    <div className="relative flex items-center justify-center w-9 h-9">
-                      <BrandLogo platform={llm.platform} size={36} />
-                    </div>
-                    <span className="text-sm font-medium text-slate-300 whitespace-nowrap">{llm.name}</span>
-                  </div>
-                ))}
-              </div>
-            </div>
-          </div>
         </div>
       </div>
     </section>

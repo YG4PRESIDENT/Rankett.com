@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import { Inter, JetBrains_Mono } from "next/font/google";
 import "./globals.css";
 import SmoothScrollProvider from "@/components/scroll/SmoothScrollProvider";
-import CustomCursor from "@/components/ui/CustomCursor";
 
 const inter = Inter({
   variable: "--font-sans",
@@ -29,7 +28,6 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${inter.variable} ${mono.variable} font-sans bg-slate-950 text-slate-50`}>
-        <CustomCursor />
         <SmoothScrollProvider>
           {children}
         </SmoothScrollProvider>
