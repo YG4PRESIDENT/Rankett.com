@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
-import { Search, Award, FileText } from 'lucide-react'
+import { Search, Award, FileText, BarChart3, FileSignature, ClipboardList } from 'lucide-react'
 import BrandLogo from '../ui/BrandLogo'
 
 const LLM_LOGOS = [
@@ -122,60 +122,86 @@ const phases = [
     accent: 'emerald' as const,
     visual: (
       <div className="relative h-full w-full flex items-center justify-center p-4">
-        <div className="relative w-full max-w-[260px] h-[260px]">
-          {/* Back — Pitch Deck Slide */}
-          <div className="absolute top-0 left-0 w-[200px] bg-slate-800/80 border border-slate-700/50 rounded-lg shadow-lg overflow-hidden -rotate-3">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
-              <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/30" />
-              <div className="h-1.5 w-12 rounded bg-slate-600/50" />
-            </div>
-            <div className="p-3 space-y-2">
-              <div className="h-1.5 w-24 rounded bg-slate-600/40" />
-              <div className="h-16 rounded bg-slate-700/30 flex items-end px-2 pb-2 gap-1">
-                {[40, 55, 45, 65, 72, 80].map((h, i) => (
-                  <div key={i} className="flex-1 bg-emerald-500/30 rounded-sm" style={{ height: `${h}%` }} />
-                ))}
-              </div>
-              <div className="h-1.5 w-16 rounded bg-slate-600/30" />
-            </div>
-          </div>
+        {/* Accordion Book-Flap Container */}
+        <div className="relative" style={{ perspective: '1200px' }}>
+          <div className="flex" style={{ transformStyle: 'preserve-3d' }}>
+            {[
+              { icon: BarChart3, label: 'Pitch Deck', sublabel: 'Auto-branded slides', delay: 0 },
+              { icon: FileSignature, label: 'Service Agreement', sublabel: 'Legal MSA templates', delay: 0.15 },
+              { icon: ClipboardList, label: 'Client Onboarding', sublabel: '5-min intake survey', delay: 0.3 },
+            ].map((panel, i) => (
+              <motion.div
+                key={panel.label}
+                initial={{ rotateY: -90, opacity: 0 }}
+                whileInView={{ rotateY: 0, opacity: 1 }}
+                viewport={{ once: true }}
+                transition={{
+                  duration: 0.7,
+                  delay: panel.delay,
+                  ease: [0.25, 0.46, 0.45, 0.94],
+                }}
+                style={{
+                  transformOrigin: 'left center',
+                  transformStyle: 'preserve-3d',
+                }}
+                className="relative"
+              >
+                {/* Panel */}
+                <div className={`
+                  w-[90px] sm:w-[100px] h-[200px] sm:h-[240px]
+                  bg-slate-800/60 backdrop-blur-sm
+                  border border-slate-700/40
+                  ${i === 0 ? 'rounded-l-lg' : ''} ${i === 2 ? 'rounded-r-lg' : ''}
+                  flex flex-col items-center justify-center gap-4
+                  relative overflow-hidden
+                  group
+                `}>
+                  {/* Fold edge accent line */}
+                  {i > 0 && (
+                    <div className="absolute left-0 top-[10%] bottom-[10%] w-[1px] bg-gradient-to-b from-transparent via-emerald-500/40 to-transparent" />
+                  )}
 
-          {/* Middle — MSA PDF */}
-          <div className="absolute top-10 left-12 w-[200px] bg-slate-800/90 border border-slate-700/50 rounded-lg shadow-lg overflow-hidden rotate-1">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
-              <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/30" />
-              <div className="text-[8px] text-slate-400 font-medium">Master Service Agreement</div>
-            </div>
-            <div className="p-3 space-y-1.5">
-              {Array.from({ length: 6 }).map((_, i) => (
-                <div key={i} className="h-1 rounded bg-slate-600/30" style={{ width: `${85 - i * 8}%` }} />
-              ))}
-              <div className="mt-3 pt-2 border-t border-slate-700/30">
-                <div className="h-1 w-14 rounded bg-slate-600/40 mb-1" />
-                <div className="h-[1px] w-24 bg-slate-600/50" />
-                <div className="text-[7px] text-slate-500 mt-0.5">Signature</div>
-              </div>
-            </div>
-          </div>
+                  {/* Geometric corner accents */}
+                  <div className="absolute top-3 left-3 w-3 h-3 border-t border-l border-emerald-500/30" />
+                  <div className="absolute bottom-3 right-3 w-3 h-3 border-b border-r border-emerald-500/30" />
 
-          {/* Front — Onboarding Form */}
-          <div className="absolute top-20 left-6 w-[220px] bg-slate-800 border border-slate-700/50 rounded-lg shadow-2xl overflow-hidden rotate-2">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
-              <div className="w-4 h-4 rounded bg-emerald-500/20 border border-emerald-500/30" />
-              <div className="text-[8px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
-            </div>
-            <div className="p-3 space-y-2.5">
-              {['Business Name', 'Website URL', 'Primary Service'].map((label) => (
-                <div key={label}>
-                  <div className="text-[8px] text-slate-400 mb-1">{label}</div>
-                  <div className="h-5 rounded bg-slate-700/40 border border-slate-600/30" />
+                  {/* Icon */}
+                  <div className="w-10 h-10 rounded-lg bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center">
+                    <panel.icon className="w-5 h-5 text-emerald-400" />
+                  </div>
+
+                  {/* Label */}
+                  <div className="text-center px-2">
+                    <div className="text-[10px] sm:text-[11px] font-semibold text-white leading-tight">{panel.label}</div>
+                    <div className="text-[8px] sm:text-[9px] text-slate-500 mt-1 leading-tight">{panel.sublabel}</div>
+                  </div>
+
+                  {/* Bottom geometric line */}
+                  <div className="absolute bottom-0 left-[20%] right-[20%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent" />
                 </div>
-              ))}
-              <div className="h-6 rounded-md bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[8px] text-emerald-400 font-medium">Start Onboarding →</span>
-              </div>
-            </div>
+
+                {/* Panel shadow for depth between folds */}
+                {i < 2 && (
+                  <div className="absolute right-0 top-0 bottom-0 w-2 bg-gradient-to-r from-black/20 to-transparent pointer-events-none" style={{ transform: 'translateX(100%)' }} />
+                )}
+              </motion.div>
+            ))}
           </div>
+
+          {/* Connecting angular lines underneath — Perplexity-style geometry */}
+          <motion.svg
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="absolute -bottom-8 left-0 right-0 h-8 w-full"
+            viewBox="0 0 300 32"
+            fill="none"
+            preserveAspectRatio="none"
+          >
+            <path d="M50 2 L150 28 L250 2" stroke="rgba(16, 185, 129, 0.2)" strokeWidth="1" fill="none" />
+            <path d="M100 2 L150 18 L200 2" stroke="rgba(16, 185, 129, 0.15)" strokeWidth="1" fill="none" />
+          </motion.svg>
         </div>
       </div>
     )
