@@ -19,19 +19,19 @@ const LLM_LOGOS = [
 // Three document mockups fan out from a stack as the user scrolls.
 // Scroll down = spread. Scroll up = stack back together. Buttery smooth.
 function DocumentFanVisual({ progress }: { progress: MotionValue<number> }) {
-  // Fan spread happens between 0.45 and 0.70 of total scroll
-  // Card 1 (back): rotates left and slides left
-  const card1Rotate = useTransform(progress, [0.45, 0.68], [0, -8])
-  const card1X = useTransform(progress, [0.45, 0.68], [0, -60])
-  const card1Y = useTransform(progress, [0.45, 0.68], [0, -8])
+  // Phase 03 appears at ~0.66 scroll progress. Animate from 0.62 to 0.82.
+  // Card 1 (back): fans left
+  const card1Rotate = useTransform(progress, [0.62, 0.82], [2, -12])
+  const card1X = useTransform(progress, [0.62, 0.82], [8, -80])
+  const card1Y = useTransform(progress, [0.62, 0.82], [4, -20])
 
-  // Card 2 (middle): stays mostly centered, slight lift
-  const card2Y = useTransform(progress, [0.45, 0.68], [0, -16])
+  // Card 2 (middle): lifts up
+  const card2Y = useTransform(progress, [0.62, 0.82], [0, -30])
 
-  // Card 3 (front): rotates right and slides right
-  const card3Rotate = useTransform(progress, [0.45, 0.68], [0, 8])
-  const card3X = useTransform(progress, [0.45, 0.68], [0, 60])
-  const card3Y = useTransform(progress, [0.45, 0.68], [0, -8])
+  // Card 3 (front): fans right
+  const card3Rotate = useTransform(progress, [0.62, 0.82], [-2, 12])
+  const card3X = useTransform(progress, [0.62, 0.82], [-8, 80])
+  const card3Y = useTransform(progress, [0.62, 0.82], [4, -20])
 
   return (
     <div className="relative h-full w-full flex items-center justify-center p-4">
