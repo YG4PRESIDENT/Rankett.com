@@ -13,7 +13,7 @@ Rankett is a done-for-you AI visibility fulfillment platform. We help marketing 
 
 ## Services
 - AI Visibility audits across ChatGPT, Perplexity, Gemini, Claude, and Bing Chat
-- Share of Voice (SOV) tracking across 50+ competitor queries
+- Mention Rate tracking across 50+ competitor queries
 - Answer-first blog content creation
 - Authority mention building (Featured.com, HARO, etc.)
 - Technical implementation (schema markup, llms.txt, GBP optimization)

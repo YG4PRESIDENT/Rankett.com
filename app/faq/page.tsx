@@ -22,15 +22,15 @@ const categories: FAQCategory[] = [
     faqs: [
       {
         question: 'What is AI Visibility (AEO/GEO)?',
-        answer: '92% of businesses are invisible when customers ask AI "best [service] near me." AI Visibility = Share of Voice (SOV) across ChatGPT, Perplexity, and Gemini. We make AI cite your clients as the #1 recommendation vs competitors.',
+        answer: '92% of businesses are invisible when customers ask AI "best [service] near me." AI Visibility = Mention Rate across ChatGPT, Perplexity, and Gemini. We make AI cite your clients as the #1 recommendation vs competitors.',
       },
       {
         question: 'How is Rankett different from SEO tools?',
-        answer: 'SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + SOV tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages).',
+        answer: 'SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + Mention Rate tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages).',
       },
       {
-        question: 'What is Share of Voice (SOV)?',
-        answer: 'SOV = % of times AI cites your client vs 50 competitors across buyer queries. Example: "Best dentist Hillsboro" \u2192 Track ChatGPT, Perplexity, and Gemini. Average lift: 0\u219215% SOV in 90 days across partner accounts.',
+        question: 'What is Mention Rate?',
+        answer: 'Mention Rate = % of times AI cites your client vs 50 competitors across buyer queries. Example: "Best dentist Hillsboro" \u2192 Track ChatGPT, Perplexity, and Gemini. Average lift: 0\u219215% Mention Rate in 90 days across partner accounts.',
       },
       {
         question: 'How is AI Visibility measured?',
@@ -68,7 +68,7 @@ const categories: FAQCategory[] = [
     faqs: [
       {
         question: 'How long until clients see results?',
-        answer: '90 days average for 12\u201318% SOV lift. Week 1\u20134: Technical (schema, llms.txt, GBP). Month 2: Content injection + authority mentions. Month 3: Consistent SOV gains + branded search lift.',
+        answer: '90 days average for 12\u201318% Mention Rate lift. Week 1\u20134: Technical (schema, llms.txt, GBP). Month 2: Content injection + authority mentions. Month 3: Consistent Mention Rate gains + branded search lift.',
       },
       {
         question: "What if you're late on deliverables?",
@@ -76,11 +76,11 @@ const categories: FAQCategory[] = [
       },
       {
         question: 'What proof/case studies exist?',
-        answer: 'Pooled benchmarks: Tier 1 avg 12% SOV lift in 90 days. Live vault access for partners (before/after SOV charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits.',
+        answer: 'Pooled benchmarks: Tier 1 avg 12% Mention Rate lift in 90 days. Live vault access for partners (before/after Mention Rate charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits.',
       },
       {
         question: 'Can I see the partner results dashboard?',
-        answer: 'Live demo available. Tracks your MRR, client SOV lifts, churn, LTV. Pooled benchmarks update automatically.',
+        answer: 'Live demo available. Tracks your MRR, client Mention Rate lifts, churn, LTV. Pooled benchmarks update automatically.',
       },
     ],
   },

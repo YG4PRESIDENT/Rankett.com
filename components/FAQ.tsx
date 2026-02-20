@@ -17,15 +17,15 @@ const faqData: FAQItem[] = [
   },
   {
     question: "How is Rankett different from SEO tools?",
-    answer: "SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + SOV tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages)."
+    answer: "SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + Mention Rate tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages)."
   },
   {
-    question: "What is Share of Voice (SOV)?",
-    answer: "SOV = % of times AI cites your client vs 50 competitors across buyer queries. Example: \u201CBest dentist Hillsboro\u201D \u2192 Track ChatGPT, Perplexity, and Gemini. Average lift: 0\u219215% SOV in 90 days across partner accounts."
+    question: "What is Mention Rate?",
+    answer: "Mention Rate = % of times AI cites your client vs 50 competitors across buyer queries. Example: \u201CBest dentist Hillsboro\u201D \u2192 Track ChatGPT, Perplexity, and Gemini. Average lift: 0\u219215% Mention Rate in 90 days across partner accounts."
   },
   {
     question: "What proof/case studies exist?",
-    answer: "Pooled benchmarks: Tier 1 avg 12% SOV lift in 90 days. Live vault access for partners (before/after SOV charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits."
+    answer: "Pooled benchmarks: Tier 1 avg 12% Mention Rate lift in 90 days. Live vault access for partners (before/after Mention Rate charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits."
   },
   {
     question: "How do I onboard my first client?",

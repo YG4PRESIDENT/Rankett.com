@@ -43,7 +43,7 @@ const homepageFaqSchema = {
       "name": "How long until clients see results?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "90 days average for 12–18% SOV lift. Week 1–4: Technical (schema, llms.txt, GBP). Month 2: Content injection + authority mentions. Month 3: Consistent SOV gains + branded search lift."
+        "text": "90 days average for 12–18% Mention Rate lift. Week 1–4: Technical (schema, llms.txt, GBP). Month 2: Content injection + authority mentions. Month 3: Consistent Mention Rate gains + branded search lift."
       }
     },
     {
