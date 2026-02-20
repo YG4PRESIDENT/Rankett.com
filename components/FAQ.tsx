@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown } from "lucide-react";
+import { ChevronDown, ArrowRight } from "lucide-react";
+import Link from "next/link";
 
 interface FAQItem {
   question: string;
@@ -11,51 +12,31 @@ interface FAQItem {
 
 const faqData: FAQItem[] = [
   {
-    question: "Can't I just do this myself?",
-    answer: "You could, but it requires monitoring 20+ AI platforms, managing 50+ business profiles, implementing technical schema markup, and constantly adapting to new AI models. Most business owners find their time better spent serving clients."
+    question: "What exactly do you fulfill per tier?",
+    answer: "Tier 1 ($498): 50-query tracking, 8 answer-first blogs/mo, schema/llms.txt, Featured.com mentions. Tier 2 ($1,498): +150 queries, 36 authority mentions, TLDR page summaries. Tier 3 ($2,498): +250 queries, 70+ mentions, YouTube transcripts, dominance-to-dollars reports."
   },
   {
-    question: "How do you prove ROI?",
-    answer: "We track AI visibility score (how often you appear), click-throughs from AI platforms (when available), and increases in direct searches for your name. We also monitor before/after rankings for key queries in ChatGPT, Claude, Perplexity, etc."
+    question: "How is Rankett different from SEO tools?",
+    answer: "SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + SOV tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages)."
   },
   {
-    question: "What if AI changes?",
-    answer: "That's exactly why you need us. We monitor 10+ models, track algorithm changes, and adapt strategies. When GPT-5 launches or a new AI platform emerges, you're covered."
+    question: "What is Share of Voice (SOV)?",
+    answer: "SOV = % of times AI cites your client vs 50 competitors across buyer queries. Example: \u201CBest dentist Hillsboro\u201D \u2192 Track ChatGPT, Perplexity, and Gemini. Average lift: 0\u219215% SOV in 90 days across partner accounts."
   },
   {
-    question: "Why not just hire an SEO agency?",
-    answer: "Traditional SEO is about ranking on Google. GEO is about appearing in AI responses with different algorithms and different optimization strategies. AI models care more about structured data, external citations, and authority signals than backlinks."
+    question: "What proof/case studies exist?",
+    answer: "Pooled benchmarks: Tier 1 avg 12% SOV lift in 90 days. Live vault access for partners (before/after SOV charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits."
   },
   {
-    question: "How long until I see results?",
-    answer: "Most clients see their AI visibility score improve within 30 to 60 days. Quick wins include appearing in AI citations within weeks. Long-term positioning takes 3 to 6 months as AI models learn to recognize your authority signals."
-  },
-  {
-    question: "What if I already work with an SEO agency?",
-    answer: "We're your one-stop AI presence partner. SEO agencies focus on Google rankings, but they don't track or fix your AI visibility. We diagnose how you're performing across ChatGPT, Claude, Perplexity, and other AI platforms, then we optimize and fix it for you. Think of us as your dedicated AI visibility team that handles everything AI-related."
-  },
-  {
-    question: "Do I need technical knowledge to use your service?",
-    answer: "Not at all. We handle everything from technical implementation to ongoing optimization. You'll get clear reports showing your progress without needing to understand the technical details."
-  },
-  {
-    question: "What's included in the free audit?",
-    answer: "We analyze your current AI visibility across ChatGPT, Claude, Perplexity, and Gemini. You'll see exactly where you appear (or don't), how you compare to competitors, and our recommendations for improvement."
-  },
-  {
-    question: "Which AI platforms do you optimize for?",
-    answer: "We optimize for all major platforms: ChatGPT, Claude, Perplexity, Google's Gemini, Bing Chat, and emerging AI search engines. As new platforms launch, we add them automatically so you're always covered."
-  },
-  {
-    question: "How quickly can you get started?",
-    answer: "Immediately. Once you book a call, we can have your free audit completed within 48 hours. From there, we'll implement optimizations and start tracking your AI visibility right away. No long onboarding process, we get to work fast."
+    question: "How do I onboard my first client?",
+    answer: "1. Run branded audit \u2192 show client gaps. 2. Close retainer \u2192 create seat in Rankett. 3. Send client your onboarding link (yourdomain.com/onboard). 4. We deliver. You bill."
   }
 ];
 
-const leftColumnFAQs = faqData.slice(0, 5);
-const rightColumnFAQs = faqData.slice(5, 10);
+const leftColumnFAQs = faqData.slice(0, 3);
+const rightColumnFAQs = faqData.slice(3, 5);
 
-function FAQItem({ faq, index }: { faq: FAQItem; index: number }) {
+function FAQItemComponent({ faq, index }: { faq: FAQItem; index: number }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
@@ -80,7 +61,7 @@ function FAQItem({ faq, index }: { faq: FAQItem; index: number }) {
           }`}
         />
       </button>
-      
+
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -121,23 +102,40 @@ export default function FAQ() {
             Common questions about AI Visibility Optimization.
           </p>
         </motion.div>
-        
+
         {/* Two Column FAQ Grid */}
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-16 max-w-7xl w-full">
           {/* Left Column */}
           <div>
             {leftColumnFAQs.map((faq, index) => (
-              <FAQItem key={index} faq={faq} index={index} />
+              <FAQItemComponent key={index} faq={faq} index={index} />
             ))}
           </div>
 
           {/* Right Column */}
           <div>
             {rightColumnFAQs.map((faq, index) => (
-              <FAQItem key={index} faq={faq} index={index + 5} />
+              <FAQItemComponent key={index} faq={faq} index={index + 3} />
             ))}
           </div>
         </div>
+
+        {/* View all FAQs link */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="mt-12"
+        >
+          <Link
+            href="/faq"
+            className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-300 group"
+          >
+            <span className="text-sm sm:text-base">View all FAQs</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
+        </motion.div>
       </div>
     </section>
   );

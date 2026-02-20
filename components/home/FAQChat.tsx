@@ -1,39 +1,35 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { Plus, X, Sparkles } from 'lucide-react'
+import { Plus, X, Sparkles, ArrowRight } from 'lucide-react'
+import Link from 'next/link'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
 const faqs = [
   {
-    question: 'How does the white-labeling work?',
-    answer: 'Everything is 100% white-labeled. Your logo, your colors, your custom domain. Your clients will never see Rankett branding anywhere. The dashboard, reports, and all client-facing materials appear as if you built them yourself.',
+    question: 'How much can agencies charge clients?',
+    answer: 'Tier 1: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Tier 2: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%). Tier 3: $7,500/mo \u2192 Rankett $2,498 = $5,002 profit (67%).',
     align: 'right' as const,
   },
   {
-    question: 'What does "done-for-you fulfillment" mean?',
-    answer: 'After you close a client, we handle everything. Our team performs the AI visibility audits, implements optimizations, tracks progress, and generates reports. You focus on selling and client relationships while we do the technical work.',
+    question: 'Can I fully white-label (custom domain)?',
+    answer: 'Yes: aivisibility.youragency.com. Your logo, your colors, your positioning. Clients see your platform. Partner tier unlocks ($299/mo).',
     align: 'center-right' as const,
   },
   {
-    question: 'Do I need technical expertise?',
-    answer: 'Not at all. The platform is designed for marketing agencies without AI or technical backgrounds. You run audits with one click, share results with prospects, and we handle all the implementation complexity behind the scenes.',
+    question: 'How long until clients see results?',
+    answer: '90 days average for 12\u201318% SOV lift. Week 1\u20134: Technical (schema, llms.txt, GBP). Month 2: Content injection + authority mentions. Month 3: Consistent SOV gains + branded search lift.',
     align: 'center' as const,
   },
   {
-    question: 'How do I price this to clients?',
-    answer: 'Most partners charge $1,500-$15,000/month depending on the client size and scope. Our fulfillment tiers start at $498/month per client. The typical margin is 200-400%.',
+    question: "What if you're late on deliverables?",
+    answer: 'Full month refund if even 1 minute late. Agencies have final approval/rejection rights. No risk to your client relationships.',
     align: 'right' as const,
   },
   {
-    question: 'What if my client asks technical questions?',
-    answer: 'We provide training materials and talking points for common client questions. For deep technical questions, you can loop in our team or we can join calls directly while representing your agency.',
+    question: "Why now? Isn't this just SEO 2.0?",
+    answer: 'AI search = 42% of queries (2026). Traditional SEO traffic down 25\u201361%. Clients demand "show up in ChatGPT" or lose to competitors. 90-day window before saturation.',
     align: 'center-right' as const,
-  },
-  {
-    question: 'Can I try before I commit?',
-    answer: 'Yes! Start with our free Starter tier. You get 3 free audits to test with prospects, full access to the platform, and only upgrade to Partner or add fulfillment when you\'re ready to scale.',
-    align: 'center' as const,
   },
 ]
 
@@ -197,6 +193,19 @@ export default function FAQChat() {
             )
           })}
         </div>
+
+        {/* View all FAQs link */}
+        <FadeInOnScroll direction="up" delay={0.3}>
+          <div className="text-center mt-12">
+            <Link
+              href="/faq"
+              className="inline-flex items-center gap-2 text-slate-400 hover:text-white transition-colors duration-300 group"
+            >
+              <span className="text-sm md:text-base">View all FAQs</span>
+              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
+            </Link>
+          </div>
+        </FadeInOnScroll>
       </div>
     </section>
   )

@@ -7,7 +7,7 @@ export const NAV_LINKS = [
   { label: "Process", href: "#process" },
   { label: "Features", href: "#features" },
   { label: "Pricing", href: "#pricing" },
-  { label: "FAQ", href: "#faq" },
+  { label: "FAQ", href: "/faq" },
 ];
 
 // CTA Buttons
@@ -46,7 +46,7 @@ export const FOOTER_LINKS = {
   resources: [
     { label: "Benefits", href: "#benefits" },
     { label: "Pricing", href: "#pricing" },
-    { label: "FAQ", href: "#faq" },
+    { label: "FAQ", href: "/faq" },
   ],
   company: [
     { label: "Founders", href: "/team" },

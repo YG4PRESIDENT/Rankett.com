@@ -1,0 +1,32 @@
+# Rankett - AI Visibility Platform for Agencies
+
+> White-label AI visibility fulfillment for marketing agencies. Done-for-you optimization across ChatGPT, Perplexity, Gemini, and more.
+
+## What We Do
+Rankett is a done-for-you AI visibility fulfillment platform. We help marketing agencies offer AI visibility optimization (AEO/GEO) as a white-labeled service to their clients. Agencies sell, we fulfill.
+
+## Key Pages
+- Homepage: https://rankett.com
+- Pricing: https://rankett.com/pricing
+- Partner Program: https://rankett.com/partner
+- FAQ: https://rankett.com/faq
+
+## Services
+- AI Visibility audits across ChatGPT, Perplexity, Gemini, Claude, and Bing Chat
+- Share of Voice (SOV) tracking across 50+ competitor queries
+- Answer-first blog content creation
+- Authority mention building (Featured.com, HARO, etc.)
+- Technical implementation (schema markup, llms.txt, GBP optimization)
+- White-label reporting and client dashboards
+- Custom domain branding (aivisibility.youragency.com)
+
+## Pricing
+- Partner Access: $299/mo (unlimited audits, white-label platform, custom domain)
+- Fulfillment Tier 1: $498/client/mo (50 queries, 8 blogs, schema, mentions)
+- Fulfillment Tier 2: $1,498/client/mo (150 queries, 36 mentions, TLDR summaries)
+- Fulfillment Tier 3: $2,498/client/mo (250 queries, 70+ mentions, YouTube, reports)
+
+## Contact
+- Website: https://rankett.com
+- Email: hello@rankett.com
+- Book a call: https://calendly.com/rankett/30min
