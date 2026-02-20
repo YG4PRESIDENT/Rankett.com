@@ -19,71 +19,74 @@ const LLM_LOGOS = [
 // Three document mockups fan out from a stack as the user scrolls.
 // Scroll down = spread. Scroll up = stack back together. Buttery smooth.
 function DocumentFanVisual({ progress }: { progress: MotionValue<number> }) {
-  // Phase 03 appears at ~0.66 scroll progress. Animate from 0.62 to 0.82.
-  // Card 1 (back): fans left
-  const card1Rotate = useTransform(progress, [0.62, 0.82], [2, -12])
-  const card1X = useTransform(progress, [0.62, 0.82], [8, -80])
-  const card1Y = useTransform(progress, [0.62, 0.82], [4, -20])
+  // Phase 03 appears at ~0.66. Big dramatic fan from 0.58 to 0.80.
+  // Card 1 (back): fans hard left
+  const card1Rotate = useTransform(progress, [0.58, 0.80], [0, -18])
+  const card1X = useTransform(progress, [0.58, 0.80], [0, -150])
+  const card1Y = useTransform(progress, [0.58, 0.80], [0, -30])
+  const card1Scale = useTransform(progress, [0.58, 0.80], [0.95, 1])
 
-  // Card 2 (middle): lifts up
-  const card2Y = useTransform(progress, [0.62, 0.82], [0, -30])
+  // Card 2 (middle): lifts up and grows
+  const card2Y = useTransform(progress, [0.58, 0.80], [0, -50])
+  const card2Scale = useTransform(progress, [0.58, 0.80], [0.95, 1.02])
 
-  // Card 3 (front): fans right
-  const card3Rotate = useTransform(progress, [0.62, 0.82], [-2, 12])
-  const card3X = useTransform(progress, [0.62, 0.82], [-8, 80])
-  const card3Y = useTransform(progress, [0.62, 0.82], [4, -20])
+  // Card 3 (front): fans hard right
+  const card3Rotate = useTransform(progress, [0.58, 0.80], [0, 18])
+  const card3X = useTransform(progress, [0.58, 0.80], [0, 150])
+  const card3Y = useTransform(progress, [0.58, 0.80], [0, -30])
+  const card3Scale = useTransform(progress, [0.58, 0.80], [0.95, 1])
 
   return (
-    <div className="relative h-full w-full flex items-center justify-center p-4">
-      <div className="relative w-[220px] h-[280px]">
+    <div className="relative h-full w-full flex items-center justify-center">
+      <div className="relative w-[240px] h-[320px]">
 
         {/* Card 1 — Pitch Deck (back layer) */}
         <motion.div
-          className="absolute inset-0"
-          style={{ x: card1X, y: card1Y, rotate: card1Rotate, zIndex: 1 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+          style={{ x: card1X, y: card1Y, rotate: card1Rotate, scale: card1Scale, zIndex: 1 }}
         >
-          <div className="w-[200px] h-[260px] bg-slate-800/90 border border-slate-700/50 rounded-lg shadow-lg overflow-hidden">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-emerald-500/40" />
-              <div className="w-2 h-2 rounded-full bg-slate-600/40" />
-              <div className="w-2 h-2 rounded-full bg-slate-600/40" />
-              <div className="ml-2 h-1.5 w-16 rounded bg-slate-600/40" />
+          <div className="w-[220px] h-[300px] bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-lg overflow-hidden">
+            <div className="px-4 py-2.5 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
+              <div className="w-2.5 h-2.5 rounded-full bg-slate-600/30" />
+              <div className="w-2.5 h-2.5 rounded-full bg-slate-600/30" />
+              <div className="ml-auto h-2 w-20 rounded bg-slate-600/30" />
             </div>
-            <div className="p-3 space-y-2">
-              <div className="h-1.5 w-20 rounded bg-slate-600/30" />
-              <div className="h-1 w-28 rounded bg-slate-700/30" />
-              <div className="h-24 rounded bg-slate-700/20 flex items-end px-2 pb-2 gap-1">
-                {[35, 50, 40, 60, 72, 85].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-sm bg-emerald-500/25" style={{ height: `${h}%` }} />
+            <div className="p-4 space-y-3">
+              <div className="h-2 w-24 rounded bg-slate-600/30" />
+              <div className="h-1.5 w-32 rounded bg-slate-700/25" />
+              <div className="h-32 rounded-lg bg-slate-700/20 flex items-end px-3 pb-3 gap-1.5">
+                {[30, 48, 38, 58, 70, 82, 65].map((h, i) => (
+                  <div key={i} className="flex-1 rounded-sm bg-emerald-500/30" style={{ height: `${h}%` }} />
                 ))}
               </div>
-              <div className="h-1 w-14 rounded bg-slate-600/20" />
-              <div className="h-1 w-20 rounded bg-slate-600/15" />
+              <div className="h-1.5 w-16 rounded bg-slate-600/20" />
+              <div className="h-1.5 w-24 rounded bg-slate-600/15" />
             </div>
           </div>
         </motion.div>
 
         {/* Card 2 — MSA (middle layer) */}
         <motion.div
-          className="absolute inset-0"
-          style={{ y: card2Y, zIndex: 2 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+          style={{ y: card2Y, scale: card2Scale, zIndex: 2 }}
         >
-          <div className="w-[200px] h-[260px] bg-slate-800/95 border border-slate-700/50 rounded-lg shadow-xl overflow-hidden mx-auto" style={{ marginLeft: '10px' }}>
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-emerald-500/40" />
-              <div className="ml-2 text-[8px] text-slate-400 font-medium tracking-wide">Master Service Agreement</div>
+          <div className="w-[220px] h-[300px] bg-slate-800/95 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden">
+            <div className="px-4 py-2.5 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
+              <div className="ml-2 text-[9px] text-slate-400 font-medium tracking-wide">Master Service Agreement</div>
             </div>
-            <div className="p-3 space-y-1.5">
-              {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="h-[3px] rounded bg-slate-600/25" style={{ width: `${90 - i * 6}%` }} />
+            <div className="p-4 space-y-2">
+              {Array.from({ length: 10 }).map((_, i) => (
+                <div key={i} className="h-[3px] rounded bg-slate-600/25" style={{ width: `${92 - i * 5}%` }} />
               ))}
-              <div className="mt-4 pt-3 border-t border-slate-700/30 space-y-1">
-                <div className="h-[3px] w-16 rounded bg-slate-600/30" />
-                <div className="h-[3px] w-20 rounded bg-slate-600/25" />
+              <div className="mt-5 pt-3 border-t border-slate-700/30 space-y-1.5">
+                <div className="h-[3px] w-20 rounded bg-slate-600/30" />
+                <div className="h-[3px] w-24 rounded bg-slate-600/25" />
               </div>
-              <div className="mt-3 pt-2 border-t border-dashed border-slate-700/20">
-                <div className="h-[1px] w-24 bg-slate-600/40" />
-                <div className="text-[7px] text-slate-600 mt-1">Signature</div>
+              <div className="mt-4 pt-3 border-t border-dashed border-slate-700/25">
+                <div className="h-[1px] w-28 bg-slate-600/40" />
+                <div className="text-[8px] text-slate-600 mt-1.5">Signature</div>
               </div>
             </div>
           </div>
@@ -91,23 +94,25 @@ function DocumentFanVisual({ progress }: { progress: MotionValue<number> }) {
 
         {/* Card 3 — Onboarding Form (front layer) */}
         <motion.div
-          className="absolute inset-0"
-          style={{ x: card3X, y: card3Y, rotate: card3Rotate, zIndex: 3 }}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+          style={{ x: card3X, y: card3Y, rotate: card3Rotate, scale: card3Scale, zIndex: 3 }}
         >
-          <div className="w-[200px] h-[260px] bg-slate-800 border border-slate-700/50 rounded-lg shadow-2xl overflow-hidden" style={{ marginLeft: '20px' }}>
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
-              <div className="w-2 h-2 rounded-full bg-emerald-500/40" />
-              <div className="ml-2 text-[8px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
+          <div className="w-[220px] h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
+            <div className="px-4 py-2.5 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-2.5 h-2.5 rounded-full bg-emerald-500/40" />
+              <div className="ml-2 text-[9px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
             </div>
-            <div className="p-3 space-y-2.5">
+            <div className="p-4 space-y-3">
               {['Business Name', 'Website URL', 'Primary Service'].map((label) => (
                 <div key={label}>
-                  <div className="text-[7px] text-slate-500 mb-1 uppercase tracking-wider">{label}</div>
-                  <div className="h-5 rounded bg-slate-700/30 border border-slate-600/20" />
+                  <div className="text-[8px] text-slate-500 mb-1.5 uppercase tracking-wider font-medium">{label}</div>
+                  <div className="h-7 rounded-md bg-slate-700/30 border border-slate-600/20" />
                 </div>
               ))}
-              <div className="mt-1 h-6 rounded-md bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
-                <span className="text-[8px] text-emerald-400 font-medium">Start Onboarding →</span>
+              <div className="pt-2">
+                <div className="h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                  <span className="text-[9px] text-emerald-400 font-semibold">Start Onboarding →</span>
+                </div>
               </div>
             </div>
           </div>
