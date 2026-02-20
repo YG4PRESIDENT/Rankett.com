@@ -2,7 +2,7 @@
 
 import { useRef } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
-import { Search, Award, FileText, BarChart3, FileSignature, ClipboardList } from 'lucide-react'
+import { Search, Award, FileText } from 'lucide-react'
 import BrandLogo from '../ui/BrandLogo'
 
 const LLM_LOGOS = [
@@ -15,143 +15,104 @@ const LLM_LOGOS = [
   { name: 'DeepSeek', platform: 'deepseek' },
 ]
 
-// ─── Scroll-linked 3D Book Flap Visual ────────────────────────────
-// Panels unfold like book pages as user scrolls through Phase 03
-function BookFlapVisual({ progress }: { progress: MotionValue<number> }) {
-  // Phase 03 is index 2 of 3 cards. It becomes visible ~0.5 scroll progress.
-  // Unfold panels sequentially between 0.45 and 0.75
-  const panel1Rotate = useTransform(progress, [0.42, 0.55], [-90, 0])
-  const panel1Opacity = useTransform(progress, [0.42, 0.50], [0, 1])
+// ─── Document Fan Visual ──────────────────────────────────────────
+// Three document mockups fan out from a stack as the user scrolls.
+// Scroll down = spread. Scroll up = stack back together. Buttery smooth.
+function DocumentFanVisual({ progress }: { progress: MotionValue<number> }) {
+  // Fan spread happens between 0.45 and 0.70 of total scroll
+  // Card 1 (back): rotates left and slides left
+  const card1Rotate = useTransform(progress, [0.45, 0.68], [0, -8])
+  const card1X = useTransform(progress, [0.45, 0.68], [0, -60])
+  const card1Y = useTransform(progress, [0.45, 0.68], [0, -8])
 
-  const panel2Rotate = useTransform(progress, [0.50, 0.63], [-90, 0])
-  const panel2Opacity = useTransform(progress, [0.50, 0.56], [0, 1])
+  // Card 2 (middle): stays mostly centered, slight lift
+  const card2Y = useTransform(progress, [0.45, 0.68], [0, -16])
 
-  const panel3Rotate = useTransform(progress, [0.58, 0.71], [-90, 0])
-  const panel3Opacity = useTransform(progress, [0.58, 0.64], [0, 1])
-
-  // Subtle glow that fades in after all panels open
-  const glowOpacity = useTransform(progress, [0.70, 0.80], [0, 1])
-
-  // Spine line draws in
-  const spineHeight = useTransform(progress, [0.42, 0.60], ['0%', '100%'])
-
-  const panels = [
-    {
-      icon: BarChart3,
-      label: 'Pitch Deck',
-      sublabel: 'Auto-branded slides',
-      rotate: panel1Rotate,
-      opacity: panel1Opacity,
-    },
-    {
-      icon: FileSignature,
-      label: 'Service Agreement',
-      sublabel: 'Legal MSA templates',
-      rotate: panel2Rotate,
-      opacity: panel2Opacity,
-    },
-    {
-      icon: ClipboardList,
-      label: 'Client Onboarding',
-      sublabel: '5-min intake survey',
-      rotate: panel3Rotate,
-      opacity: panel3Opacity,
-    },
-  ]
+  // Card 3 (front): rotates right and slides right
+  const card3Rotate = useTransform(progress, [0.45, 0.68], [0, 8])
+  const card3X = useTransform(progress, [0.45, 0.68], [0, 60])
+  const card3Y = useTransform(progress, [0.45, 0.68], [0, -8])
 
   return (
     <div className="relative h-full w-full flex items-center justify-center p-4">
-      <div className="relative">
-        {/* 3D Perspective Container */}
-        <div style={{ perspective: '1200px' }}>
-          <div className="flex items-stretch" style={{ transformStyle: 'preserve-3d' }}>
+      <div className="relative w-[220px] h-[280px]">
 
-            {/* Spine / Book Edge */}
-            <div className="relative w-[3px] flex items-center justify-center mr-1 self-stretch">
-              <motion.div
-                className="w-full bg-gradient-to-b from-emerald-500/60 via-emerald-400/80 to-emerald-500/60 rounded-full"
-                style={{ height: spineHeight }}
-              />
-            </div>
-
-            {/* Panels */}
-            {panels.map((panel, i) => (
-              <motion.div
-                key={panel.label}
-                style={{
-                  rotateY: panel.rotate,
-                  opacity: panel.opacity,
-                  transformOrigin: 'left center',
-                  transformStyle: 'preserve-3d',
-                }}
-                className="relative"
-              >
-                {/* The panel itself */}
-                <div className={`
-                  w-[100px] sm:w-[120px] h-[220px] sm:h-[280px]
-                  bg-gradient-to-b from-slate-800/80 to-slate-850/90
-                  backdrop-blur-sm
-                  border border-slate-700/30
-                  ${i === 2 ? 'rounded-r-xl' : ''}
-                  flex flex-col items-center justify-center
-                  relative overflow-hidden
-                `}>
-                  {/* Fold crease shadow on left edge */}
-                  <div className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-black/25 to-transparent pointer-events-none" />
-
-                  {/* Subtle inner glow */}
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-br from-emerald-500/[0.04] to-transparent pointer-events-none"
-                    style={{ opacity: glowOpacity }}
-                  />
-
-                  {/* Top decorative line */}
-                  <div className="absolute top-0 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/25 to-transparent" />
-
-                  {/* Icon */}
-                  <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center mb-5">
-                    <panel.icon className="w-6 h-6 text-emerald-400" />
-                  </div>
-
-                  {/* Label */}
-                  <div className="text-center px-3">
-                    <div className="text-[11px] sm:text-xs font-semibold text-white leading-tight tracking-wide">{panel.label}</div>
-                    <div className="text-[9px] sm:text-[10px] text-slate-500 mt-1.5 leading-tight">{panel.sublabel}</div>
-                  </div>
-
-                  {/* Decorative bottom element */}
-                  <div className="absolute bottom-4 left-1/2 -translate-x-1/2">
-                    <div className="w-6 h-[1px] bg-emerald-500/20" />
-                  </div>
-
-                  {/* Bottom decorative line */}
-                  <div className="absolute bottom-0 left-[15%] right-[15%] h-[1px] bg-gradient-to-r from-transparent via-emerald-500/25 to-transparent" />
-                </div>
-
-                {/* Inter-panel depth shadow */}
-                {i < 2 && (
-                  <div
-                    className="absolute right-0 top-0 bottom-0 w-3 bg-gradient-to-r from-black/15 to-transparent pointer-events-none"
-                    style={{ transform: 'translateX(100%)' }}
-                  />
-                )}
-              </motion.div>
-            ))}
-          </div>
-        </div>
-
-        {/* Geometric accent lines beneath — angular, Perplexity-style */}
+        {/* Card 1 — Pitch Deck (back layer) */}
         <motion.div
-          className="absolute -bottom-10 left-0 right-0 flex justify-center"
-          style={{ opacity: glowOpacity }}
+          className="absolute inset-0"
+          style={{ x: card1X, y: card1Y, rotate: card1Rotate, zIndex: 1 }}
         >
-          <svg width="280" height="24" viewBox="0 0 280 24" fill="none" className="overflow-visible">
-            {/* Center chevron */}
-            <path d="M90 2 L140 20 L190 2" stroke="rgba(16, 185, 129, 0.25)" strokeWidth="1" fill="none" />
-            {/* Outer chevron */}
-            <path d="M60 2 L140 22 L220 2" stroke="rgba(16, 185, 129, 0.12)" strokeWidth="0.5" fill="none" />
-          </svg>
+          <div className="w-[200px] h-[260px] bg-slate-800/90 border border-slate-700/50 rounded-lg shadow-lg overflow-hidden">
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-emerald-500/40" />
+              <div className="w-2 h-2 rounded-full bg-slate-600/40" />
+              <div className="w-2 h-2 rounded-full bg-slate-600/40" />
+              <div className="ml-2 h-1.5 w-16 rounded bg-slate-600/40" />
+            </div>
+            <div className="p-3 space-y-2">
+              <div className="h-1.5 w-20 rounded bg-slate-600/30" />
+              <div className="h-1 w-28 rounded bg-slate-700/30" />
+              <div className="h-24 rounded bg-slate-700/20 flex items-end px-2 pb-2 gap-1">
+                {[35, 50, 40, 60, 72, 85].map((h, i) => (
+                  <div key={i} className="flex-1 rounded-sm bg-emerald-500/25" style={{ height: `${h}%` }} />
+                ))}
+              </div>
+              <div className="h-1 w-14 rounded bg-slate-600/20" />
+              <div className="h-1 w-20 rounded bg-slate-600/15" />
+            </div>
+          </div>
         </motion.div>
+
+        {/* Card 2 — MSA (middle layer) */}
+        <motion.div
+          className="absolute inset-0"
+          style={{ y: card2Y, zIndex: 2 }}
+        >
+          <div className="w-[200px] h-[260px] bg-slate-800/95 border border-slate-700/50 rounded-lg shadow-xl overflow-hidden mx-auto" style={{ marginLeft: '10px' }}>
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-emerald-500/40" />
+              <div className="ml-2 text-[8px] text-slate-400 font-medium tracking-wide">Master Service Agreement</div>
+            </div>
+            <div className="p-3 space-y-1.5">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="h-[3px] rounded bg-slate-600/25" style={{ width: `${90 - i * 6}%` }} />
+              ))}
+              <div className="mt-4 pt-3 border-t border-slate-700/30 space-y-1">
+                <div className="h-[3px] w-16 rounded bg-slate-600/30" />
+                <div className="h-[3px] w-20 rounded bg-slate-600/25" />
+              </div>
+              <div className="mt-3 pt-2 border-t border-dashed border-slate-700/20">
+                <div className="h-[1px] w-24 bg-slate-600/40" />
+                <div className="text-[7px] text-slate-600 mt-1">Signature</div>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
+        {/* Card 3 — Onboarding Form (front layer) */}
+        <motion.div
+          className="absolute inset-0"
+          style={{ x: card3X, y: card3Y, rotate: card3Rotate, zIndex: 3 }}
+        >
+          <div className="w-[200px] h-[260px] bg-slate-800 border border-slate-700/50 rounded-lg shadow-2xl overflow-hidden" style={{ marginLeft: '20px' }}>
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-1.5">
+              <div className="w-2 h-2 rounded-full bg-emerald-500/40" />
+              <div className="ml-2 text-[8px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
+            </div>
+            <div className="p-3 space-y-2.5">
+              {['Business Name', 'Website URL', 'Primary Service'].map((label) => (
+                <div key={label}>
+                  <div className="text-[7px] text-slate-500 mb-1 uppercase tracking-wider">{label}</div>
+                  <div className="h-5 rounded bg-slate-700/30 border border-slate-600/20" />
+                </div>
+              ))}
+              <div className="mt-1 h-6 rounded-md bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                <span className="text-[8px] text-emerald-400 font-medium">Start Onboarding →</span>
+              </div>
+            </div>
+          </div>
+        </motion.div>
+
       </div>
     </div>
   )
@@ -167,7 +128,7 @@ interface PhaseData {
   icon: React.ComponentType<{ className?: string }>
   accent: 'blue' | 'violet' | 'emerald'
   visual?: React.ReactNode
-  visualComponent?: 'bookflap'
+  visualComponent?: 'documentfan'
 }
 
 const phases: PhaseData[] = [
@@ -224,15 +185,12 @@ const phases: PhaseData[] = [
     visual: (
       <div className="relative h-full w-full flex items-center justify-center p-4">
         <div className="w-full max-w-[280px]">
-          {/* Tab Header */}
           <div className="flex items-center gap-3 mb-4">
             <div className="px-3 py-1.5 bg-violet-500/15 border border-violet-500/30 rounded-lg text-[10px] font-semibold text-violet-300">
               Pooled Proof & Testimonials
             </div>
             <div className="ml-auto w-5 h-5 rounded bg-violet-500/20 border border-violet-500/30" />
           </div>
-
-          {/* Case Study Cards Grid */}
           <div className="grid grid-cols-2 gap-2">
             {[
               { vertical: 'Dental', from: '0%', to: '15%', days: '90' },
@@ -275,7 +233,7 @@ const phases: PhaseData[] = [
     ],
     icon: FileText,
     accent: 'emerald',
-    visualComponent: 'bookflap',
+    visualComponent: 'documentfan',
   }
 ]
 
@@ -321,8 +279,6 @@ function Card({
   targetScale: number
 }) {
   const containerRef = useRef(null)
-
-  // Scale Calculation: Starts at 1, goes down to targetScale as next card overlaps it
   const scale = useTransform(progress, range, [1, targetScale])
 
   const Icon = phase.icon
@@ -337,22 +293,18 @@ function Card({
         }}
         className="relative w-full max-w-5xl h-[80vh] flex flex-col origin-top bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden"
       >
-        {/* Background Gradient */}
         <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-20`} />
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
-
-            {/* Visual Side */}
             <div className="bg-slate-950/30 border-r border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
                 <div className="absolute top-4 left-4 text-xs font-mono text-slate-500">PHASE 0{phase.id}</div>
-                {phase.visualComponent === 'bookflap' ? (
-                  <BookFlapVisual progress={progress} />
+                {phase.visualComponent === 'documentfan' ? (
+                  <DocumentFanVisual progress={progress} />
                 ) : (
                   phase.visual
                 )}
             </div>
 
-            {/* Text Side */}
             <div className="p-6 md:p-10 flex flex-col justify-center bg-slate-900/40 backdrop-blur-sm overflow-y-auto">
                 <div className={`w-10 h-10 rounded-xl ${colors.iconBg} flex items-center justify-center border ${colors.iconBorder} mb-4`}>
                     <Icon className={`w-5 h-5 ${colors.iconText}`} />
@@ -361,7 +313,6 @@ function Card({
                 <h3 className={`${colors.subtitleText} font-bold text-xs uppercase tracking-wider mb-1.5`}>{phase.subtitle}</h3>
                 <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">{phase.title}</h2>
 
-                {/* Body Paragraphs */}
                 <div className="space-y-2.5 mb-4">
                     {phase.body.map((paragraph, i) => (
                         <p key={i} className="text-slate-400 text-sm leading-relaxed">
@@ -370,7 +321,6 @@ function Card({
                     ))}
                 </div>
 
-                {/* Bullet Points */}
                 <ul className="space-y-2">
                     {phase.bullets.map((bullet, i) => (
                         <li key={i} className="flex items-start gap-2.5">
@@ -395,12 +345,10 @@ export default function GhostModelStack() {
 
   return (
     <section ref={containerRef} className="bg-slate-950 relative">
-      {/* Background Grid */}
       <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-[0.03] bg-[size:40px_40px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {phases.map((phase, i) => {
-            // Logic: Each card scales down slightly as the next one arrives
             const targetScale = 1 - ((phases.length - 1 - i) * 0.05)
             return (
                 <Card
