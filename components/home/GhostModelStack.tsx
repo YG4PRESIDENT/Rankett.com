@@ -179,13 +179,13 @@ const phases: PhaseData[] = [
     title: "Your AI Visibility Audit Tool",
     subtitle: "Your logo, your domain, our engine.",
     body: [
-      "Show any client exactly how visible they are across ChatGPT, Gemini, Claude, and Perplexity under your brand.",
-      "Upload your logo once and get a fully branded audit tool on your own subdomain. Use it as a lead magnet, discovery tool, or upsell on every client call."
+      "Show any client how visible they are across ChatGPT, Gemini, Claude, and Perplexity — under your brand.",
+      "Branded audit tool on your subdomain. Use it as a lead magnet, discovery tool, or upsell on every call."
     ],
     bullets: [
-      "AI Visibility Score and Mention Rate across up to all types of prompts.",
+      "AI Visibility Score and Mention Rate across all prompt types.",
       "Gap analysis that highlights missing schema, FAQs, and authority mentions.",
-      "Exportable PDF audits you can drop straight into sales decks and proposals.",
+      "Exportable PDF audits for sales decks and proposals.",
       "Automatic email capture to track leads."
     ],
     icon: Search,
@@ -210,17 +210,17 @@ const phases: PhaseData[] = [
   },
   {
     id: 2,
-    title: "Your Case Studies, Powered by Everyone's Wins",
-    subtitle: "Our shared proof pool makes you look battle-tested from day one.",
+    title: "Case Studies From Everyone's Wins",
+    subtitle: "Battle-tested proof from day one.",
     body: [
-      "You don't start from zero. Rankett's proof vault turns pooled, de-identified results from all partner campaigns into ready-to-use sales material.",
-      "As your clients win, the vault gets stronger. Your testimonials grow automatically alongside everyone else's, and we use that data to continuously tighten the playbook and improve fulfillment for every new client. Win-win."
+      "You don't start from zero. Pooled, de-identified results from all partners become ready-to-use sales material.",
+      "As your clients win, the vault grows. Testimonials compound automatically, and the playbook tightens with every new success."
     ],
     bullets: [
       'Anonymized "0 → 15% AI Mention Rate in 90 days" case studies by vertical.',
-      'Benchmark slides: "Across 5 brands like yours, +14.6% AI Mention Rate and 22% lift in branded search."',
-      "Plug-and-play PDF one-pagers and deck slides you can drop into your own pitch.",
-      "Every new success from the network becomes another proof asset you can use."
+      'Benchmark slides: "+14.6% AI Mention Rate and 22% lift in branded search across 5 brands."',
+      "Plug-and-play PDF one-pagers and deck slides for your pitch.",
+      "Every network win becomes another proof asset you can use."
     ],
     icon: Award,
     accent: 'violet',
@@ -261,17 +261,17 @@ const phases: PhaseData[] = [
   },
   {
     id: 3,
-    title: "Your Deck, Your Contracts, Your Onboarding",
-    subtitle: "Upload your logo once and get a complete AI visibility offer, ready to sell.",
+    title: "Your Deck, Contracts & Onboarding",
+    subtitle: "Upload once. Ready to sell.",
     body: [
-      "Rankett autogenerates a fully branded pitchdeck, MSA, monthly reports and 5\u2011minute onboarding quiz so you can add close and onboard AI visibility retainers without writing a single slide or contract.",
-      "You stay the face of the offer, we stay invisible in the background."
+      "We autogenerate your pitchdeck, MSA, monthly reports, and onboarding quiz \u2014 fully branded, so you can close retainers without writing a single slide.",
+      "You stay the face of the offer. We stay invisible."
     ],
     bullets: [
-      "Pitchdeck pre\u2011built around your tier pricing; update numbers once and every slide updates.",
-      "Branded MSA and client legal addendum that shifts fulfillment liability correctly while keeping you in control.",
+      "Pitchdeck built around your tier pricing \u2014 update once, every slide updates.",
+      "Branded MSA and legal addendum that shifts fulfillment liability while keeping you in control.",
       "Monthly reports with your logo and colors, ready to send to clients.",
-      "5\u2011minute client onboarding survey on your domain that collects everything we need to start fulfillment."
+      "5\u2011minute onboarding survey on your domain \u2014 collects everything needed to start."
     ],
     icon: FileText,
     accent: 'emerald',
