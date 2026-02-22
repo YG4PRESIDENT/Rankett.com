@@ -231,7 +231,6 @@ const phases: PhaseData[] = [
             <div className="px-3 py-1.5 bg-violet-500/15 border border-violet-500/30 rounded-lg text-[10px] font-semibold text-violet-300">
               Pooled Proof & Testimonials
             </div>
-            <div className="ml-auto w-5 h-5 rounded bg-violet-500/20 border border-violet-500/30" />
           </div>
           <div className="grid grid-cols-2 gap-2">
             {[
@@ -341,7 +340,6 @@ function Card({
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
             <div className="bg-slate-950/30 border-r border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
-                <div className="absolute top-4 left-4 text-xs font-mono text-slate-500">PHASE 0{phase.id}</div>
                 {phase.visualComponent === 'documentfan' ? (
                   <DocumentFanVisual containerRef={sectionRef} />
                 ) : (

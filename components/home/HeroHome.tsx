@@ -87,7 +87,7 @@ export default function HeroHome() {
             </h1>
           </div>
           <div className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
-            Launch Tomorrow. <span className="text-white font-medium">Do none of the work.</span>
+            Be the solution today. <span className="text-white font-medium">Do none of the work.</span>
           </div>
 
           <div className="flex flex-col items-center gap-4 pt-8 pb-12">
