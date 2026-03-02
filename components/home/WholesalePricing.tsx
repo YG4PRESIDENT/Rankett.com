@@ -1,5 +1,6 @@
 'use client'
 
+import { useRef, useState, useEffect, useCallback } from 'react'
 import { Check, X, ShieldCheck } from 'lucide-react'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
@@ -32,6 +33,91 @@ function CellContent({ value }: { value: CellValue }) {
   return <span className="text-sm text-blue-300 font-medium">{value}</span>
 }
 
+function MobilePricingCards() {
+  const scrollRef = useRef<HTMLDivElement>(null)
+  const [activeIndex, setActiveIndex] = useState(1) // Start on Tier 2 (highlighted)
+
+  const handleScroll = useCallback(() => {
+    const el = scrollRef.current
+    if (!el) return
+    const cardWidth = el.offsetWidth * 0.85
+    const gap = 16
+    const idx = Math.round(el.scrollLeft / (cardWidth + gap))
+    setActiveIndex(Math.min(idx, tiers.length - 1))
+  }, [])
+
+  useEffect(() => {
+    const el = scrollRef.current
+    if (!el) return
+    // Auto-scroll to Tier 2 (index 1) on mount
+    const cardWidth = el.offsetWidth * 0.85
+    const gap = 16
+    el.scrollLeft = (cardWidth + gap) * 1
+  }, [])
+
+  return (
+    <div className="md:hidden">
+      <FadeInOnScroll direction="up" delay={0.1}>
+        <div
+          ref={scrollRef}
+          onScroll={handleScroll}
+          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-4"
+        >
+          {tiers.map((tier, tierIdx) => (
+            <div
+              key={tier.label}
+              className={`flex-shrink-0 w-[85vw] snap-center rounded-2xl border p-5 ${
+                tier.highlighted
+                  ? 'border-blue-500/40 bg-blue-500/5'
+                  : 'border-slate-800'
+              }`}
+              style={{
+                background: tier.highlighted
+                  ? 'linear-gradient(135deg, rgba(59, 130, 246, 0.08) 0%, rgba(2, 6, 23, 0.9) 100%)'
+                  : 'linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.9) 100%)',
+              }}
+            >
+              {/* Tier header */}
+              <div className="text-center mb-4 pb-4 border-b border-slate-800/50">
+                <p className="text-xs text-slate-500 uppercase tracking-wider font-medium mb-1">{tier.label}</p>
+                <p className="text-3xl font-bold text-white">{tier.price}<span className="text-sm font-normal text-slate-500">/mo</span></p>
+                <p className="text-[11px] text-slate-600 mt-1">You charge {tier.charge}/mo</p>
+              </div>
+
+              {/* Deliverables */}
+              <div className="space-y-3">
+                {deliverables.map((row) => {
+                  const val = row.values[tierIdx]
+                  return (
+                    <div key={row.name} className="flex items-center justify-between gap-3">
+                      <span className="text-xs text-slate-400 flex-1">{row.name}</span>
+                      <span className="flex-shrink-0">
+                        <CellContent value={val} />
+                      </span>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        {/* Dot indicators */}
+        <div className="flex justify-center gap-2 mt-4">
+          {tiers.map((_, i) => (
+            <div
+              key={i}
+              className={`w-2 h-2 rounded-full transition-colors ${
+                i === activeIndex ? 'bg-blue-400' : 'bg-slate-700'
+              }`}
+            />
+          ))}
+        </div>
+      </FadeInOnScroll>
+    </div>
+  )
+}
+
 export default function WholesalePricing() {
   return (
     <section id="pricing" className="py-24 md:py-32 relative overflow-hidden bg-slate-950">
@@ -53,15 +139,17 @@ export default function WholesalePricing() {
           </div>
         </FadeInOnScroll>
 
-        {/* Table */}
+        {/* Desktop Table */}
         <FadeInOnScroll direction="up" delay={0.1}>
+          <div className="hidden md:block -mx-4 sm:mx-0">
           <div
-            className="rounded-2xl border border-slate-800 overflow-hidden"
+            className="rounded-none sm:rounded-2xl border border-slate-800 overflow-x-auto"
             style={{
               background: 'linear-gradient(135deg, rgba(15, 23, 42, 0.8) 0%, rgba(2, 6, 23, 0.9) 100%)',
               backdropFilter: 'blur(16px)',
             }}
           >
+          <div className="min-w-[600px]">
             {/* Column Headers */}
             <div className="grid grid-cols-[1fr_1fr_1fr_1fr]">
               {/* Empty top-left cell */}
@@ -103,7 +191,12 @@ export default function WholesalePricing() {
               </div>
             ))}
           </div>
+          </div>
+          </div>
         </FadeInOnScroll>
+
+        {/* Mobile Swipeable Cards */}
+        <MobilePricingCards />
 
         {/* Guarantee — bottom closer */}
         <FadeInOnScroll direction="up" delay={0.2}>

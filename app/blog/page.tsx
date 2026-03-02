@@ -31,39 +31,6 @@ const featuredPosts: BlogPost[] = [
   }
 ];
 
-// Latest blog posts
-const latestPosts: BlogPost[] = [
-  {
-    slug: "ai-visibility-best-practices",
-    title: "Best Alternatives to ChatGPT",
-    date: "2024-01-03"
-  },
-  {
-    slug: "local-search-ai-integration",
-    title: "Build AI Visibility Platforms in the United States",
-    date: "2024-01-02"
-  },
-  {
-    slug: "brand-mentions-ai-platforms",
-    title: "Build AI Analysis platform with semantic leads retention",
-    date: "2024-01-01"
-  },
-  {
-    slug: "geo-implementation-guide",
-    title: "How to use ChatGPT Canvas: Chatbot",
-    date: "2023-12-28"
-  },
-  {
-    slug: "ai-search-visibility-checklist",
-    title: "Best AI SEO Toolkit Review",
-    date: "2023-12-25"
-  },
-  {
-    slug: "perplexity-vs-chatgpt",
-    title: "How to know what your customers are thinking for AI",
-    date: "2023-12-20"
-  }
-];
 
 export default function BlogPage() {
   const renderArticleCard = (post: BlogPost, index: number) => (
@@ -128,7 +95,7 @@ export default function BlogPage() {
             <div className="inline-flex items-center px-3 py-1 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 text-xs font-medium font-mono mb-6">
               INSIGHTS & INTELLIGENCE
             </div>
-            <h1 className="text-5xl md:text-6xl font-bold text-white mb-6 tracking-tight">
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white mb-6 tracking-tight">
               Tips, lessons and advice
             </h1>
             <p className="text-xl text-slate-400 leading-relaxed max-w-2xl">
@@ -152,24 +119,6 @@ export default function BlogPage() {
             </motion.h2>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
               {featuredPosts.map((post, index) => renderArticleCard(post, index))}
-            </div>
-          </section>
-
-          <div className="h-24"></div>
-
-          {/* Latest Articles Section */}
-          <section className="w-full max-w-6xl">
-            <motion.h2
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: 0.4 }}
-              className="text-2xl font-bold text-white mb-10 flex items-center gap-3"
-            >
-              Latest Articles
-              <div className="h-px flex-1 bg-slate-800" />
-            </motion.h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
-              {latestPosts.map((post, index) => renderArticleCard(post, index))}
             </div>
           </section>
 

@@ -77,15 +77,16 @@ export default function StealSpotlight() {
             <div className="px-5 py-3 rounded-full bg-blue-500/10 border border-blue-500/20 text-blue-400 font-medium text-sm">
               You Run Audit
             </div>
-            <ArrowRight className="w-5 h-5 text-slate-600" />
+            <ArrowRight className="w-5 h-5 text-slate-600 hidden md:block" />
+
             <div className="px-5 py-3 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 font-medium text-sm">
               Client Signs Up
             </div>
-            <ArrowRight className="w-5 h-5 text-slate-600" />
+            <ArrowRight className="w-5 h-5 text-slate-600 hidden md:block" />
             <div className="px-5 py-3 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 font-medium text-sm">
               We Do The Work
             </div>
-            <ArrowRight className="w-5 h-5 text-slate-600" />
+            <ArrowRight className="w-5 h-5 text-slate-600 hidden md:block" />
             <div className="px-5 py-3 rounded-full bg-amber-500/10 border border-amber-500/20 text-amber-400 font-medium text-sm">
               You Set Your Price
             </div>

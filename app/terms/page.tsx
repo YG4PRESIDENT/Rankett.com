@@ -71,7 +71,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-semibold text-black mb-3">7. API Access</h2>
               <p>
-                API access is available only to paid customers on a custom enterprise plan, subject to additional terms provided separately. Contact team@rankett.com for details.
+                API access is available only to paid customers on a custom enterprise plan, subject to additional terms provided separately. Contact info@rankett.com for details.
               </p>
             </section>
 
@@ -140,7 +140,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-semibold text-black mb-3">16. DMCA & IP Infringement</h2>
               <p>
-                If you believe content within the Service infringes your intellectual property rights, please notify us at team@rankett.com with sufficient details, and we will respond in accordance with applicable law, including the Digital Millennium Copyright Act (DMCA).
+                If you believe content within the Service infringes your intellectual property rights, please notify us at info@rankett.com with sufficient details, and we will respond in accordance with applicable law, including the Digital Millennium Copyright Act (DMCA).
               </p>
             </section>
 
@@ -203,7 +203,7 @@ export default function TermsOfServicePage() {
             <section>
               <h2 className="text-2xl font-semibold text-black mb-3">25. Contact</h2>
               <p>
-                📩 <a href="mailto:team@rankett.com" className="text-blue-600 hover:underline">team@rankett.com</a>
+                📩 <a href="mailto:info@rankett.com" className="text-blue-600 hover:underline">info@rankett.com</a>
               </p>
             </section>
           </div>

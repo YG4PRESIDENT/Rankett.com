@@ -24,21 +24,16 @@ export default function SmoothScrollProvider({ children }: SmoothScrollProviderP
   const lenisRef = useRef<Lenis | null>(null);
 
   useEffect(() => {
-    // Create Lenis instance with smooth scroll settings (lenis.dev-style smoothness)
+    const isMobile = window.innerWidth < 768;
+
+    // Create Lenis instance — mobile gets lighter settings to avoid touch jank
     const lenis = new Lenis({
-      // How smooth the scroll feels (lower = smoother, 0.075 for lenis.dev-style)
-      lerp: 0.075,
-      // Enable smooth scrolling for wheel events
+      lerp: isMobile ? 0.1 : 0.075,
       smoothWheel: true,
-      // Slower wheel sensitivity for smoother feel
       wheelMultiplier: 0.8,
-      // Touch multiplier for mobile
-      touchMultiplier: 1.5,
-      // Duration of scroll animation (longer for smoother feel)
-      duration: 1.4,
-      // Sync touch scrolling (mimics touch device scroll)
-      syncTouch: true,
-      // Sync touch lerp for consistent feel
+      touchMultiplier: isMobile ? 1.0 : 1.5,
+      duration: isMobile ? 1.0 : 1.4,
+      syncTouch: isMobile ? false : true,
       syncTouchLerp: 0.04,
     });
 

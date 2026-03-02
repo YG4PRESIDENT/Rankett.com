@@ -1,7 +1,6 @@
 'use client'
 
 import { useState, useEffect } from 'react'
-import { useRouter } from 'next/navigation'
 import { Check, ArrowRight, Zap, Crown, Building2, X, Sparkles } from 'lucide-react'
 import { Button } from '../ui/Button'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
@@ -27,7 +26,7 @@ const tiers = [
   },
   {
     name: 'Partner',
-    price: '$500',
+    price: '$299',
     period: '/mo',
     description: 'Everything unlocked for serious partners',
     icon: Crown,
@@ -64,7 +63,6 @@ const tiers = [
 ]
 
 export default function PricingTiers() {
-  const router = useRouter()
   const [isModalOpen, setIsModalOpen] = useState(false)
 
   // Lock body scroll when modal is open
@@ -92,7 +90,7 @@ export default function PricingTiers() {
     if (tier === 'Enterprise') {
       window.open(CONTACT.calendly, '_blank', 'noopener,noreferrer')
     } else {
-      router.push('https://app.rankett.com/sign-up')
+      window.location.href = 'https://app.rankett.com/sign-up'
     }
   }
 
@@ -131,7 +129,7 @@ export default function PricingTiers() {
                 onClick={() => setIsModalOpen(true)}
                 variant="primary"
                 size="lg"
-                className="min-w-[220px]"
+                className="min-w-[180px] md:min-w-[220px]"
               >
                 See Our Pricing
                 <ArrowRight className="ml-2 w-5 h-5" />

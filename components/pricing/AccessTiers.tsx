@@ -1,6 +1,5 @@
 'use client'
 
-import { useRouter } from 'next/navigation'
 import { Check, ArrowRight, Zap, Crown } from 'lucide-react'
 import { Button } from '../ui/Button'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
@@ -24,7 +23,7 @@ const tiers = [
   },
   {
     name: 'Partner',
-    price: '$500',
+    price: '$299',
     period: '/mo',
     description: 'Everything unlocked for serious partners',
     icon: Crown,
@@ -43,10 +42,8 @@ const tiers = [
 ]
 
 export default function AccessTiers() {
-  const router = useRouter()
-
   const handleCTA = (tier: string) => {
-    router.push('https://app.rankett.com/sign-up')
+    window.location.href = 'https://app.rankett.com/sign-up'
   }
 
   return (

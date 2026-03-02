@@ -99,8 +99,6 @@ function QuizContent() {
       setSelectedAnswer(""); // Reset answer
     } else {
       // Quiz Complete: Submit to API before redirecting
-      console.log("Quiz completion detected. Submitting answers...");
-
       try {
         // Call tool API to store quiz data
         const toolApiUrl = process.env.NEXT_PUBLIC_TOOL_API_URL || 'https://tool.rankett.com';
@@ -118,7 +116,6 @@ function QuizContent() {
 
         if (response.ok && data.toolUrl) {
           // Redirect to tool with session token
-          console.log("Quiz submitted successfully. Redirecting to:", data.toolUrl);
           window.location.href = data.toolUrl;
         } else {
           throw new Error(data.error || 'Failed to submit quiz');
@@ -130,7 +127,6 @@ function QuizContent() {
         const redirectUrl = new URL('https://app.rankett.com/sign-up');
         if (websiteUrl) redirectUrl.searchParams.append('url', websiteUrl);
 
-        console.log("Fallback redirect to:", redirectUrl.toString());
         window.location.href = redirectUrl.toString();
       }
     }
@@ -190,7 +186,7 @@ function QuizContent() {
             >
               {/* Question */}
               <div className="text-center space-y-4">
-                <h2 className="text-3xl md:text-5xl font-bold text-white leading-tight">
+                <h2 className="text-2xl md:text-3xl lg:text-5xl font-bold text-white leading-tight">
                   {currentQuestion.question}
                 </h2>
               </div>
@@ -204,7 +200,7 @@ function QuizContent() {
                       <button
                         key={option}
                         onClick={() => setSelectedAnswer(option)}
-                        className={`p-6 rounded-xl border-2 text-left text-base font-medium transition-all duration-200 ${
+                        className={`p-4 md:p-6 rounded-xl border-2 text-left text-base font-medium transition-all duration-200 ${
                           selectedAnswer === option
                             ? "border-blue-500 bg-blue-500/10 text-white shadow-[0_0_20px_rgba(59,130,246,0.1)]"
                             : "border-slate-800 bg-slate-900/50 text-slate-400 hover:border-slate-600 hover:text-white hover:bg-slate-800"

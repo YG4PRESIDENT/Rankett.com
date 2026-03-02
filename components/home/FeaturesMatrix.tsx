@@ -188,7 +188,7 @@ export default function FeaturesMatrix() {
                         className={`w-full rounded-t-[1px] transition-all duration-1000 ${item.color}`}
                         style={{ height: `${item.val}%` }}
                       />
-                      <span className="text-[7px] text-slate-500 truncate w-full text-center">{item.label}</span>
+                      <span className="text-[9px] text-slate-500 truncate w-full text-center">{item.label}</span>
                     </div>
                   ))}
                 </div>

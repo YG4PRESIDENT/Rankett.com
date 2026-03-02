@@ -13,7 +13,6 @@ interface CaseStudyCardProps {
     value: string
   }[]
   timeline: string
-  isPlaceholder?: boolean
 }
 
 // Placeholder case studies for template structure
@@ -29,7 +28,6 @@ const placeholderStudies: CaseStudyCardProps[] = [
       { metric: 'AI Visibility Score', value: '23 → 78' },
     ],
     timeline: '90 days',
-    isPlaceholder: true,
   },
   {
     industry: 'Legal',
@@ -42,7 +40,6 @@ const placeholderStudies: CaseStudyCardProps[] = [
       { metric: 'AI Visibility Score', value: '8 → 71' },
     ],
     timeline: '60 days',
-    isPlaceholder: true,
   },
   {
     industry: 'Home Services',
@@ -55,7 +52,6 @@ const placeholderStudies: CaseStudyCardProps[] = [
       { metric: 'AI Visibility Score', value: '15 → 82' },
     ],
     timeline: '75 days',
-    isPlaceholder: true,
   },
 ]
 
@@ -63,7 +59,7 @@ export default function CaseStudyCard() {
   return (
     <section className="py-12 md:py-20 relative">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {placeholderStudies.map((study, index) => (
             <FadeInOnScroll key={index} direction="up" delay={index * 0.1}>
               <div
@@ -75,18 +71,11 @@ export default function CaseStudyCard() {
                 }}
               >
                 {/* Header */}
-                <div className="flex items-start justify-between mb-4">
-                  <div>
+                <div className="mb-4">
                     <span className="text-xs font-medium text-blue-400 uppercase tracking-wider">
                       {study.industry}
                     </span>
                     <h3 className="text-lg font-bold text-white mt-1">{study.clientType}</h3>
-                  </div>
-                  {study.isPlaceholder && (
-                    <span className="px-2 py-1 rounded text-xs bg-slate-700/50 text-slate-400">
-                      Template
-                    </span>
-                  )}
                 </div>
 
                 {/* Challenge */}

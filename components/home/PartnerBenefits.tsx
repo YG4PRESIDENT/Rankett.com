@@ -31,7 +31,7 @@ export default function PartnerBenefits() {
   return (
     <section className="py-24 relative overflow-hidden">
       {/* Background Glow */}
-      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[600px] h-[600px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 right-0 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-blue-500/10 blur-[120px] rounded-full pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
@@ -66,7 +66,7 @@ export default function PartnerBenefits() {
               </div>
 
               <div className="flex flex-col sm:flex-row gap-4">
-                <Link href="https://app.rankett.com/sign-up" className="inline-flex items-center justify-center px-8 py-4 bg-white text-slate-950 font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]">
+                <Link href="https://app.rankett.com/sign-up" className="inline-flex items-center justify-center px-6 py-3 md:px-8 md:py-4 bg-white text-slate-950 font-bold rounded-xl hover:bg-blue-50 transition-colors shadow-[0_0_20px_-5px_rgba(255,255,255,0.3)]">
                   Start For Free
                 </Link>
               </div>

@@ -31,7 +31,7 @@ export default function Footer() {
   };
 
   const handleRunAudit = () => {
-    router.push('https://app.rankett.com/sign-up')
+    window.location.href = 'https://app.rankett.com/sign-up'
   }
 
   return (
@@ -47,8 +47,8 @@ export default function Footer() {
         />
       </div>
 
-      <div className="max-w-7xl mx-auto py-16 px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12">
+      <div className="max-w-7xl mx-auto py-10 md:py-16 px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 md:gap-12">
           
           {/* Brand Column */}
           <div className="lg:col-span-5 space-y-6">
@@ -137,7 +137,7 @@ export default function Footer() {
         {/* Bottom Bar */}
         <div className="mt-16 pt-8 border-t border-slate-800 flex flex-col md:flex-row justify-between items-center gap-4">
           <p className="text-xs text-slate-500">
-            © 2025 {COMPANY_NAME}. All rights reserved.
+            © {new Date().getFullYear()} {COMPANY_NAME}. All rights reserved.
           </p>
           <div className="flex gap-6">
             <Link href="/privacy" className="text-xs text-slate-500 hover:text-slate-300">Privacy Policy</Link>

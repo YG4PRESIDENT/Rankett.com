@@ -36,12 +36,17 @@ export default function FadeInOnScroll({
     const element = elementRef.current;
     if (!element) return;
 
+    const isMobile = window.innerWidth < 768;
+    // On mobile, cap distance and duration for snappier animations (fewer layout reflows)
+    const effectiveDistance = isMobile ? Math.min(distance, 20) : distance;
+    const effectiveDuration = isMobile ? Math.min(duration, 0.5) : duration;
+
     // Set initial position based on direction
     const initialPosition = {
-      up: { y: distance, x: 0 },
-      down: { y: -distance, x: 0 },
-      left: { y: 0, x: distance },
-      right: { y: 0, x: -distance },
+      up: { y: effectiveDistance, x: 0 },
+      down: { y: -effectiveDistance, x: 0 },
+      left: { y: 0, x: effectiveDistance },
+      right: { y: 0, x: -effectiveDistance },
     };
 
     const { x, y } = initialPosition[direction];
@@ -58,7 +63,7 @@ export default function FadeInOnScroll({
       opacity: 1,
       x: 0,
       y: 0,
-      duration,
+      duration: effectiveDuration,
       delay,
       ease: "power2.out", // Smooth easing curve
       scrollTrigger: {

@@ -52,7 +52,7 @@ export default function HeroHome() {
   }
 
   return (
-    <section ref={heroRef} className="relative flex flex-col justify-start overflow-hidden pt-28 md:pt-36 min-h-[calc(100vh-theme(spacing.20))]">
+    <section ref={heroRef} className="relative flex flex-col justify-start overflow-hidden pt-28 md:pt-36 min-h-0 md:min-h-[calc(100vh-theme(spacing.20))]">
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 left-1/4 w-[600px] h-[600px]" style={{ background: 'radial-gradient(circle, rgba(59, 130, 246, 0.15) 0%, transparent 70%)', filter: 'blur(80px)' }} />
@@ -62,7 +62,7 @@ export default function HeroHome() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="text-center space-y-6">
           <div className="group"> {/* Added group for hover state management */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight whitespace-nowrap">
+            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
               <span 
                 className={`transition-colors duration-300 inline-block px-1 ${getWordClasses(0)}`}
                 onMouseEnter={() => handleWordHover(0)}
@@ -90,7 +90,7 @@ export default function HeroHome() {
             Be the solution today. <span className="text-white font-medium">Do none of the work.</span>
           </div>
 
-          <div className="flex flex-col items-center gap-4 pt-8 pb-12">
+          <div className="flex flex-col items-center gap-4 pt-6 md:pt-8 pb-6 md:pb-12">
             <Link href="https://app.rankett.com/sign-up" passHref>
               <Button size="lg" className="shadow-lg shadow-blue-500/50">
                 Get Started

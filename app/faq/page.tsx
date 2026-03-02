@@ -5,6 +5,8 @@ import { Plus, X, Sparkles, ArrowLeft } from 'lucide-react'
 import Link from 'next/link'
 import FadeInOnScroll from '@/components/scroll/FadeInOnScroll'
 import { CONTACT } from '@/lib/constants'
+import Header from '@/components/Header'
+import Footer from '@/components/Footer'
 
 interface FAQ {
   question: string
@@ -198,16 +200,17 @@ export default function FAQPage() {
 
   return (
     <>
+      <Header />
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
       />
 
-      <section className="min-h-screen py-20 md:py-32 relative overflow-hidden">
+      <section className="min-h-screen pt-32 pb-20 relative overflow-hidden">
         {/* Background accents */}
         <div className="absolute inset-0 pointer-events-none">
           <div
-            className="absolute top-1/4 right-0 w-[600px] h-[600px]"
+            className="absolute top-1/4 right-0 w-[300px] md:w-[600px] h-[300px] md:h-[600px]"
             style={{
               background:
                 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 60%)',
@@ -292,9 +295,9 @@ export default function FAQPage() {
                     const key = `${category.name}-${faqIndex}`
                     const isOpen = openKey === key
                     const alignments = [
-                      'justify-end',
-                      'justify-end md:pr-12',
-                      'justify-end md:pr-24',
+                      'justify-start md:justify-end',
+                      'justify-start md:justify-end md:pr-12',
+                      'justify-start md:justify-end md:pr-24',
                     ]
 
                     return (
@@ -349,7 +352,7 @@ export default function FAQPage() {
                                 <Sparkles className="w-4 h-4 text-white" />
                               </div>
                               <div
-                                className="max-w-[85%] md:max-w-[75%] px-5 py-4 rounded-2xl rounded-tl-md"
+                                className="max-w-full md:max-w-[75%] px-5 py-4 rounded-2xl rounded-tl-md"
                                 style={{
                                   background:
                                     'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
@@ -401,6 +404,7 @@ export default function FAQPage() {
           </FadeInOnScroll>
         </div>
       </section>
+      <Footer />
     </>
   )
 }

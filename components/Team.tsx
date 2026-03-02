@@ -33,7 +33,7 @@ const teamMembers: TeamMember[] = [
 
 export default function Team() {
   return (
-    <section id="team" className="relative bg-slate-950 py-32 overflow-hidden border-t border-slate-800">
+    <section id="team" className="relative bg-slate-950 py-16 md:py-32 overflow-hidden border-t border-slate-800">
       {/* Subtle Transition Gradient at top */}
       <div className="absolute top-0 left-0 right-0 h-24 bg-gradient-to-b from-slate-900/50 to-transparent pointer-events-none" />
 
@@ -46,16 +46,16 @@ export default function Team() {
           viewport={{ once: true }}
           className="text-center mb-20"
         >
-          <h2 className="text-4xl md:text-5xl font-bold text-white mb-6">
+          <h2 className="text-3xl md:text-5xl font-bold text-white mb-6">
             Meet the Team
           </h2>
           <p className="text-xl text-slate-400 max-w-2xl mx-auto">
-            Two obsessed founders dedicated to making your company rank first. We don&apos;t stop until you win.
+            Two obsessed founders dedicated to making your clients rank first. We don&apos;t stop until you win.
           </p>
         </motion.div>
 
         {/* Team Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-12 max-w-4xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-12 max-w-4xl mx-auto">
           {teamMembers.map((member, index) => (
             <motion.div
               key={member.name}
@@ -65,7 +65,7 @@ export default function Team() {
               transition={{ delay: index * 0.2 }}
               className="relative"
             >
-              <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-8 hover:border-slate-700 transition-all duration-300">
+              <div className="bg-slate-900/50 border border-slate-800 rounded-2xl p-5 md:p-8 hover:border-slate-700 transition-all duration-300">
                 <div className="flex items-center gap-6 mb-6">
                   <div className="relative">
                     <div className="w-20 h-20 rounded-full overflow-hidden border-2 border-slate-700">
@@ -109,8 +109,24 @@ export default function Team() {
           ))}
         </div>
 
-        {/* Spacer (CTA removed) */}
-        <div className="mt-12" />
+        {/* CTA */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ delay: 0.4 }}
+          className="text-center mt-16"
+        >
+          <h3 className="text-2xl font-bold text-white mb-4">
+            Ready to partner with us?
+          </h3>
+          <a
+            href="https://app.rankett.com/sign-up"
+            className="inline-flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-full transition-all duration-300"
+          >
+            Get Started
+          </a>
+        </motion.div>
       </div>
     </section>
   );

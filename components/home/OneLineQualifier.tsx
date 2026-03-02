@@ -21,7 +21,7 @@ export default function OneLineQualifier() {
       if (isMobile) {
         // Mobile Animation: Vertical Fan Out
         gsap.to(card1Ref.current, {
-          y: -140,
+          y: -100,
           rotation: -4,
           scale: 0.9,
           scrollTrigger: {
@@ -32,7 +32,7 @@ export default function OneLineQualifier() {
           }
         })
         gsap.to(card2Ref.current, {
-          y: 140,
+          y: 100,
           rotation: 4,
           scale: 0.9,
           scrollTrigger: {
@@ -97,16 +97,16 @@ export default function OneLineQualifier() {
   }, [])
 
   return (
-    <section className="pt-32 pb-16 md:pt-48 md:pb-20 relative overflow-hidden">
+    <section className="pt-20 pb-16 md:pt-48 md:pb-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Animation Container */}
-        <div ref={containerRef} className="relative h-[400px] flex items-center justify-center mb-12">
+        <div ref={containerRef} className="relative h-[420px] md:h-[400px] flex items-center justify-center mb-12">
           
           {/* Card 1: Competitor FOMO (Left) */}
           <div 
             ref={card1Ref}
-            className="absolute w-[300px] sm:w-[340px] bg-white text-slate-900 rounded-2xl p-6 shadow-xl border border-slate-200 z-10 origin-bottom-right"
+            className="absolute w-[260px] sm:w-[340px] bg-white text-slate-900 rounded-2xl p-6 shadow-xl border border-slate-200 z-10 origin-bottom-right"
           >
             <div className="flex items-center gap-3 mb-3 border-b border-slate-100 pb-3">
               <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
@@ -125,7 +125,7 @@ export default function OneLineQualifier() {
           {/* Card 2: Anecdotal Panic (Right) */}
           <div 
             ref={card2Ref}
-            className="absolute w-[300px] sm:w-[340px] bg-white text-slate-900 rounded-2xl p-6 shadow-xl border border-slate-200 z-10 origin-bottom-left"
+            className="absolute w-[260px] sm:w-[340px] bg-white text-slate-900 rounded-2xl p-6 shadow-xl border border-slate-200 z-10 origin-bottom-left"
           >
             <div className="flex items-center gap-3 mb-3 border-b border-slate-100 pb-3">
               <div className="w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center">
@@ -144,7 +144,7 @@ export default function OneLineQualifier() {
           {/* Card 3: The Boardroom Strategy (Center) */}
           <div 
             ref={card3Ref}
-            className="absolute w-[320px] sm:w-[360px] bg-white text-slate-900 rounded-2xl p-7 shadow-2xl border border-blue-100 z-20"
+            className="absolute w-[280px] sm:w-[360px] bg-white text-slate-900 rounded-2xl p-7 shadow-2xl border border-blue-100 z-20"
             style={{ boxShadow: '0 25px 60px -12px rgba(0, 0, 0, 0.25)' }}
           >
             <div className="flex items-center gap-3 mb-4 border-b border-slate-100 pb-3">

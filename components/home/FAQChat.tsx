@@ -85,13 +85,13 @@ export default function FAQChat() {
   const getAlignmentClass = (align: string) => {
     switch (align) {
       case 'right':
-        return 'justify-end'
+        return 'justify-start md:justify-end'
       case 'center-right':
-        return 'justify-end md:pr-12'
+        return 'justify-start md:justify-end md:pr-12'
       case 'center':
-        return 'justify-end md:pr-24'
+        return 'justify-start md:justify-end md:pr-24'
       default:
-        return 'justify-end'
+        return 'justify-start md:justify-end'
     }
   }
 
@@ -169,7 +169,7 @@ export default function FAQChat() {
 
                       {/* Answer Bubble */}
                       <div
-                        className="max-w-[85%] md:max-w-[75%] px-5 py-4 rounded-2xl rounded-tl-md"
+                        className="max-w-full md:max-w-[75%] px-5 py-4 rounded-2xl rounded-tl-md"
                         style={{
                           background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
                           border: '1px solid rgba(51, 65, 85, 0.3)',

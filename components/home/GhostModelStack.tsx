@@ -1,6 +1,6 @@
 'use client'
 
-import { useRef, useEffect } from 'react'
+import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import { Search, Award, FileText } from 'lucide-react'
 import { gsap } from 'gsap'
@@ -100,6 +100,11 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
   const card2Ref = useRef<HTMLDivElement>(null)
   const card3Ref = useRef<HTMLDivElement>(null)
   const card4Ref = useRef<HTMLDivElement>(null)
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
 
   useEffect(() => {
     if (!containerRef.current || !card1Ref.current || !card2Ref.current || !card3Ref.current || !card4Ref.current) return
@@ -117,11 +122,21 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
 
     tl.addLabel('end', 1)
 
-    // 4 cards fan out: -20°, -7°, +7°, +20°
-    tl.to(card1Ref.current, { x: -180, y: -25, rotation: -20, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
-    tl.to(card2Ref.current, { x: -60, y: -40, rotation: -7, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
-    tl.to(card3Ref.current, { x: 60, y: -40, rotation: 7, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
-    tl.to(card4Ref.current, { x: 180, y: -25, rotation: 20, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    // Mobile: smaller fan to avoid overflow. Desktop: full spread.
+    const mobile = window.innerWidth < 768
+    const fanX1 = mobile ? -50 : -180
+    const fanX2 = mobile ? -16 : -60
+    const fanX3 = mobile ? 16 : 60
+    const fanX4 = mobile ? 50 : 180
+    const rot1 = mobile ? -12 : -20
+    const rot2 = mobile ? -4 : -7
+    const rot3 = mobile ? 4 : 7
+    const rot4 = mobile ? 12 : 20
+
+    tl.to(card1Ref.current, { x: fanX1, y: -25, rotation: rot1, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    tl.to(card2Ref.current, { x: fanX2, y: -40, rotation: rot2, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    tl.to(card3Ref.current, { x: fanX3, y: -40, rotation: rot3, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    tl.to(card4Ref.current, { x: fanX4, y: -25, rotation: rot4, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
 
     return () => {
       tl.kill()
@@ -130,7 +145,7 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
 
   return (
     <div className="relative h-full w-full flex items-center justify-center">
-      <div className="relative w-[280px] h-[360px]">
+      <div className="relative w-[220px] md:w-[280px] h-[280px] md:h-[360px]">
 
         {/* Card 1 — Pitchdeck (back layer) */}
         <div
@@ -138,7 +153,7 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 1 }}
         >
-          <div className="w-[220px] h-[300px] bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-lg overflow-hidden">
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-lg overflow-hidden">
             <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
               <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                 <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
@@ -169,7 +184,7 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 2 }}
         >
-          <div className="w-[220px] h-[300px] bg-slate-800/95 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden">
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800/95 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden">
             <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
               <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                 <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
@@ -194,7 +209,7 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 3 }}
         >
-          <div className="w-[220px] h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
             <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
               <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                 <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
@@ -222,7 +237,7 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 4 }}
         >
-          <div className="w-[220px] h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
             <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
               <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
                 <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
@@ -405,6 +420,11 @@ function Card({
 }) {
   const containerRef = useRef(null)
   const scale = useTransform(progress, range, [1, targetScale])
+  const [isMobile, setIsMobile] = useState(false)
+
+  useEffect(() => {
+    setIsMobile(window.innerWidth < 768)
+  }, [])
 
   const Icon = phase.icon
   const colors = accentColors[phase.accent]
@@ -412,7 +432,7 @@ function Card({
   return (
     <div ref={containerRef} className="mb-8 md:mb-0 md:h-screen flex items-center justify-center md:sticky md:top-0">
       <motion.div
-        style={{
+        style={isMobile ? {} : {
           scale,
           top: `calc(-5vh + ${index * 25}px)`
         }}
@@ -421,7 +441,7 @@ function Card({
         <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-20`} />
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
-            <div className="h-[250px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
+            <div className="h-[200px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
                 {phase.visualComponent === 'documentfan' ? (
                   <DocumentFanVisual containerRef={sectionRef} />
                 ) : (

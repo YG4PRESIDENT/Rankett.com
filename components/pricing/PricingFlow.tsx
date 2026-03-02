@@ -7,7 +7,7 @@ const steps = [
   {
     icon: Sparkles,
     title: 'Choose Your Access',
-    description: 'Start free with Starter or unlock everything with Partner ($500/mo)',
+    description: 'Start free with Starter or unlock everything with Partner ($299/mo)',
   },
   {
     icon: Users,

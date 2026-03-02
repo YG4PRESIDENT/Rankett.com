@@ -47,8 +47,8 @@ export default function IndustriesGrid() {
         {/* Marquee container */}
         <div className="relative overflow-hidden">
           {/* Fade edges */}
-          <div className="absolute left-0 top-0 bottom-0 w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
-          <div className="absolute right-0 top-0 bottom-0 w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute left-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-r from-slate-950 to-transparent z-10 pointer-events-none" />
+          <div className="absolute right-0 top-0 bottom-0 w-8 sm:w-20 bg-gradient-to-l from-slate-950 to-transparent z-10 pointer-events-none" />
 
           {/* Scrolling strip */}
           <div className="flex animate-marquee">

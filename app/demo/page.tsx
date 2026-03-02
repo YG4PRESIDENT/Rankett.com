@@ -6,9 +6,7 @@ import Header from '@/components/Header'
 import Footer from '@/components/Footer'
 import Link from 'next/link'
 
-// =====================================================
-// REPLACE THIS with your actual Loom/YouTube embed URL
-// =====================================================
+// TODO: Replace with actual demo video URL (Feb 28, 2026)
 const DEMO_VIDEO_URL = '' // e.g. 'https://www.loom.com/embed/abc123' or 'https://www.youtube.com/embed/abc123'
 
 export default function DemoPage() {
@@ -22,7 +20,7 @@ export default function DemoPage() {
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
           {/* Header */}
           <div className="text-center mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold text-white mb-4">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white mb-4">
               See Rankett in Action
             </h1>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
@@ -83,7 +81,7 @@ export default function DemoPage() {
             </h3>
             <Link
               href="https://app.rankett.com/sign-up"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transition-colors shadow-xl shadow-blue-900/20"
+              className="group inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transition-colors shadow-xl shadow-blue-900/20"
             >
               Get Access Now
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

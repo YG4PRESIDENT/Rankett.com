@@ -22,6 +22,18 @@ export default function Header() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
+  // Lock body scroll when mobile menu is open
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = '';
+    }
+    return () => {
+      document.body.style.overflow = '';
+    };
+  }, [isMobileMenuOpen]);
+
   const handleNavClick = (href: string) => {
     setIsMobileMenuOpen(false); // Close mobile menu if open
 
@@ -117,7 +129,7 @@ export default function Header() {
 
       {/* Mobile Menu */}
       {isMobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950/95 backdrop-blur-xl border-t border-slate-800 p-4 absolute w-full shadow-2xl">
+        <div className="lg:hidden bg-slate-950 backdrop-blur-xl border-t border-slate-800 p-4 fixed top-20 left-0 right-0 bottom-0 z-40 overflow-y-auto shadow-2xl">
           <div className="flex flex-col space-y-4">
             {NAV_LINKS.map((link) => (
               <button
