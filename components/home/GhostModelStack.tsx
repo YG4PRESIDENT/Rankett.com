@@ -3,35 +3,108 @@
 import { useRef, useEffect } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
 import { Search, Award, FileText } from 'lucide-react'
-import BrandLogo from '../ui/BrandLogo'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
 gsap.registerPlugin(ScrollTrigger)
 
-const LLM_LOGOS = [
-  { name: 'ChatGPT', platform: 'chatgpt' },
-  { name: 'Anthropic', platform: 'claude' },
-  { name: 'Gemini', platform: 'gemini' },
-  { name: 'Google Overviews', platform: 'google' },
-  { name: 'Perplexity', platform: 'perplexity' },
-  { name: 'Grok', platform: 'grok' },
-  { name: 'DeepSeek', platform: 'deepseek' },
-]
+// ─── Audit Tool Mockup Visual ─────────────────────────────────────
+// Miniature recreation of the real audit tool UI (ScoreGauge + PlatformBreakdown)
+function AuditToolMockup() {
+  // SVG arc gauge math: 240° arc, radius 30, center at (48, 48)
+  const r = 30
+  const circumference = 2 * Math.PI * r
+  const arcLength = (240 / 360) * circumference // ~125.66
+  const fillPercent = 34 / 100
+  const dashOffset = arcLength * (1 - fillPercent)
+
+  return (
+    <div className="relative h-full w-full flex items-center justify-center p-4">
+      <div className="w-full max-w-[300px]">
+        {/* Browser chrome */}
+        <div className="bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
+          {/* Address bar */}
+          <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
+            <div className="flex gap-1">
+              <div className="w-2 h-2 rounded-full bg-red-500/60" />
+              <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
+              <div className="w-2 h-2 rounded-full bg-green-500/60" />
+            </div>
+            <div className="flex-1 bg-slate-900/60 rounded px-2 py-0.5">
+              <span className="text-[8px] text-slate-500 font-mono">visibility.youragency.com</span>
+            </div>
+          </div>
+
+          {/* Gauge section */}
+          <div className="p-4 flex flex-col items-center">
+            <svg width="96" height="72" viewBox="0 0 96 80" className="mb-1">
+              {/* Background arc */}
+              <circle
+                cx="48" cy="48" r={r}
+                fill="none"
+                stroke="rgba(148,163,184,0.15)"
+                strokeWidth="6"
+                strokeDasharray={`${arcLength} ${circumference}`}
+                strokeDashoffset="0"
+                strokeLinecap="round"
+                transform="rotate(150, 48, 48)"
+              />
+              {/* Filled arc — amber for score 34 */}
+              <circle
+                cx="48" cy="48" r={r}
+                fill="none"
+                stroke="#f59e0b"
+                strokeWidth="6"
+                strokeDasharray={`${arcLength} ${circumference}`}
+                strokeDashoffset={dashOffset}
+                strokeLinecap="round"
+                transform="rotate(150, 48, 48)"
+              />
+              {/* Score text */}
+              <text x="48" y="48" textAnchor="middle" dominantBaseline="central" className="fill-white text-[20px] font-bold">34</text>
+              <text x="48" y="63" textAnchor="middle" className="fill-slate-500 text-[6px]">AI Visibility Score</text>
+            </svg>
+
+            {/* Status badge */}
+            <div className="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 mb-3">
+              <span className="text-[8px] text-amber-400 font-semibold tracking-wide">DEVELOPING</span>
+            </div>
+
+            {/* Platform breakdown bars */}
+            <div className="w-full space-y-1.5">
+              {[
+                { name: 'ChatGPT', pct: 42, color: 'bg-emerald-500' },
+                { name: 'Claude', pct: 28, color: 'bg-amber-500' },
+                { name: 'Gemini', pct: 51, color: 'bg-blue-500' },
+              ].map((p) => (
+                <div key={p.name} className="flex items-center gap-2">
+                  <span className="text-[8px] text-slate-400 w-12 text-right">{p.name}</span>
+                  <div className="flex-1 h-1.5 bg-slate-700/30 rounded-full overflow-hidden">
+                    <div className={`h-full rounded-full ${p.color}/60`} style={{ width: `${p.pct}%` }} />
+                  </div>
+                  <span className="text-[8px] text-slate-500 w-7">{p.pct}%</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  )
+}
 
 // ─── Document Fan Visual ──────────────────────────────────────────
-// Five labeled document mockups fan out from a stack as the user scrolls.
-// Each card represents a real deliverable: Pitchdeck, Monthly Report, MSA, Onboarding, Upload Logo.
+// Four labeled document mockups fan out from a stack as the user scrolls.
 function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTMLElement | null> }) {
   const card1Ref = useRef<HTMLDivElement>(null)
   const card2Ref = useRef<HTMLDivElement>(null)
   const card3Ref = useRef<HTMLDivElement>(null)
+  const card4Ref = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if (!containerRef.current || !card1Ref.current || !card2Ref.current || !card3Ref.current) return
+    if (!containerRef.current || !card1Ref.current || !card2Ref.current || !card3Ref.current || !card4Ref.current) return
 
-    gsap.set([card1Ref.current, card3Ref.current], { x: 0, y: 0, rotation: 0, scale: 0.95 })
-    gsap.set(card2Ref.current, { y: 0, scale: 0.95 })
+    gsap.set([card1Ref.current, card2Ref.current, card3Ref.current, card4Ref.current], { x: 0, y: 0, rotation: 0, scale: 0.95 })
 
     const tl = gsap.timeline({
       scrollTrigger: {
@@ -44,12 +117,11 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
 
     tl.addLabel('end', 1)
 
-    // Card 1 (back): fans hard left
-    tl.to(card1Ref.current, { x: -160, y: -30, rotation: -16, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
-    // Card 2 (middle): lifts up and grows
-    tl.to(card2Ref.current, { y: -50, scale: 1.02, duration: 0.22, ease: 'none' }, 0.58)
-    // Card 3 (front): fans hard right
-    tl.to(card3Ref.current, { x: 160, y: -30, rotation: 16, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    // 4 cards fan out: -20°, -7°, +7°, +20°
+    tl.to(card1Ref.current, { x: -180, y: -25, rotation: -20, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    tl.to(card2Ref.current, { x: -60, y: -40, rotation: -7, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    tl.to(card3Ref.current, { x: 60, y: -40, rotation: 7, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
+    tl.to(card4Ref.current, { x: 180, y: -25, rotation: 20, scale: 1, duration: 0.22, ease: 'none' }, 0.58)
 
     return () => {
       tl.kill()
@@ -66,90 +138,121 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 1 }}
         >
-          <div className="w-[250px] h-[330px] bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-lg overflow-hidden">
-            <div className="px-4 py-2.5 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[7px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[220px] h-[300px] bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-lg overflow-hidden">
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
               </div>
-              <div className="ml-1 text-[9px] text-slate-400 font-medium tracking-wide">Pitchdeck</div>
+              <div className="text-[8px] text-slate-400 font-medium">Pitchdeck</div>
             </div>
-            <div className="p-4 space-y-3">
-              <div className="h-2 w-28 rounded bg-slate-600/30" />
-              <div className="h-1.5 w-36 rounded bg-slate-700/25" />
-              <div className="h-36 rounded-lg bg-slate-700/20 flex items-end px-3 pb-3 gap-1.5">
+            <div className="p-3 space-y-2">
+              <div className="h-1.5 w-24 rounded bg-slate-600/30" />
+              <div className="h-28 rounded-lg bg-slate-700/20 flex items-end px-2 pb-2 gap-1">
                 {[30, 48, 38, 58, 70, 82, 65].map((h, i) => (
                   <div key={i} className="flex-1 rounded-sm bg-emerald-500/30" style={{ height: `${h}%` }} />
                 ))}
               </div>
-              <div className="flex gap-2">
-                <div className="px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20">
-                  <span className="text-[7px] text-emerald-400">Tier 1</span>
-                </div>
-                <div className="px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20">
-                  <span className="text-[7px] text-emerald-400">Tier 2</span>
-                </div>
-                <div className="px-2 py-1 rounded bg-emerald-500/10 border border-emerald-500/20">
-                  <span className="text-[7px] text-emerald-400">Tier 3</span>
-                </div>
+              <div className="flex gap-1.5">
+                {['Tier 1', 'Tier 2', 'Tier 3'].map((t) => (
+                  <div key={t} className="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
+                    <span className="text-[6px] text-emerald-400">{t}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
         </div>
 
-        {/* Card 2 — Master Service Agreement (middle layer) */}
+        {/* Card 2 — Master Service Agreement */}
         <div
           ref={card2Ref}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 2 }}
         >
-          <div className="w-[250px] h-[330px] bg-slate-800/95 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden">
-            <div className="px-4 py-2.5 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[7px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[220px] h-[300px] bg-slate-800/95 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
               </div>
-              <div className="ml-1 text-[9px] text-slate-400 font-medium tracking-wide">Master Service Agreement</div>
+              <div className="text-[8px] text-slate-400 font-medium">Master Service Agreement</div>
             </div>
-            <div className="p-4 space-y-2">
-              {Array.from({ length: 10 }).map((_, i) => (
-                <div key={i} className="h-[3px] rounded bg-slate-600/25" style={{ width: `${92 - i * 5}%` }} />
+            <div className="p-3 space-y-1.5">
+              {Array.from({ length: 8 }).map((_, i) => (
+                <div key={i} className="h-[2.5px] rounded bg-slate-600/25" style={{ width: `${90 - i * 5}%` }} />
               ))}
-              <div className="mt-5 pt-3 border-t border-slate-700/30 space-y-1.5">
-                <div className="h-[3px] w-20 rounded bg-slate-600/30" />
-                <div className="h-[3px] w-24 rounded bg-slate-600/25" />
-              </div>
-              <div className="mt-4 pt-3 border-t border-dashed border-slate-700/25">
-                <div className="h-[1px] w-28 bg-slate-600/40" />
-                <div className="text-[8px] text-slate-600 mt-1.5">Signature</div>
+              <div className="mt-3 pt-2 border-t border-dashed border-slate-700/25">
+                <div className="h-[1px] w-24 bg-slate-600/40" />
+                <div className="text-[7px] text-slate-600 mt-1">Signature</div>
               </div>
             </div>
           </div>
         </div>
 
-        {/* Card 3 — 5 Min Onboarding (front layer) */}
+        {/* Card 3 — 5 Min Onboarding */}
         <div
           ref={card3Ref}
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 3 }}
         >
-          <div className="w-[250px] h-[330px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
-            <div className="px-4 py-2.5 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-6 h-6 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[7px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[220px] h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
               </div>
-              <div className="ml-1 text-[9px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
+              <div className="text-[8px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
             </div>
-            <div className="p-4 space-y-2.5">
-              <div className="text-[10px] text-slate-300 font-semibold mb-1">5 Minute Onboarding</div>
-              {['Business Name', 'Website URL', 'Primary Service', 'Target Location'].map((label) => (
+            <div className="p-3 space-y-2">
+              <div className="text-[9px] text-slate-300 font-semibold">5 Minute Onboarding</div>
+              {['Business Name', 'Website URL', 'Primary Service'].map((label) => (
                 <div key={label}>
-                  <div className="text-[7px] text-slate-500 mb-1 uppercase tracking-wider font-medium">{label}</div>
-                  <div className="h-6 rounded-md bg-slate-700/30 border border-slate-600/20" />
+                  <div className="text-[6px] text-slate-500 mb-0.5 uppercase tracking-wider font-medium">{label}</div>
+                  <div className="h-5 rounded-md bg-slate-700/30 border border-slate-600/20" />
                 </div>
               ))}
-              <div className="pt-1.5">
-                <div className="h-8 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
-                  <span className="text-[9px] text-emerald-400 font-semibold">Start Onboarding →</span>
+              <div className="h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
+                <span className="text-[8px] text-emerald-400 font-semibold">Start Onboarding →</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Card 4 — Monthly Progress Report (front layer) */}
+        <div
+          ref={card4Ref}
+          className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
+          style={{ zIndex: 4 }}
+        >
+          <div className="w-[220px] h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
+              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
+              </div>
+              <div className="text-[8px] text-slate-400 font-medium">Monthly Progress Report</div>
+            </div>
+            <div className="p-3 space-y-2.5">
+              {/* Score improvement block */}
+              <div className="bg-slate-700/20 rounded-lg p-2.5 text-center">
+                <div className="text-[7px] text-slate-500 uppercase tracking-wider mb-1">Visibility Score</div>
+                <div className="flex items-center justify-center gap-2">
+                  <span className="text-[14px] text-slate-400 font-bold">28</span>
+                  <span className="text-[10px] text-emerald-400">→</span>
+                  <span className="text-[14px] text-emerald-400 font-bold">51</span>
                 </div>
+                <div className="mt-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 inline-block">
+                  <span className="text-[7px] text-emerald-400 font-semibold">+23 pts</span>
+                </div>
+              </div>
+              {/* Completed work checklist */}
+              <div className="space-y-1.5">
+                <div className="text-[7px] text-slate-500 uppercase tracking-wider font-medium">Completed This Month</div>
+                {['Schema markup deployed', 'GBP profile optimized', 'FAQ content published'].map((item) => (
+                  <div key={item} className="flex items-center gap-1.5">
+                    <div className="w-3 h-3 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
+                      <span className="text-[6px] text-emerald-400">✓</span>
+                    </div>
+                    <span className="text-[7px] text-slate-400">{item}</span>
+                  </div>
+                ))}
               </div>
             </div>
           </div>
@@ -176,12 +279,9 @@ interface PhaseData {
 const phases: PhaseData[] = [
   {
     id: 1,
-    title: "Your AI Visibility Audit Tool",
-    subtitle: "Your logo, your domain, our engine.",
-    body: [
-      "Show any client how visible they are across ChatGPT, Gemini, Claude, and Perplexity — under your brand.",
-      "Branded audit tool on your subdomain. Use it as a lead magnet, discovery tool, or upsell on every call."
-    ],
+    title: "Your Lead Magnet",
+    subtitle: "Your logo, your domain, your solution.",
+    body: [],
     bullets: [
       "AI Visibility Score and Mention Rate across all prompt types.",
       "Gap analysis that highlights missing schema, FAQs, and authority mentions.",
@@ -190,37 +290,20 @@ const phases: PhaseData[] = [
     ],
     icon: Search,
     accent: 'blue',
-    visual: (
-      <div className="relative h-full w-full flex flex-col items-center justify-center">
-        <p className="text-base text-slate-500 uppercase tracking-wider mb-8 font-medium">Tracking visibility across</p>
-        <div className="w-full overflow-hidden" style={{ maskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)', WebkitMaskImage: 'linear-gradient(to right, transparent, black 10%, black 90%, transparent)' }}>
-          <div className="flex will-change-transform animate-marquee-fast" style={{ animationPlayState: 'running' }}>
-            {LLM_LOGOS.concat(LLM_LOGOS).map((llm, index) => (
-              <div key={index} className="flex items-center gap-4 mx-10 shrink-0">
-                <div className="relative flex items-center justify-center w-12 h-12">
-                  <BrandLogo platform={llm.platform} size={48} />
-                </div>
-                <span className="text-base font-medium text-slate-300 whitespace-nowrap">{llm.name}</span>
-              </div>
-            ))}
-          </div>
-        </div>
-      </div>
-    )
+    visual: <AuditToolMockup />
   },
   {
     id: 2,
-    title: "Case Studies From Everyone's Wins",
-    subtitle: "Battle-tested proof from day one.",
+    title: "Don't Start From Zero",
+    subtitle: "De-identified, success stories on day one.",
     body: [
-      "You don't start from zero. Pooled, de-identified results from all partners become ready-to-use sales material.",
-      "As your clients win, the vault grows. Testimonials compound automatically, and the playbook tightens with every new success."
+      "Every agency on the network contributes anonymized results. When a dental client goes from 0% to 15% AI Mention Rate, that case study is stripped of identifiers and added to the shared vault \u2014 ready for you to use on your next sales call.",
+      "The longer you stay, the deeper the library gets. Benchmarks sharpen, new verticals get covered, and your pitch gets stronger without you doing extra work."
     ],
     bullets: [
-      'Anonymized "0 → 15% AI Mention Rate in 90 days" case studies by vertical.',
-      'Benchmark slides: "+14.6% AI Mention Rate and 22% lift in branded search across 5 brands."',
-      "Plug-and-play PDF one-pagers and deck slides for your pitch.",
-      "Every network win becomes another proof asset you can use."
+      'De-identified case studies by vertical \u2014 "0 \u2192 15% Mention Rate in 90 days."',
+      "Network-wide benchmarks you can drop into any deck.",
+      "Every partner win becomes proof you can sell with."
     ],
     icon: Award,
     accent: 'violet',
@@ -260,17 +343,16 @@ const phases: PhaseData[] = [
   },
   {
     id: 3,
-    title: "Your Deck, Contracts & Onboarding",
-    subtitle: "Upload once. Ready to sell.",
+    title: "Ready Day 1",
+    subtitle: "Upload your logo. Change the colors, fonts and domain.",
     body: [
-      "We autogenerate your pitchdeck, MSA, monthly reports, and onboarding quiz \u2014 fully branded, so you can close retainers without writing a single slide.",
-      "You stay the face of the offer. We stay invisible."
+      "Your pitchdeck, MSA, monthly reports, and client onboarding are pre-built and auto-branded the moment you upload your logo and pick your colors. No design work, no copywriting \u2014 just plug in your details and start selling."
     ],
     bullets: [
-      "Pitchdeck built around your tier pricing \u2014 update once, every slide updates.",
-      "Branded MSA and legal addendum that shifts fulfillment liability while keeping you in control.",
-      "Monthly reports with your logo and colors, ready to send to clients.",
-      "5\u2011minute onboarding survey on your domain \u2014 collects everything needed to start."
+      "Pitchdeck auto-generates from your tier pricing \u2014 update once, every slide follows.",
+      "Branded MSA shifts fulfillment liability while keeping you in control.",
+      "Monthly progress reports with your logo, colors, and client scores \u2014 ready to send.",
+      "5\u2011minute onboarding survey on your domain collects everything needed to start work."
     ],
     icon: FileText,
     accent: 'emerald',
@@ -328,18 +410,18 @@ function Card({
   const colors = accentColors[phase.accent]
 
   return (
-    <div ref={containerRef} className="h-screen flex items-center justify-center sticky top-0">
+    <div ref={containerRef} className="mb-8 md:mb-0 md:h-screen flex items-center justify-center md:sticky md:top-0">
       <motion.div
         style={{
           scale,
           top: `calc(-5vh + ${index * 25}px)`
         }}
-        className="relative w-full max-w-5xl h-[80vh] flex flex-col origin-top bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-5xl md:h-[80vh] flex flex-col origin-top bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden"
       >
         <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-20`} />
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
-            <div className="bg-slate-950/30 border-r border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
+            <div className="h-[250px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
                 {phase.visualComponent === 'documentfan' ? (
                   <DocumentFanVisual containerRef={sectionRef} />
                 ) : (
