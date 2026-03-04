@@ -1,9 +1,8 @@
 'use client'
 
-import { Mail, Calendar, ArrowRight } from 'lucide-react'
+import { Mail, ArrowRight } from 'lucide-react'
 import Header from '@/components/Header'
 import Footer from '@/components/Footer'
-import { CONTACT } from '@/lib/constants'
 
 export default function ContactPage() {
   return (
@@ -47,33 +46,6 @@ export default function ContactPage() {
               </div>
             </a>
 
-            {/* Calendly Card */}
-            <a
-              href={CONTACT.calendly}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block p-8 rounded-2xl transition-all duration-300 hover:-translate-y-1 hover:border-violet-500/30"
-              style={{
-                background: 'linear-gradient(135deg, rgba(30, 41, 59, 0.6) 0%, rgba(15, 23, 42, 0.8) 100%)',
-                border: '1px solid rgba(51, 65, 85, 0.5)',
-              }}
-            >
-              <div className="flex items-start gap-5">
-                <div className="w-12 h-12 rounded-xl bg-violet-500/10 border border-violet-500/20 flex items-center justify-center flex-shrink-0">
-                  <Calendar className="w-6 h-6 text-violet-400" />
-                </div>
-                <div>
-                  <h2 className="text-xl font-bold text-white mb-1">Book a Call</h2>
-                  <p className="text-slate-400 text-sm mb-3">
-                    Want a walkthrough? Schedule a 30-minute call with our team.
-                  </p>
-                  <span className="inline-flex items-center gap-2 text-violet-400 font-medium text-sm">
-                    Schedule on Calendly
-                    <ArrowRight className="w-4 h-4" />
-                  </span>
-                </div>
-              </div>
-            </a>
           </div>
         </div>
       </main>

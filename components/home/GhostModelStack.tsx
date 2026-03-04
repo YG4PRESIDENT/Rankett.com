@@ -298,7 +298,7 @@ const phases: PhaseData[] = [
     subtitle: "Your logo, your domain, your solution.",
     body: [],
     bullets: [
-      "AI Visibility Score and Mention Rate across all prompt types.",
+      "AI Mention Rate across all prompt types and platforms.",
       "Gap analysis that highlights missing schema, FAQs, and authority mentions.",
       "Exportable PDF audits for sales decks and proposals.",
       "Automatic email capture to track leads."

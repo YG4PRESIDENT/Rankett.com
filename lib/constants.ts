@@ -36,7 +36,6 @@ export const CONTACT = {
   email: "info@rankett.com",
   supportEmail: "info@rankett.com",
   phone: "", // Optional
-  calendly: "https://calendly.com/rankett/30min",
 };
 
 // Footer Content

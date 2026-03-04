@@ -390,15 +390,13 @@ export default function FAQPage() {
                 Still have questions?
               </h3>
               <p className="text-slate-400 mb-8">
-                Book a call and we&apos;ll walk you through everything.
+                Reach out and we&apos;ll walk you through everything.
               </p>
               <a
-                href={CONTACT.calendly}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="/contact"
                 className="inline-flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-full transition-all duration-300"
               >
-                Book a Call
+                Contact Us
               </a>
             </div>
           </FadeInOnScroll>

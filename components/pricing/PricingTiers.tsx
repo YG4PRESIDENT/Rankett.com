@@ -88,7 +88,7 @@ export default function PricingTiers() {
 
   const handleCTA = (tier: string) => {
     if (tier === 'Enterprise') {
-      window.open(CONTACT.calendly, '_blank', 'noopener,noreferrer')
+      window.location.href = '/contact'
     } else {
       window.location.href = 'https://app.rankett.com/sign-up'
     }
@@ -254,7 +254,7 @@ export default function PricingTiers() {
                 <p className="text-slate-400 text-sm">
                   <span className="text-white font-medium">Done-for-you fulfillment available</span> starting at $498/client/month.{' '}
                   <button
-                    onClick={() => window.open(CONTACT.calendly, '_blank', 'noopener,noreferrer')}
+                    onClick={() => window.location.href = '/contact'}
                     className="text-blue-400 hover:text-blue-300 underline transition-colors"
                   >
                     Talk to us about pricing

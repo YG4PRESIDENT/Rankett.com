@@ -13,8 +13,6 @@ export default function Footer() {
     if (href.startsWith("mailto:")) {
       // eslint-disable-next-line react-hooks/immutability
       window.location.href = href;
-    } else if (href.startsWith("https://calendly.com")) {
-      window.open(href, "_blank", "noopener,noreferrer");
     } else if (href.startsWith("#")) {
       const isHomePage = window.location.pathname === '/';
       if (isHomePage) {
