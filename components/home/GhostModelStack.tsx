@@ -309,16 +309,17 @@ const phases: PhaseData[] = [
   },
   {
     id: 2,
-    title: "Don't Start From Zero",
-    subtitle: "De-identified, success stories on day one.",
+    title: "Don\u2019t Start From Zero",
+    subtitle: "De\u2011identified, success stories on day one.",
     body: [
-      "Every agency on the network contributes anonymized results. When a dental client goes from 0% to 15% AI Mention Rate, that case study is stripped of identifiers and added to the shared vault \u2014 ready for you to use on your next sales call.",
-      "The longer you stay, the deeper the library gets. Benchmarks sharpen, new verticals get covered, and your pitch gets stronger without you doing extra work."
+      "You don\u2019t start from zero. Pooled, de-identified results from all partners become ready-to-use sales material.",
+      "As your clients win with Rankett, the vault grows. Testimonials compound automatically, and the playbook tightens with every new success."
     ],
     bullets: [
-      'De-identified case studies by vertical \u2014 "0 \u2192 15% Mention Rate in 90 days."',
-      "Network-wide benchmarks you can drop into any deck.",
-      "Every partner win becomes proof you can sell with."
+      "Anonymized testimonials you can put your logo on.",
+      "Rankett compiles all data together to continuously test new strategies.",
+      "Plug-and-play PDF one-pagers and deck slides for your pitch.",
+      "Every network win becomes another proof asset you can use."
     ],
     icon: Award,
     accent: 'violet',
@@ -361,13 +362,13 @@ const phases: PhaseData[] = [
     title: "Ready Day 1",
     subtitle: "Upload your logo. Change the colors, fonts and domain.",
     body: [
-      "Your pitchdeck, MSA, monthly reports, and client onboarding are pre-built and auto-branded the moment you upload your logo and pick your colors. No design work, no copywriting \u2014 just plug in your details and start selling."
+      "We autogenerate your pitchdeck, agreements, monthly reports, and onboarding quiz. All fully branded, so you can focus on closing without writing a single slide, contract or report."
     ],
     bullets: [
-      "Pitchdeck auto-generates from your tier pricing \u2014 update once, every slide follows.",
-      "Branded MSA shifts fulfillment liability while keeping you in control.",
-      "Monthly progress reports with your logo, colors, and client scores \u2014 ready to send.",
-      "5\u2011minute onboarding survey on your domain collects everything needed to start work."
+      "Pitchdeck built around your tier pricing. Update once, every slide updates.",
+      "Pre-filled branded client agreements.",
+      "Monthly reports with your logo and colors, ready to send to clients.",
+      "5\u2011minute client onboarding."
     ],
     icon: FileText,
     accent: 'emerald',
