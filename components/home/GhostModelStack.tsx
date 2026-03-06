@@ -11,10 +11,9 @@ gsap.registerPlugin(ScrollTrigger)
 // ─── Audit Tool Mockup Visual ─────────────────────────────────────
 // Miniature recreation of the real audit tool UI (ScoreGauge + PlatformBreakdown)
 function AuditToolMockup() {
-  // SVG arc gauge math: 240° arc, radius 30, center at (48, 48)
   const r = 30
   const circumference = 2 * Math.PI * r
-  const arcLength = (240 / 360) * circumference // ~125.66
+  const arcLength = (240 / 360) * circumference
   const fillPercent = 34 / 100
   const dashOffset = arcLength * (1 - fillPercent)
 
@@ -30,40 +29,42 @@ function AuditToolMockup() {
               <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
               <div className="w-2 h-2 rounded-full bg-green-500/60" />
             </div>
-            <div className="flex-1 bg-slate-900/60 rounded px-2 py-0.5">
+            <div className="flex-1 bg-slate-900/60 rounded px-2 py-0.5 text-center">
               <span className="text-[8px] text-slate-500 font-mono">visibility.youragency.com</span>
             </div>
           </div>
 
           {/* Gauge section */}
           <div className="p-4 flex flex-col items-center">
-            <svg width="96" height="72" viewBox="0 0 96 80" className="mb-1">
-              {/* Background arc */}
-              <circle
-                cx="48" cy="48" r={r}
-                fill="none"
-                stroke="rgba(148,163,184,0.15)"
-                strokeWidth="6"
-                strokeDasharray={`${arcLength} ${circumference}`}
-                strokeDashoffset="0"
-                strokeLinecap="round"
-                transform="rotate(150, 48, 48)"
-              />
-              {/* Filled arc — amber for score 34 */}
-              <circle
-                cx="48" cy="48" r={r}
-                fill="none"
-                stroke="#f59e0b"
-                strokeWidth="6"
-                strokeDasharray={`${arcLength} ${circumference}`}
-                strokeDashoffset={dashOffset}
-                strokeLinecap="round"
-                transform="rotate(150, 48, 48)"
-              />
-              {/* Score text */}
-              <text x="48" y="48" textAnchor="middle" dominantBaseline="central" className="fill-white text-[20px] font-bold">34</text>
-              <text x="48" y="63" textAnchor="middle" className="fill-slate-500 text-[6px]">AI Visibility Score</text>
-            </svg>
+            <div className="relative mb-1">
+              <svg width="96" height="80" viewBox="0 0 96 80">
+                {/* Background arc */}
+                <circle
+                  cx="48" cy="48" r={r}
+                  fill="none"
+                  stroke="rgba(148,163,184,0.15)"
+                  strokeWidth="6"
+                  strokeDasharray={`${arcLength} ${circumference}`}
+                  strokeLinecap="round"
+                  transform="rotate(150, 48, 48)"
+                />
+                {/* Filled arc — amber for score 34 */}
+                <circle
+                  cx="48" cy="48" r={r}
+                  fill="none"
+                  stroke="#f59e0b"
+                  strokeWidth="6"
+                  strokeDasharray={`${arcLength} ${circumference}`}
+                  strokeDashoffset={dashOffset}
+                  strokeLinecap="round"
+                  transform="rotate(150, 48, 48)"
+                />
+              </svg>
+              <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
+                <span className="text-[20px] font-bold text-white">34</span>
+                <span className="text-[6px] text-slate-500">AI Visibility Score</span>
+              </div>
+            </div>
 
             {/* Status badge */}
             <div className="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 mb-3">
