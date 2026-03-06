@@ -11,79 +11,83 @@ gsap.registerPlugin(ScrollTrigger)
 // ─── Audit Tool Mockup Visual ─────────────────────────────────────
 // Miniature recreation of the real audit tool UI (ScoreGauge + PlatformBreakdown)
 function AuditToolMockup() {
-  const r = 30
+  const r = 36
   const circumference = 2 * Math.PI * r
   const arcLength = (240 / 360) * circumference
   const fillPercent = 34 / 100
   const dashOffset = arcLength * (1 - fillPercent)
 
   return (
-    <div className="relative h-full w-full flex items-center justify-center p-4">
-      <div className="w-full max-w-[300px]">
-        {/* Browser chrome */}
-        <div className="bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
-          {/* Address bar */}
-          <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
-            <div className="flex gap-1">
-              <div className="w-2 h-2 rounded-full bg-red-500/60" />
-              <div className="w-2 h-2 rounded-full bg-yellow-500/60" />
-              <div className="w-2 h-2 rounded-full bg-green-500/60" />
+    <div className="relative h-full w-full flex items-center justify-center p-6">
+      <div className="w-full max-w-[380px] transition-all duration-500">
+        {/* Browser chrome - Scaled Up */}
+        <div className="bg-slate-800/95 border border-slate-700/60 rounded-2xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden">
+          {/* Address bar - Cleaner Spacing */}
+          <div className="px-5 py-3.5 border-b border-slate-700/40 flex items-center gap-3 bg-slate-900/20">
+            <div className="flex gap-1.5">
+              <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
+              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
+              <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
             </div>
-            <div className="flex-1 bg-slate-900/60 rounded px-2 py-0.5 text-center">
-              <span className="text-[8px] text-slate-500 font-mono">visibility.youragency.com</span>
+            <div className="flex-1 bg-slate-950/60 border border-slate-700/30 rounded-lg px-3 py-1 text-center shadow-inner">
+              <span className="text-[10px] text-slate-500 font-mono tracking-tight">visibility.youragency.com</span>
             </div>
           </div>
 
-          {/* Gauge section */}
-          <div className="p-4 flex flex-col items-center">
-            <div className="relative mb-1">
-              <svg width="96" height="80" viewBox="0 0 96 80">
+          {/* Main Content Area - Decrammed */}
+          <div className="p-10 flex flex-col items-center">
+            {/* Gauge section - Larger */}
+            <div className="relative mb-8 transform scale-110">
+              <svg width="120" height="100" viewBox="0 0 100 90">
                 {/* Background arc */}
                 <circle
-                  cx="48" cy="48" r={r}
+                  cx="50" cy="50" r={r}
                   fill="none"
-                  stroke="rgba(148,163,184,0.15)"
-                  strokeWidth="6"
+                  stroke="rgba(148,163,184,0.1)"
+                  strokeWidth="7"
                   strokeDasharray={`${arcLength} ${circumference}`}
                   strokeLinecap="round"
-                  transform="rotate(150, 48, 48)"
+                  transform="rotate(150, 50, 50)"
                 />
-                {/* Filled arc — amber for score 34 */}
+                {/* Filled arc — standard amber */}
                 <circle
-                  cx="48" cy="48" r={r}
+                  cx="50" cy="50" r={r}
                   fill="none"
                   stroke="#f59e0b"
-                  strokeWidth="6"
+                  strokeWidth="7"
                   strokeDasharray={`${arcLength} ${circumference}`}
                   strokeDashoffset={dashOffset}
                   strokeLinecap="round"
-                  transform="rotate(150, 48, 48)"
+                  transform="rotate(150, 50, 50)"
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
-                <span className="text-[20px] font-bold text-white">34</span>
-                <span className="text-[6px] text-slate-500">AI Visibility Score</span>
+                <span className="text-3xl font-black text-white leading-none">34</span>
+                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mt-1">Score</span>
               </div>
             </div>
 
-            {/* Status badge */}
-            <div className="px-2.5 py-0.5 rounded-full bg-amber-500/15 border border-amber-500/30 mb-3">
-              <span className="text-[8px] text-amber-400 font-semibold tracking-wide">DEVELOPING</span>
+            {/* Status badge - Larger & Better Spaced */}
+            <div className="px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-10 shadow-sm">
+              <span className="text-[10px] text-amber-400 font-bold tracking-[0.15em]">DEVELOPING</span>
             </div>
 
-            {/* Platform breakdown bars */}
-            <div className="w-full space-y-1.5">
+            {/* Platform breakdown - Decrammed rows */}
+            <div className="w-full space-y-4 pt-2 border-t border-slate-700/30">
               {[
                 { name: 'ChatGPT', pct: 42, color: 'bg-emerald-500' },
                 { name: 'Claude', pct: 28, color: 'bg-amber-500' },
                 { name: 'Gemini', pct: 51, color: 'bg-blue-500' },
               ].map((p) => (
-                <div key={p.name} className="flex items-center gap-2">
-                  <span className="text-[8px] text-slate-400 w-12 text-right">{p.name}</span>
-                  <div className="flex-1 h-1.5 bg-slate-700/30 rounded-full overflow-hidden">
-                    <div className={`h-full rounded-full ${p.color}/60`} style={{ width: `${p.pct}%` }} />
+                <div key={p.name} className="flex items-center gap-4 group">
+                  <span className="text-[10px] font-bold text-slate-400 w-16 text-right tracking-tight">{p.name}</span>
+                  <div className="flex-1 h-2 bg-slate-900/60 rounded-full overflow-hidden border border-slate-700/20 p-[1px]">
+                    <div 
+                      className={`h-full rounded-full ${p.color} opacity-60 shadow-[0_0_10px_rgba(0,0,0,0.3)] transition-all duration-1000`} 
+                      style={{ width: `${p.pct}%` }} 
+                    />
                   </div>
-                  <span className="text-[8px] text-slate-500 w-7">{p.pct}%</span>
+                  <span className="text-[10px] font-bold text-slate-500 w-8 tabular-nums">{p.pct}%</span>
                 </div>
               ))}
             </div>
