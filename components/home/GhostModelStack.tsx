@@ -11,83 +11,88 @@ gsap.registerPlugin(ScrollTrigger)
 // ─── Audit Tool Mockup Visual ─────────────────────────────────────
 // Miniature recreation of the real audit tool UI (ScoreGauge + PlatformBreakdown)
 function AuditToolMockup() {
-  const r = 36
+  const r = 40
   const circumference = 2 * Math.PI * r
   const arcLength = (240 / 360) * circumference
   const fillPercent = 34 / 100
   const dashOffset = arcLength * (1 - fillPercent)
 
   return (
-    <div className="relative h-full w-full flex items-center justify-center p-6">
-      <div className="w-full max-w-[380px] transition-all duration-500">
-        {/* Browser chrome - Scaled Up */}
-        <div className="bg-slate-800/95 border border-slate-700/60 rounded-2xl shadow-[0_32px_64px_-16px_rgba(0,0,0,0.6)] overflow-hidden">
-          {/* Address bar - Cleaner Spacing */}
-          <div className="px-5 py-3.5 border-b border-slate-700/40 flex items-center gap-3 bg-slate-900/20">
-            <div className="flex gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-red-500/40" />
-              <div className="w-2.5 h-2.5 rounded-full bg-yellow-500/40" />
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500/40" />
+    <div className="relative h-full w-full flex items-center justify-center p-8">
+      <div className="w-full max-w-[420px] transition-all duration-700">
+        {/* Browser chrome - Spacious & High-End */}
+        <div className="bg-slate-800/95 border border-slate-700/60 rounded-[2rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
+          {/* Address bar - Premium Inset */}
+          <div className="px-6 py-4 border-b border-slate-700/40 flex items-center gap-4 bg-slate-900/30">
+            <div className="flex gap-2">
+              <div className="w-3 h-3 rounded-full bg-red-500/30" />
+              <div className="w-3 h-3 rounded-full bg-yellow-500/30" />
+              <div className="w-3 h-3 rounded-full bg-green-500/30" />
             </div>
-            <div className="flex-1 bg-slate-950/60 border border-slate-700/30 rounded-lg px-3 py-1 text-center shadow-inner">
-              <span className="text-[10px] text-slate-500 font-mono tracking-tight">visibility.youragency.com</span>
+            <div className="flex-1 bg-slate-950/80 border border-slate-700/40 rounded-xl px-4 py-1.5 flex items-center justify-center shadow-inner">
+              <span className="text-[11px] text-slate-500 font-mono tracking-tight opacity-80 uppercase">visibility.youragency.com</span>
             </div>
           </div>
 
-          {/* Main Content Area - Decrammed */}
-          <div className="p-10 flex flex-col items-center">
-            {/* Gauge section - Larger */}
-            <div className="relative mb-8 transform scale-110">
-              <svg width="120" height="100" viewBox="0 0 100 90">
+          {/* Main Content Area - High Fidelity */}
+          <div className="p-12 flex flex-col items-center">
+            {/* Gauge section - Mission Control Scale */}
+            <div className="relative mb-12 transform scale-125">
+              <svg width="140" height="110" viewBox="0 0 100 90">
                 {/* Background arc */}
                 <circle
                   cx="50" cy="50" r={r}
                   fill="none"
-                  stroke="rgba(148,163,184,0.1)"
-                  strokeWidth="7"
+                  stroke="rgba(148,163,184,0.08)"
+                  strokeWidth="8"
                   strokeDasharray={`${arcLength} ${circumference}`}
                   strokeLinecap="round"
                   transform="rotate(150, 50, 50)"
                 />
-                {/* Filled arc — standard amber */}
+                {/* Active Score Arc */}
                 <circle
                   cx="50" cy="50" r={r}
                   fill="none"
                   stroke="#f59e0b"
-                  strokeWidth="7"
+                  strokeWidth="8"
                   strokeDasharray={`${arcLength} ${circumference}`}
                   strokeDashoffset={dashOffset}
                   strokeLinecap="round"
                   transform="rotate(150, 50, 50)"
+                  className="drop-shadow-[0_0_12px_rgba(245,158,11,0.4)]"
                 />
               </svg>
-              <div className="absolute inset-0 flex flex-col items-center justify-center pt-2">
-                <span className="text-3xl font-black text-white leading-none">34</span>
-                <span className="text-[8px] font-bold text-slate-500 uppercase tracking-widest mt-1">Score</span>
+              <div className="absolute inset-0 flex flex-col items-center justify-center pt-4">
+                <span className="text-4xl font-black text-white tracking-tighter leading-none">34</span>
+                <span className="text-[9px] font-bold text-slate-500 uppercase tracking-[0.2em] mt-2">Visibility</span>
               </div>
             </div>
 
-            {/* Status badge - Larger & Better Spaced */}
-            <div className="px-4 py-1 rounded-full bg-amber-500/10 border border-amber-500/20 mb-10 shadow-sm">
-              <span className="text-[10px] text-amber-400 font-bold tracking-[0.15em]">DEVELOPING</span>
+            {/* Status badge - Bold Tactical Pill */}
+            <div className="px-5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-12 shadow-sm scale-110">
+              <span className="text-[11px] text-amber-400 font-black tracking-[0.2em] uppercase">Developing</span>
             </div>
 
-            {/* Platform breakdown - Decrammed rows */}
-            <div className="w-full space-y-4 pt-2 border-t border-slate-700/30">
+            {/* Platform breakdown - Spacious Grid */}
+            <div className="w-full space-y-6 pt-8 border-t border-slate-700/20">
               {[
                 { name: 'ChatGPT', pct: 42, color: 'bg-emerald-500' },
                 { name: 'Claude', pct: 28, color: 'bg-amber-500' },
                 { name: 'Gemini', pct: 51, color: 'bg-blue-500' },
               ].map((p) => (
-                <div key={p.name} className="flex items-center gap-4 group">
-                  <span className="text-[10px] font-bold text-slate-400 w-16 text-right tracking-tight">{p.name}</span>
-                  <div className="flex-1 h-2 bg-slate-900/60 rounded-full overflow-hidden border border-slate-700/20 p-[1px]">
-                    <div 
-                      className={`h-full rounded-full ${p.color} opacity-60 shadow-[0_0_10px_rgba(0,0,0,0.3)] transition-all duration-1000`} 
-                      style={{ width: `${p.pct}%` }} 
-                    />
+                <div key={p.name} className="space-y-2 group">
+                  <div className="flex justify-between items-center px-1">
+                    <span className="text-[11px] font-black text-slate-400 tracking-wider uppercase">{p.name}</span>
+                    <span className="text-[11px] font-black text-slate-500 tabular-nums">{p.pct}%</span>
                   </div>
-                  <span className="text-[10px] font-bold text-slate-500 w-8 tabular-nums">{p.pct}%</span>
+                  <div className="h-2.5 bg-slate-950/60 rounded-full overflow-hidden border border-slate-700/30 p-[1px] shadow-inner">
+                    <div 
+                      className={`h-full rounded-full ${p.color} opacity-70 shadow-[0_0_15px_rgba(0,0,0,0.5)] relative`} 
+                      style={{ width: `${p.pct}%` }} 
+                    >
+                      <div className="absolute right-0 top-0 bottom-0 w-4 bg-white/10 blur-sm" />
+                    </div>
+                  </div>
                 </div>
               ))}
             </div>
