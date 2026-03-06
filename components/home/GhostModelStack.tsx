@@ -335,38 +335,36 @@ const phases: PhaseData[] = [
     visual: (
       <div className="relative h-full w-full flex items-center justify-center p-6">
         <div className="w-full max-w-[320px]">
-          {/* Tactical Status Console */}
-          <div className="flex items-center gap-3 mb-6 bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-2 shadow-xl backdrop-blur-md">
-            <div className="w-2 h-2 rounded-full bg-violet-500 animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.5)]" />
-            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Network Intelligence Feed</span>
+          {/* Friendly Label Pill */}
+          <div className="flex items-center justify-center mb-8">
+            <div className="px-4 py-1.5 bg-violet-500/10 border border-violet-500/20 rounded-full flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-violet-400" />
+              <span className="text-[10px] font-bold text-violet-300 uppercase tracking-widest">Collective Success Data</span>
+            </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-2 gap-4">
             {[
               { vertical: 'Dental', from: '0%', to: '15%', days: '90' },
               { vertical: 'HVAC', from: '2%', to: '18%', days: '75' },
               { vertical: 'Legal', from: '1%', to: '12%', days: '60' },
               { vertical: 'Medspa', from: '0%', to: '22%', days: '90' },
               { vertical: 'SaaS', from: '3%', to: '19%', days: '85' },
-              { vertical: 'Online Store', from: '1%', to: '14%', days: '70' },
+              { vertical: 'Retail', from: '1%', to: '14%', days: '70' },
             ].map((study) => (
               <motion.div
                 key={study.vertical}
-                initial={{ opacity: 0, y: 10 }}
-                whileInView={{ opacity: 1, y: 0 }}
+                initial={{ opacity: 0, scale: 0.95 }}
+                whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="bg-zinc-950/40 border border-white/5 rounded-2xl p-4 relative overflow-hidden group hover:border-white/10 transition-colors shadow-lg"
+                className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-4 transition-all hover:bg-slate-800/60"
               >
-                <div className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mb-2">{study.vertical}</div>
-                <div className="flex items-center gap-1.5 mb-1">
-                  <span className="text-xs font-mono text-zinc-400">{study.from}</span>
-                  <span className="text-[10px] text-violet-500/50">→</span>
-                  <span className="text-sm font-mono font-black text-white group-hover:text-violet-400 transition-colors">{study.to}</span>
+                <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">{study.vertical}</div>
+                <div className="flex items-baseline gap-1.5 mb-1">
+                  <span className="text-lg font-bold text-white tracking-tight">{study.to}</span>
+                  <span className="text-[10px] text-emerald-400 font-medium tracking-tight">Mention Rate</span>
                 </div>
-                <div className="text-[8px] font-bold text-zinc-600 uppercase tracking-tighter">Growth in {study.days} days</div>
-                
-                {/* Subtle rim light edge light */}
-                <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
+                <div className="text-[9px] text-slate-400 font-medium">Verified in {study.days} days</div>
               </motion.div>
             ))}
           </div>
