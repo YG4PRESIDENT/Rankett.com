@@ -333,14 +333,15 @@ const phases: PhaseData[] = [
     icon: Award,
     accent: 'violet',
     visual: (
-      <div className="relative h-full w-full flex items-center justify-center p-4">
-        <div className="w-full max-w-[280px]">
-          <div className="flex items-center gap-3 mb-4">
-            <div className="px-3 py-1.5 bg-violet-500/15 border border-violet-500/30 rounded-lg text-[10px] font-semibold text-violet-300">
-              Pooled Proof & Testimonials
-            </div>
+      <div className="relative h-full w-full flex items-center justify-center p-6">
+        <div className="w-full max-w-[320px]">
+          {/* Tactical Status Console */}
+          <div className="flex items-center gap-3 mb-6 bg-zinc-950/80 border border-white/10 rounded-xl px-4 py-2 shadow-xl backdrop-blur-md">
+            <div className="w-2 h-2 rounded-full bg-violet-500 animate-pulse shadow-[0_0_8px_rgba(139,92,246,0.5)]" />
+            <span className="text-[10px] font-black text-white uppercase tracking-[0.2em]">Network Intelligence Feed</span>
           </div>
-          <div className="grid grid-cols-2 gap-2">
+
+          <div className="grid grid-cols-2 gap-3">
             {[
               { vertical: 'Dental', from: '0%', to: '15%', days: '90' },
               { vertical: 'HVAC', from: '2%', to: '18%', days: '75' },
@@ -351,14 +352,21 @@ const phases: PhaseData[] = [
             ].map((study) => (
               <motion.div
                 key={study.vertical}
-                initial={{ opacity: 0, y: 6 }}
+                initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.3, delay: 0.05 }}
-                className="bg-slate-800/50 border border-slate-700/40 rounded-lg p-2.5"
+                transition={{ duration: 0.4 }}
+                className="bg-zinc-950/40 border border-white/5 rounded-2xl p-4 relative overflow-hidden group hover:border-white/10 transition-colors shadow-lg"
               >
-                <div className="text-[9px] text-violet-400 font-semibold uppercase tracking-wider mb-1">{study.vertical}</div>
-                <div className="text-[11px] text-white font-bold">{study.from} → {study.to} Mention Rate</div>
-                <div className="text-[8px] text-slate-500 mt-0.5">{study.days} days</div>
+                <div className="text-[9px] text-zinc-500 font-bold uppercase tracking-widest mb-2">{study.vertical}</div>
+                <div className="flex items-center gap-1.5 mb-1">
+                  <span className="text-xs font-mono text-zinc-400">{study.from}</span>
+                  <span className="text-[10px] text-violet-500/50">→</span>
+                  <span className="text-sm font-mono font-black text-white group-hover:text-violet-400 transition-colors">{study.to}</span>
+                </div>
+                <div className="text-[8px] font-bold text-zinc-600 uppercase tracking-tighter">Growth in {study.days} days</div>
+                
+                {/* Subtle rim light edge light */}
+                <div className="absolute inset-x-0 -top-px h-px bg-gradient-to-r from-transparent via-white/10 to-transparent pointer-events-none" />
               </motion.div>
             ))}
           </div>
