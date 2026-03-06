@@ -59,7 +59,6 @@ function AuditToolMockup() {
                   strokeDashoffset={dashOffset}
                   strokeLinecap="round"
                   transform="rotate(150, 50, 50)"
-                  className="drop-shadow-[0_0_12px_rgba(245,158,11,0.4)]"
                 />
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center pt-4">
