@@ -21,15 +21,15 @@ function AuditToolMockup() {
     <div className="relative h-full w-full flex items-center justify-center p-8">
       <div className="w-full max-w-[420px] transition-all duration-700">
         {/* Browser chrome - Spacious & High-End */}
-        <div className="bg-slate-800/95 border border-slate-700/60 rounded-[2rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
+        <div className="bg-slate-900/95 border border-white/10 rounded-[2rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
           {/* Address bar - Premium Inset */}
-          <div className="px-6 py-4 border-b border-slate-700/40 flex items-center gap-4 bg-slate-900/30">
+          <div className="px-6 py-4 border-b border-white/5 flex items-center gap-4 bg-white/5">
             <div className="flex gap-2">
-              <div className="w-3 h-3 rounded-full bg-red-500/30" />
-              <div className="w-3 h-3 rounded-full bg-yellow-500/30" />
-              <div className="w-3 h-3 rounded-full bg-green-500/30" />
+              <div className="w-3 h-3 rounded-full bg-white/10" />
+              <div className="w-3 h-3 rounded-full bg-white/10" />
+              <div className="w-3 h-3 rounded-full bg-white/10" />
             </div>
-            <div className="flex-1 bg-slate-950/80 border border-slate-700/40 rounded-xl px-4 py-1.5 flex items-center justify-center shadow-inner">
+            <div className="flex-1 bg-slate-950/80 border border-white/5 rounded-xl px-4 py-1.5 flex items-center justify-center shadow-inner">
               <span className="text-[11px] text-slate-500 font-mono tracking-tight opacity-80 uppercase">visibility.youragency.com</span>
             </div>
           </div>
@@ -43,23 +43,29 @@ function AuditToolMockup() {
                 <circle
                   cx="50" cy="50" r={r}
                   fill="none"
-                  stroke="rgba(148,163,184,0.08)"
+                  stroke="rgba(255,255,255,0.03)"
                   strokeWidth="8"
                   strokeDasharray={`${arcLength} ${circumference}`}
                   strokeLinecap="round"
                   transform="rotate(150, 50, 50)"
                 />
-                {/* Active Score Arc */}
+                {/* Active Score Arc - Brand Gradient */}
                 <circle
                   cx="50" cy="50" r={r}
                   fill="none"
-                  stroke="#f59e0b"
+                  stroke="url(#brand-gradient)"
                   strokeWidth="8"
                   strokeDasharray={`${arcLength} ${circumference}`}
                   strokeDashoffset={dashOffset}
                   strokeLinecap="round"
                   transform="rotate(150, 50, 50)"
                 />
+                <defs>
+                  <linearGradient id="brand-gradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                    <stop offset="0%" stopColor="#3b82f6" />
+                    <stop offset="100%" stopColor="#8b5cf6" />
+                  </linearGradient>
+                </defs>
               </svg>
               <div className="absolute inset-0 flex flex-col items-center justify-center pt-4">
                 <span className="text-4xl font-black text-white tracking-tighter leading-none">34</span>
@@ -67,26 +73,26 @@ function AuditToolMockup() {
               </div>
             </div>
 
-            {/* Status badge - Bold Tactical Pill */}
-            <div className="px-5 py-1.5 rounded-full bg-amber-500/10 border border-amber-500/20 mb-12 shadow-sm scale-110">
-              <span className="text-[11px] text-amber-400 font-black tracking-[0.2em] uppercase">Developing</span>
+            {/* Status badge - Unified Pill */}
+            <div className="px-5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-12 shadow-sm scale-110">
+              <span className="text-[11px] text-blue-400 font-black tracking-[0.2em] uppercase">Developing</span>
             </div>
 
             {/* Platform breakdown - Spacious Grid */}
-            <div className="w-full space-y-6 pt-8 border-t border-slate-700/20">
+            <div className="w-full space-y-6 pt-8 border-t border-white/5">
               {[
-                { name: 'ChatGPT', pct: 42, color: 'bg-emerald-500' },
-                { name: 'Claude', pct: 28, color: 'bg-amber-500' },
-                { name: 'Gemini', pct: 51, color: 'bg-blue-500' },
+                { name: 'ChatGPT', pct: 42 },
+                { name: 'Claude', pct: 28 },
+                { name: 'Gemini', pct: 51 },
               ].map((p) => (
                 <div key={p.name} className="space-y-2 group">
                   <div className="flex justify-between items-center px-1">
                     <span className="text-[11px] font-black text-slate-400 tracking-wider uppercase">{p.name}</span>
                     <span className="text-[11px] font-black text-slate-500 tabular-nums">{p.pct}%</span>
                   </div>
-                  <div className="h-2.5 bg-slate-950/60 rounded-full overflow-hidden border border-slate-700/30 p-[1px] shadow-inner">
+                  <div className="h-2.5 bg-slate-950/60 rounded-full overflow-hidden border border-white/5 p-[1px] shadow-inner">
                     <div 
-                      className={`h-full rounded-full ${p.color} opacity-70 shadow-[0_0_15px_rgba(0,0,0,0.5)] relative`} 
+                      className="h-full rounded-full bg-gradient-to-r from-blue-500/60 to-violet-500/60 shadow-[0_0_15px_rgba(59,130,246,0.2)] relative" 
                       style={{ width: `${p.pct}%` }} 
                     >
                       <div className="absolute right-0 top-0 bottom-0 w-4 bg-white/10 blur-sm" />
@@ -162,24 +168,24 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 1 }}
         >
-          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800/90 border border-slate-700/50 rounded-xl shadow-lg overflow-hidden">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-900 border border-white/10 rounded-xl shadow-lg overflow-hidden">
+            <div className="px-3 py-2 border-b border-white/5 flex items-center gap-2 bg-white/5">
+              <div className="w-5 h-5 rounded bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-blue-400 font-bold uppercase">LOGO</span>
               </div>
-              <div className="text-[8px] text-slate-400 font-medium">Pitchdeck</div>
+              <div className="text-[8px] text-slate-400 font-medium uppercase tracking-tight">Pitchdeck</div>
             </div>
             <div className="p-3 space-y-2">
-              <div className="h-1.5 w-24 rounded bg-slate-600/30" />
-              <div className="h-28 rounded-lg bg-slate-700/20 flex items-end px-2 pb-2 gap-1">
+              <div className="h-1.5 w-24 rounded bg-white/5" />
+              <div className="h-28 rounded-lg bg-slate-950/50 flex items-end px-2 pb-2 gap-1 border border-white/5">
                 {[30, 48, 38, 58, 70, 82, 65].map((h, i) => (
-                  <div key={i} className="flex-1 rounded-sm bg-emerald-500/30" style={{ height: `${h}%` }} />
+                  <div key={i} className="flex-1 rounded-sm bg-gradient-to-t from-blue-500/40 to-violet-500/40" style={{ height: `${h}%` }} />
                 ))}
               </div>
               <div className="flex gap-1.5">
                 {['Tier 1', 'Tier 2', 'Tier 3'].map((t) => (
-                  <div key={t} className="px-1.5 py-0.5 rounded bg-emerald-500/10 border border-emerald-500/20">
-                    <span className="text-[6px] text-emerald-400">{t}</span>
+                  <div key={t} className="px-1.5 py-0.5 rounded bg-blue-500/10 border border-blue-500/20">
+                    <span className="text-[6px] text-blue-400 font-bold uppercase">{t}</span>
                   </div>
                 ))}
               </div>
@@ -193,20 +199,20 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 2 }}
         >
-          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800/95 border border-slate-700/50 rounded-xl shadow-xl overflow-hidden">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-900 border border-white/10 rounded-xl shadow-xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-white/5 flex items-center gap-2 bg-white/5">
+              <div className="w-5 h-5 rounded bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-blue-400 font-bold uppercase">LOGO</span>
               </div>
-              <div className="text-[8px] text-slate-400 font-medium">Master Service Agreement</div>
+              <div className="text-[8px] text-slate-400 font-medium uppercase tracking-tight">Service Agreement</div>
             </div>
             <div className="p-3 space-y-1.5">
               {Array.from({ length: 8 }).map((_, i) => (
-                <div key={i} className="h-[2.5px] rounded bg-slate-600/25" style={{ width: `${90 - i * 5}%` }} />
+                <div key={i} className="h-[2.5px] rounded bg-white/5" style={{ width: `${90 - i * 5}%` }} />
               ))}
-              <div className="mt-3 pt-2 border-t border-dashed border-slate-700/25">
-                <div className="h-[1px] w-24 bg-slate-600/40" />
-                <div className="text-[7px] text-slate-600 mt-1">Signature</div>
+              <div className="mt-3 pt-2 border-t border-dashed border-white/10">
+                <div className="h-[1px] w-24 bg-white/10" />
+                <div className="text-[7px] text-zinc-600 mt-1 uppercase font-bold">Signature</div>
               </div>
             </div>
           </div>
@@ -218,23 +224,23 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 3 }}
         >
-          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-white/5 flex items-center gap-2 bg-white/5">
+              <div className="w-5 h-5 rounded bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-blue-400 font-bold uppercase">LOGO</span>
               </div>
-              <div className="text-[8px] text-slate-400 font-mono">ai.youragency.com/onboard</div>
+              <div className="text-[8px] text-slate-400 font-mono opacity-60">ai.youragency.com/onboard</div>
             </div>
             <div className="p-3 space-y-2">
-              <div className="text-[9px] text-slate-300 font-semibold">5 Minute Onboarding</div>
+              <div className="text-[9px] text-zinc-300 font-bold uppercase tracking-tight">Onboarding Portal</div>
               {['Business Name', 'Website URL', 'Primary Service'].map((label) => (
                 <div key={label}>
-                  <div className="text-[6px] text-slate-500 mb-0.5 uppercase tracking-wider font-medium">{label}</div>
-                  <div className="h-5 rounded-md bg-slate-700/30 border border-slate-600/20" />
+                  <div className="text-[6px] text-zinc-600 mb-0.5 uppercase tracking-wider font-bold">{label}</div>
+                  <div className="h-5 rounded-md bg-slate-950 border border-white/5 shadow-inner" />
                 </div>
               ))}
-              <div className="h-6 rounded-lg bg-emerald-500/15 border border-emerald-500/25 flex items-center justify-center">
-                <span className="text-[8px] text-emerald-400 font-semibold">Start Onboarding →</span>
+              <div className="h-6 rounded-lg bg-blue-500/15 border border-blue-500/25 flex items-center justify-center">
+                <span className="text-[8px] text-blue-400 font-bold uppercase">Initialize Portal →</span>
               </div>
             </div>
           </div>
@@ -246,35 +252,35 @@ function DocumentFanVisual({ containerRef }: { containerRef: React.RefObject<HTM
           className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 will-change-transform"
           style={{ zIndex: 4 }}
         >
-          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-800 border border-slate-700/50 rounded-xl shadow-2xl overflow-hidden">
-            <div className="px-3 py-2 border-b border-slate-700/40 flex items-center gap-2">
-              <div className="w-5 h-5 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                <span className="text-[6px] text-emerald-400 font-bold">LOGO</span>
+          <div className="w-[170px] md:w-[220px] h-[230px] md:h-[300px] bg-slate-900 border border-white/10 rounded-xl shadow-2xl overflow-hidden">
+            <div className="px-3 py-2 border-b border-white/5 flex items-center gap-2 bg-white/5">
+              <div className="w-5 h-5 rounded bg-blue-500/20 border border-blue-500/30 flex items-center justify-center">
+                <span className="text-[6px] text-blue-400 font-bold uppercase">LOGO</span>
               </div>
-              <div className="text-[8px] text-slate-400 font-medium">Monthly Progress Report</div>
+              <div className="text-[8px] text-slate-400 font-medium uppercase tracking-tight">Progress Report</div>
             </div>
             <div className="p-3 space-y-2.5">
               {/* Score improvement block */}
-              <div className="bg-slate-700/20 rounded-lg p-2.5 text-center">
-                <div className="text-[7px] text-slate-500 uppercase tracking-wider mb-1">Visibility Score</div>
+              <div className="bg-slate-950/50 border border-white/5 rounded-lg p-2.5 text-center shadow-inner">
+                <div className="text-[7px] text-zinc-600 uppercase tracking-widest font-bold mb-1">Visibility Engine</div>
                 <div className="flex items-center justify-center gap-2">
-                  <span className="text-[14px] text-slate-400 font-bold">28</span>
-                  <span className="text-[10px] text-emerald-400">→</span>
-                  <span className="text-[14px] text-emerald-400 font-bold">51</span>
+                  <span className="text-[14px] text-zinc-500 font-bold">28</span>
+                  <span className="text-[10px] text-blue-500">→</span>
+                  <span className="text-[14px] text-blue-400 font-bold">51</span>
                 </div>
-                <div className="mt-1 px-2 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-500/25 inline-block">
-                  <span className="text-[7px] text-emerald-400 font-semibold">+23 pts</span>
+                <div className="mt-1 px-2 py-0.5 rounded-full bg-blue-500/10 border border-blue-500/20 inline-block">
+                  <span className="text-[7px] text-blue-400 font-bold tracking-tight">+23 PTS</span>
                 </div>
               </div>
               {/* Completed work checklist */}
               <div className="space-y-1.5">
-                <div className="text-[7px] text-slate-500 uppercase tracking-wider font-medium">Completed This Month</div>
-                {['Schema markup deployed', 'GBP profile optimized', 'FAQ content published'].map((item) => (
+                <div className="text-[7px] text-zinc-600 uppercase tracking-widest font-bold">Protocol Sync</div>
+                {['Schema deployment', 'GBP optimization', 'FAQ publication'].map((item) => (
                   <div key={item} className="flex items-center gap-1.5">
-                    <div className="w-3 h-3 rounded bg-emerald-500/20 border border-emerald-500/30 flex items-center justify-center">
-                      <span className="text-[6px] text-emerald-400">✓</span>
+                    <div className="w-3 h-3 rounded bg-blue-500/10 border border-blue-500/20 flex items-center justify-center">
+                      <Check size={8} className="text-blue-400" />
                     </div>
-                    <span className="text-[7px] text-slate-400">{item}</span>
+                    <span className="text-[7px] text-slate-400 font-medium uppercase">{item}</span>
                   </div>
                 ))}
               </div>
@@ -295,7 +301,7 @@ interface PhaseData {
   body: string[]
   bullets: string[]
   icon: React.ComponentType<{ className?: string }>
-  accent: 'blue' | 'violet' | 'emerald'
+  accent: 'brand'
   visual?: React.ReactNode
   visualComponent?: 'documentfan'
 }
@@ -313,7 +319,7 @@ const phases: PhaseData[] = [
       "Automatic email capture to track leads."
     ],
     icon: Search,
-    accent: 'blue',
+    accent: 'brand',
     visual: <AuditToolMockup />
   },
   {
@@ -331,15 +337,15 @@ const phases: PhaseData[] = [
       "Every network win becomes another proof asset you can use."
     ],
     icon: Award,
-    accent: 'violet',
+    accent: 'brand',
     visual: (
       <div className="relative h-full w-full flex items-center justify-center p-6">
         <div className="w-full max-w-[320px]">
           {/* Friendly Label Pill */}
           <div className="flex items-center justify-center mb-8">
-            <div className="px-4 py-1.5 bg-violet-500/10 border border-violet-500/20 rounded-full flex items-center gap-2">
-              <div className="w-1.5 h-1.5 rounded-full bg-violet-400" />
-              <span className="text-[10px] font-bold text-violet-300 uppercase tracking-widest">Collective Success Data</span>
+            <div className="px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full flex items-center gap-2">
+              <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
+              <span className="text-[10px] font-bold text-blue-300 uppercase tracking-widest">Collective Success Data</span>
             </div>
           </div>
 
@@ -357,14 +363,14 @@ const phases: PhaseData[] = [
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="bg-slate-800/40 border border-slate-700/50 rounded-2xl p-4 transition-all hover:bg-slate-800/60"
+                className="bg-slate-900 border border-white/10 rounded-2xl p-4 transition-all hover:bg-slate-800/60 shadow-lg"
               >
                 <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">{study.vertical}</div>
                 <div className="flex items-baseline gap-1.5 mb-1">
                   <span className="text-lg font-bold text-white tracking-tight">{study.to}</span>
-                  <span className="text-[10px] text-emerald-400 font-medium tracking-tight">Mention Rate</span>
+                  <span className="text-[10px] text-blue-400 font-bold tracking-tight">Mention Rate</span>
                 </div>
-                <div className="text-[9px] text-slate-400 font-medium">Verified in {study.days} days</div>
+                <div className="text-[9px] text-slate-500 font-bold uppercase tracking-tighter">Verified in {study.days} days</div>
               </motion.div>
             ))}
           </div>
@@ -386,36 +392,20 @@ const phases: PhaseData[] = [
       "5\u2011minute client onboarding."
     ],
     icon: FileText,
-    accent: 'emerald',
+    accent: 'brand',
     visualComponent: 'documentfan',
   }
 ]
 
-// Accent color mappings
+// Accent color mappings - Unified Brand Palette
 const accentColors = {
-  blue: {
-    gradient: 'from-blue-500/20 to-blue-600/5',
+  brand: {
+    gradient: 'from-blue-500/20 to-violet-500/5',
     iconBg: 'bg-blue-500/10',
     iconBorder: 'border-blue-500/20',
     iconText: 'text-blue-400',
     subtitleText: 'text-blue-400',
     bulletDot: 'bg-blue-400',
-  },
-  violet: {
-    gradient: 'from-violet-500/20 to-violet-600/5',
-    iconBg: 'bg-violet-500/10',
-    iconBorder: 'border-violet-500/20',
-    iconText: 'text-violet-400',
-    subtitleText: 'text-violet-400',
-    bulletDot: 'bg-violet-400',
-  },
-  emerald: {
-    gradient: 'from-emerald-500/20 to-emerald-600/5',
-    iconBg: 'bg-emerald-500/10',
-    iconBorder: 'border-emerald-500/20',
-    iconText: 'text-emerald-400',
-    subtitleText: 'text-emerald-400',
-    bulletDot: 'bg-emerald-400',
   },
 }
 
@@ -452,12 +442,12 @@ function Card({
           scale,
           top: `calc(-5vh + ${index * 25}px)`
         }}
-        className="relative w-full max-w-5xl md:h-[80vh] flex flex-col origin-top bg-slate-900 border border-slate-800 rounded-3xl shadow-2xl overflow-hidden"
+        className="relative w-full max-w-5xl md:h-[80vh] flex flex-col origin-top bg-slate-900 border border-white/10 rounded-3xl shadow-2xl overflow-hidden"
       >
         <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-20`} />
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
-            <div className="h-[200px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-slate-800/50 p-8 flex items-center justify-center relative overflow-hidden">
+            <div className="h-[200px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-white/10 p-8 flex items-center justify-center relative overflow-hidden">
                 {phase.visualComponent === 'documentfan' ? (
                   <DocumentFanVisual containerRef={sectionRef} />
                 ) : (
@@ -471,7 +461,7 @@ function Card({
                 </div>
 
                 <h3 className={`${colors.subtitleText} font-bold text-xs uppercase tracking-wider mb-1.5`}>{phase.subtitle}</h3>
-                <h2 className="text-2xl md:text-3xl lg:text-4xl font-bold text-white mb-4 leading-tight">{phase.title}</h2>
+                <h2 className="text-2xl md:text-3xl lg:text-4xl font-black text-white mb-4 leading-tight tracking-tight">{phase.title}</h2>
 
                 <div className="space-y-2.5 mb-4">
                     {phase.body.map((paragraph, i) => (
