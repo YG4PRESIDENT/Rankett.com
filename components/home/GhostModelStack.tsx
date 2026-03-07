@@ -2,7 +2,7 @@
 
 import { useRef, useEffect, useState } from 'react'
 import { motion, useScroll, useTransform, MotionValue } from 'framer-motion'
-import { Search, Award, FileText } from 'lucide-react'
+import { Search, Award, FileText, Check, TrendingUp } from 'lucide-react'
 import { gsap } from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
 
