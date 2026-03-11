@@ -5,15 +5,15 @@ import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
 const tiers = [
   {
-    name: 'Foundational Discovery',
+    name: 'Local Visibility',
     youPay: '$498',
     youCharge: '$1,500+',
     margin: '200%+',
-    description: 'Local businesses with zero AI presence',
+    description: 'Businesses building their first AI presence',
     highlight: false,
   },
   {
-    name: 'Competitive Distinction',
+    name: 'Market Leader',
     youPay: '$1,498',
     youCharge: '$4,500+',
     margin: '200%+',
@@ -21,11 +21,11 @@ const tiers = [
     highlight: true,
   },
   {
-    name: 'Categorical Saturation',
+    name: 'Category Owner',
     youPay: '$2,498',
     youCharge: '$7,500+',
     margin: '200%+',
-    description: 'Industry leaders owning a category',
+    description: 'Industry leaders aiming to own their category',
     highlight: false,
   },
 ]

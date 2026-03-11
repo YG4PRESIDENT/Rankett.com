@@ -49,7 +49,7 @@ const categories: FAQCategory[] = [
     faqs: [
       {
         question: 'How much can agencies charge clients?',
-        answer: 'Tier 1: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Tier 2: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%). Tier 3: $7,500/mo \u2192 Rankett $2,498 = $5,002 profit (67%).',
+        answer: 'Local Visibility: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Market Leader: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%). Category Owner: $7,500/mo \u2192 Rankett $2,498 = $5,002 profit (67%).',
       },
       {
         question: 'What is Partner pricing ($299/mo)?',
@@ -61,7 +61,7 @@ const categories: FAQCategory[] = [
       },
       {
         question: 'What exactly do you fulfill per tier?',
-        answer: 'Tier 1 ($498): 50-query tracking, 8 answer-first blogs/mo, schema/llms.txt, Featured.com mentions. Tier 2 ($1,498): +150 queries, 36 authority mentions, TLDR page summaries. Tier 3 ($2,498): +250 queries, 70+ mentions, YouTube transcripts, dominance-to-dollars reports.',
+        answer: 'Local Visibility ($498): 50-query tracking, 1 answer-focused content asset/week, schema markup, LLM access file, AI source discoverability, semantic refresh. Market Leader ($1,498): 150 queries, 1\u20132 third-party authority placements/mo, answer capture optimization (3\u20136 pages). Category Owner ($2,498): 250 queries, 3\u20135 authority placements/mo, 6\u201312+ pages, multimodal AI indexing (2 vids/mo), visibility-to-dollars reporting.',
       },
     ],
   },
@@ -70,7 +70,7 @@ const categories: FAQCategory[] = [
     faqs: [
       {
         question: 'How long until clients see results?',
-        answer: '90 days average for 12\u201318% Mention Rate lift. Week 1\u20134: Technical (schema, llms.txt, GBP). Month 2: Content injection + authority mentions. Month 3: Consistent Mention Rate gains + branded search lift.',
+        answer: '90 days average for 12\u201318% Mention Rate lift. Week 1\u20134: Technical foundation (schema markup, LLM access file, AI source discoverability). Month 2: Content injection + authority placements. Month 3: Consistent Mention Rate gains + branded search lift.',
       },
       {
         question: "What if you're late on deliverables?",
@@ -78,7 +78,7 @@ const categories: FAQCategory[] = [
       },
       {
         question: 'What proof/case studies exist?',
-        answer: 'Pooled benchmarks: Tier 1 avg 12% Mention Rate lift in 90 days. Live vault access for partners (before/after Mention Rate charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits.',
+        answer: 'Pooled benchmarks: Local Visibility avg 12% Mention Rate lift in 90 days. Live vault access for partners (before/after Mention Rate charts, competitor gaps, revenue correlations). Early adopters contribute \u2192 everyone benefits.',
       },
       {
         question: 'Can I see the partner results dashboard?',

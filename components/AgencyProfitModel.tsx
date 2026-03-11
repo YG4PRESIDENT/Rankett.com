@@ -26,7 +26,7 @@ export default function AgencyProfitModel() {
             <div className="space-y-2">
               <h3 className="text-slate-500 text-sm font-mono uppercase tracking-wider">Your Cost (Tier 2)</h3>
               <div className="text-4xl font-light text-white">$1,498<span className="text-lg text-slate-600">/mo</span></div>
-              <p className="text-sm text-slate-500 pt-2">Competitive Distinction</p>
+              <p className="text-sm text-slate-500 pt-2">Market Leader</p>
             </div>
           </Card>
 

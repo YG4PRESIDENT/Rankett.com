@@ -5,26 +5,27 @@ import { Check, X, ShieldCheck } from 'lucide-react'
 import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
 const tiers = [
-  { label: 'Tier 1', price: '$498', charge: '$1,500+' },
-  { label: 'Tier 2', price: '$1,498', charge: '$4,500+', highlighted: true },
-  { label: 'Tier 3', price: '$2,498', charge: '$7,500+' },
+  { label: 'Local Visibility', price: '$498', charge: '$1,500+' },
+  { label: 'Market Leader', price: '$1,498', charge: '$4,500+', highlighted: true },
+  { label: 'Category Owner', price: '$2,498', charge: '$7,500+' },
 ]
 
 type CellValue = boolean | string
 
 const deliverables: { name: string; values: [CellValue, CellValue, CellValue] }[] = [
   { name: 'Monthly AI Visibility Audit', values: [true, true, true] },
-  { name: 'Website Crawlability Audit', values: [true, true, true] },
-  { name: 'Schema Markup Implementation', values: [true, true, true] },
-  { name: 'llms.txt File Deployment', values: [true, true, true] },
-  { name: 'GBP Optimization', values: [true, true, true] },
-  { name: 'AEO Content Assets', values: ['2/week', '2/week', '2/week'] },
+  { name: 'AI Source Discoverability', values: [true, true, true] },
+  { name: 'Schema Markup', values: [true, true, true] },
+  { name: 'LLM Access File', values: [true, true, true] },
+  { name: 'Local Listings Accuracy Audit', values: [true, true, true] },
+  { name: 'Semantic Refresh', values: [true, true, true] },
+  { name: 'Answer-Focused Content Assets', values: ['1/week', '2/week', '3/week'] },
   { name: 'Query Winning & Tracking', values: ['50 prompts', '150 prompts', '250 prompts'] },
-  { name: 'FAQ Optimization', values: [true, 'Expanded', 'Aggressive'] },
-  { name: '3rd Party Authority Quotes', values: [false, '3–6/mo', '7–10/mo'] },
-  { name: 'TLDR Summary Boxes', values: [false, '3–6 pages', '6–12+ pages'] },
-  { name: 'YouTube Audio Transcription', values: [false, false, '2 vids/mo'] },
-  { name: 'ROI & Avoided Cost Reporting', values: [false, false, true] },
+  { name: 'AI Question Coverage', values: ['Included', 'Expanded', 'Aggressive'] },
+  { name: 'Third-Party Authority Placement', values: [false, '1\u20132/mo', '3\u20135/mo'] },
+  { name: 'Answer Capture Optimization', values: [false, '3\u20136 pages', '6\u201312+ pages'] },
+  { name: 'Multimodal AI Indexing', values: [false, false, '2 vids/mo'] },
+  { name: 'Visibility-to-Dollars Reporting', values: [false, false, true] },
 ]
 
 function CellContent({ value }: { value: CellValue }) {
