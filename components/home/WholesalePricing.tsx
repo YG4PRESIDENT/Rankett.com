@@ -67,7 +67,7 @@ function MobilePricingCards() {
           {tiers.map((tier, tierIdx) => (
             <div
               key={tier.label}
-              className={`flex-shrink-0 w-[85vw] snap-center rounded-2xl border p-5 overflow-hidden ${
+              className={`flex-shrink-0 w-[85vw] snap-center rounded-2xl border p-6 overflow-hidden ${
                 tier.highlighted
                   ? 'border-blue-500/40 bg-blue-500/5'
                   : 'border-slate-800'
@@ -86,7 +86,7 @@ function MobilePricingCards() {
               </div>
 
               {/* Deliverables */}
-              <div className="space-y-3">
+              <div className="space-y-3.5">
                 {deliverables.map((row) => {
                   const val = row.values[tierIdx]
                   return (
@@ -130,7 +130,7 @@ export default function WholesalePricing() {
 
         {/* Header */}
         <FadeInOnScroll direction="up">
-          <div className="text-center mb-16">
+          <div className="text-center mb-10 md:mb-16">
             <h2 className="text-4xl md:text-6xl font-bold text-white mb-6">
               Three Tiers. <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-blue-300">Total Fulfillment.</span>
             </h2>

@@ -7,7 +7,7 @@ import BrandLogo from '../ui/BrandLogo'
 
 export default function FeaturesMatrix() {
   return (
-    <section className="py-8 relative overflow-hidden bg-slate-950">
+    <section className="py-12 md:py-8 relative overflow-hidden bg-slate-950">
       {/* Background Ambience */}
       <div className="absolute inset-0 pointer-events-none">
         <div className="absolute top-1/4 right-0 w-[500px] h-[500px]" style={{ background: 'radial-gradient(circle, rgba(139, 92, 246, 0.08) 0%, transparent 70%)', filter: 'blur(80px)' }} />
@@ -17,7 +17,7 @@ export default function FeaturesMatrix() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
         {/* Section Header - More Compact */}
-        <div className="text-center mb-6">
+        <div className="text-center mb-8 md:mb-6">
           <FadeInOnScroll direction="up">
             <h2 className="text-3xl sm:text-4xl md:text-5xl font-bold text-white mb-4">
               Uncover What AI Says <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-violet-400">About Your Clients</span>
@@ -29,19 +29,19 @@ export default function FeaturesMatrix() {
         </div>
 
         {/* 2x2 Bento Grid */}
-        <div className="grid md:grid-cols-2 gap-4 lg:gap-6">
+        <div className="grid md:grid-cols-2 gap-5 md:gap-4 lg:gap-6">
           
           {/* Card 1: Visibility & Connectivity (SOLAR ORBIT) */}
           <FadeInOnScroll direction="up" delay={0.1}>
-            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
+            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 md:p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
                 <h3 className="text-lg font-bold text-white mb-1">Track Client Visibility</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
                   Monitor visibility across all major LLMs. Prove to clients that you are watching every channel.
                 </p>
               </div>
-              
-              <div className="relative h-[100px] flex items-center justify-center bg-slate-950/50 rounded-xl border border-slate-800/50">
+
+              <div className="relative h-[120px] md:h-[100px] flex items-center justify-center bg-slate-950/50 rounded-xl border border-slate-800/50">
                 <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10 bg-[size:20px_20px]" />
                 
                 {/* Center Node */}
@@ -77,7 +77,7 @@ export default function FeaturesMatrix() {
 
           {/* Card 2: Sentiment Analysis */}
           <FadeInOnScroll direction="up" delay={0.2}>
-            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
+            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 md:p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
                 <h3 className="text-lg font-bold text-white mb-1">Monitor Brand Sentiment</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
@@ -86,7 +86,7 @@ export default function FeaturesMatrix() {
               </div>
 
               {/* Visual: Denser Sentiment Bars */}
-              <div className="relative h-[100px] bg-slate-950/50 rounded-xl border border-slate-800/50 p-3 flex flex-col justify-end gap-2">
+              <div className="relative h-[120px] md:h-[100px] bg-slate-950/50 rounded-xl border border-slate-800/50 p-3 flex flex-col justify-end gap-2">
                 
                 {/* Very Positive */}
                 <div className="space-y-1">
@@ -126,7 +126,7 @@ export default function FeaturesMatrix() {
 
           {/* Card 3: Chat Simulation */}
           <FadeInOnScroll direction="up" delay={0.3}>
-            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
+            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 md:p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
                 <h3 className="text-lg font-bold text-white mb-1">Audit Real Responses</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
@@ -135,7 +135,7 @@ export default function FeaturesMatrix() {
               </div>
 
               {/* Visual: Denser Chat Interface */}
-              <div className="relative h-[100px] bg-slate-950/50 rounded-xl border border-slate-800/50 p-2 flex flex-col gap-2 overflow-hidden">
+              <div className="relative h-[120px] md:h-[100px] bg-slate-950/50 rounded-xl border border-slate-800/50 p-2 flex flex-col gap-2 overflow-hidden">
                 {/* User Message */}
                 <div className="flex gap-1.5">
                   <div className="w-5 h-5 rounded-full bg-slate-700 flex-shrink-0 flex items-center justify-center">
@@ -161,7 +161,7 @@ export default function FeaturesMatrix() {
 
           {/* Card 4: Competitor Comparison */}
           <FadeInOnScroll direction="up" delay={0.4}>
-            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-4 overflow-hidden group hover:border-slate-700 transition-colors">
+            <div className="h-full bg-slate-900/40 backdrop-blur-xl border border-slate-800 rounded-2xl p-5 md:p-4 overflow-hidden group hover:border-slate-700 transition-colors">
               <div className="mb-3">
                 <h3 className="text-lg font-bold text-white mb-1">Benchmark vs Competitors</h3>
                 <p className="text-slate-400 text-xs leading-relaxed">
@@ -170,7 +170,7 @@ export default function FeaturesMatrix() {
               </div>
 
               {/* Visual: Denser Comparison Graph */}
-              <div className="relative h-[100px] bg-slate-950/50 rounded-xl border border-slate-800/50 p-3 flex flex-col">
+              <div className="relative h-[120px] md:h-[100px] bg-slate-950/50 rounded-xl border border-slate-800/50 p-3 flex flex-col">
                 <div className="flex items-end justify-between h-[80px] w-full gap-1 mb-2">
                   {[
                     { label: 'Notion', val: 28, color: 'bg-slate-700' },

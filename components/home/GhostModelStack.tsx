@@ -37,7 +37,7 @@ function AuditToolMockup() {
           {/* Main Content Area - High Fidelity */}
           <div className="p-4 md:p-12 flex flex-col items-center">
             {/* Gauge section - Mission Control Scale */}
-            <div className="relative mb-8 md:mb-12 transform scale-100 md:scale-125">
+            <div className="relative mb-6 md:mb-12 transform scale-100 md:scale-125">
               <svg width="140" height="110" viewBox="0 0 100 90">
                 {/* Background arc */}
                 <circle
@@ -74,12 +74,12 @@ function AuditToolMockup() {
             </div>
 
             {/* Status badge - Unified Pill */}
-            <div className="px-5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6 md:mb-12 shadow-sm scale-110">
+            <div className="px-5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-4 md:mb-12 shadow-sm scale-110">
               <span className="text-[11px] text-blue-400 font-black tracking-[0.2em] uppercase">Developing</span>
             </div>
 
             {/* Platform breakdown - Spacious Grid */}
-            <div className="w-full space-y-6 pt-8 border-t border-white/5">
+            <div className="w-full space-y-4 md:space-y-6 pt-4 md:pt-8 border-t border-white/5">
               {[
                 { name: 'ChatGPT', pct: 42 },
                 { name: 'Claude', pct: 28 },
@@ -339,17 +339,17 @@ const phases: PhaseData[] = [
     icon: Award,
     accent: 'brand',
     visual: (
-      <div className="relative h-full w-full flex items-center justify-center p-6">
+      <div className="relative h-full w-full flex items-center justify-center p-4 md:p-6">
         <div className="w-full max-w-[320px]">
           {/* Friendly Label Pill */}
-          <div className="flex items-center justify-center mb-8">
+          <div className="flex items-center justify-center mb-4 md:mb-8">
             <div className="px-4 py-1.5 bg-blue-500/10 border border-blue-500/20 rounded-full flex items-center gap-2">
               <div className="w-1.5 h-1.5 rounded-full bg-blue-400" />
               <span className="text-[10px] font-bold text-blue-300 uppercase tracking-widest">Collective Success Data</span>
             </div>
           </div>
 
-          <div className="grid grid-cols-2 gap-4">
+          <div className="grid grid-cols-2 gap-2.5 md:gap-4">
             {[
               { vertical: 'Dental', from: '0%', to: '15%', days: '90' },
               { vertical: 'HVAC', from: '2%', to: '18%', days: '75' },
@@ -363,7 +363,7 @@ const phases: PhaseData[] = [
                 initial={{ opacity: 0, scale: 0.95 }}
                 whileInView={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.4 }}
-                className="bg-slate-900 border border-white/10 rounded-2xl p-4 transition-all hover:bg-slate-800/60 shadow-lg"
+                className="bg-slate-900 border border-white/10 rounded-2xl p-3 md:p-4 transition-all hover:bg-slate-800/60 shadow-lg"
               >
                 <div className="text-[10px] font-bold text-slate-500 uppercase tracking-wider mb-2">{study.vertical}</div>
                 <div className="flex items-baseline gap-1.5 mb-1">
@@ -447,7 +447,7 @@ function Card({
         <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-20`} />
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
-            <div className="h-[320px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-white/10 p-4 md:p-8 flex items-center justify-center relative overflow-hidden">
+            <div className="h-auto min-h-[400px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-white/10 p-4 md:p-8 flex items-center justify-center relative overflow-hidden">
                 {phase.visualComponent === 'documentfan' ? (
                   <DocumentFanVisual containerRef={sectionRef} />
                 ) : (

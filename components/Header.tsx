@@ -120,36 +120,63 @@ export default function Header() {
 
           <button
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-            className="p-2 text-slate-300 hover:text-white"
+            className={cn(
+              "p-2 hover:text-white transition-colors",
+              isMobileMenuOpen ? "text-white" : "text-slate-300"
+            )}
           >
             {isMobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
           </button>
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {isMobileMenuOpen && (
-        <div className="lg:hidden bg-slate-950 backdrop-blur-xl border-t border-slate-800 p-4 fixed top-20 left-0 right-0 bottom-0 z-40 overflow-y-auto shadow-2xl">
-          <div className="flex flex-col space-y-4">
-            {NAV_LINKS.map((link) => (
+      {/* Mobile Menu Overlay */}
+      <div className={cn(
+        "lg:hidden fixed inset-0 top-20 z-40 transition-all duration-300",
+        isMobileMenuOpen
+          ? "opacity-100 pointer-events-auto"
+          : "opacity-0 pointer-events-none"
+      )}>
+        {/* Gradient border line */}
+        <div className="h-px bg-gradient-to-r from-transparent via-blue-500/50 to-transparent" />
+
+        <div className="bg-slate-950/98 backdrop-blur-2xl h-full flex flex-col">
+          {/* Nav links - centered */}
+          <nav className="flex-1 flex flex-col justify-center px-8 gap-1">
+            {NAV_LINKS.map((link, i) => (
               <button
                 key={link.href}
                 onClick={() => handleNavClick(link.href)}
-                className="text-left text-lg font-medium text-slate-300 hover:text-white py-2"
+                className="text-left text-2xl font-bold text-slate-400 hover:text-white active:text-white transition-all duration-200 py-3 flex items-center gap-4 group"
+                style={{
+                  transitionDelay: isMobileMenuOpen ? `${i * 75}ms` : '0ms',
+                  opacity: isMobileMenuOpen ? 1 : 0,
+                  transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(12px)'
+                }}
               >
+                <span className="w-1 h-6 rounded-full bg-blue-500 opacity-0 group-hover:opacity-100 group-active:opacity-100 transition-opacity" />
                 {link.label}
               </button>
             ))}
-            <Button
+          </nav>
+
+          {/* Bottom CTA area */}
+          <div className="px-8 pb-12 pt-4 border-t border-slate-800/50">
+            <button
               onClick={handleLogin}
-              className="w-full bg-white text-slate-950 hover:bg-slate-200 font-bold mt-4"
+              className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-500 to-violet-500 text-white font-bold text-base flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/20 transition-all active:scale-[0.98]"
+              style={{
+                transitionDelay: isMobileMenuOpen ? '300ms' : '0ms',
+                opacity: isMobileMenuOpen ? 1 : 0,
+                transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(12px)'
+              }}
             >
-              <LogIn className="w-4 h-4 mr-2" />
-              Login
-            </Button>
+              <LogIn className="w-4 h-4" />
+              Partner Login
+            </button>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }

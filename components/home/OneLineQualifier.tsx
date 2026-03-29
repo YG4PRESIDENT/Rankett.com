@@ -97,11 +97,11 @@ export default function OneLineQualifier() {
   }, [])
 
   return (
-    <section className="pt-20 pb-16 md:pt-48 md:pb-20 relative overflow-hidden">
+    <section className="pt-12 pb-12 md:pt-48 md:pb-20 relative overflow-hidden">
       <div className="max-w-6xl mx-auto px-4 sm:px-6 relative z-10">
         
         {/* Animation Container */}
-        <div ref={containerRef} className="relative h-[420px] md:h-[400px] flex items-center justify-center mb-12">
+        <div ref={containerRef} className="relative h-[340px] md:h-[400px] flex items-center justify-center mb-8 md:mb-12">
           
           {/* Card 1: Competitor FOMO (Left) */}
           <div 
