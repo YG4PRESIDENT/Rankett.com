@@ -18,7 +18,7 @@ function AuditToolMockup() {
   const dashOffset = arcLength * (1 - fillPercent)
 
   return (
-    <div className="relative h-full w-full flex items-center justify-center p-8">
+    <div className="relative h-full w-full flex items-center justify-center p-4 md:p-8">
       <div className="w-full max-w-[420px] transition-all duration-700">
         {/* Browser chrome - Spacious & High-End */}
         <div className="bg-slate-900/95 border border-white/10 rounded-[2rem] shadow-[0_40px_80px_-20px_rgba(0,0,0,0.7)] overflow-hidden">
@@ -35,9 +35,9 @@ function AuditToolMockup() {
           </div>
 
           {/* Main Content Area - High Fidelity */}
-          <div className="p-12 flex flex-col items-center">
+          <div className="p-4 md:p-12 flex flex-col items-center">
             {/* Gauge section - Mission Control Scale */}
-            <div className="relative mb-12 transform scale-125">
+            <div className="relative mb-8 md:mb-12 transform scale-100 md:scale-125">
               <svg width="140" height="110" viewBox="0 0 100 90">
                 {/* Background arc */}
                 <circle
@@ -74,7 +74,7 @@ function AuditToolMockup() {
             </div>
 
             {/* Status badge - Unified Pill */}
-            <div className="px-5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-12 shadow-sm scale-110">
+            <div className="px-5 py-1.5 rounded-full bg-blue-500/10 border border-blue-500/20 mb-6 md:mb-12 shadow-sm scale-110">
               <span className="text-[11px] text-blue-400 font-black tracking-[0.2em] uppercase">Developing</span>
             </div>
 
@@ -447,7 +447,7 @@ function Card({
         <div className={`absolute inset-0 bg-gradient-to-br ${colors.gradient} opacity-20`} />
 
         <div className="relative z-10 grid md:grid-cols-2 h-full">
-            <div className="h-[200px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-white/10 p-8 flex items-center justify-center relative overflow-hidden">
+            <div className="h-[320px] md:h-auto bg-slate-950/30 md:border-r border-b md:border-b-0 border-white/10 p-4 md:p-8 flex items-center justify-center relative overflow-hidden">
                 {phase.visualComponent === 'documentfan' ? (
                   <DocumentFanVisual containerRef={sectionRef} />
                 ) : (

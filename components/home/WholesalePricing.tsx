@@ -57,17 +57,17 @@ function MobilePricingCards() {
   }, [])
 
   return (
-    <div className="md:hidden">
+    <div className="md:hidden overflow-hidden">
       <FadeInOnScroll direction="up" delay={0.1}>
         <div
           ref={scrollRef}
           onScroll={handleScroll}
-          className="flex gap-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-4"
+          className="flex gap-4 overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide -mx-4 px-4 pb-4"
         >
           {tiers.map((tier, tierIdx) => (
             <div
               key={tier.label}
-              className={`flex-shrink-0 w-[85vw] snap-center rounded-2xl border p-5 ${
+              className={`flex-shrink-0 w-[85vw] snap-center rounded-2xl border p-5 overflow-hidden ${
                 tier.highlighted
                   ? 'border-blue-500/40 bg-blue-500/5'
                   : 'border-slate-800'
@@ -124,7 +124,7 @@ export default function WholesalePricing() {
     <section id="pricing" className="py-24 md:py-32 relative overflow-hidden bg-slate-950">
 
       {/* Background Glow */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] bg-blue-500/8 blur-[120px] rounded-full pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1000px] h-[600px] rounded-full pointer-events-none" style={{ background: 'radial-gradient(circle, rgba(59, 130, 246, 0.08) 0%, transparent 70%)' }} />
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 

@@ -39,8 +39,7 @@ export default function Footer() {
         <div
           className="absolute bottom-0 left-1/2 -translate-x-1/2 w-[120%] h-[80%]"
           style={{
-            background: 'radial-gradient(ellipse at bottom, rgba(59, 130, 246, 0.1) 0%, rgba(15, 23, 42, 0) 60%)',
-            filter: 'blur(100px)'
+            background: 'radial-gradient(ellipse at bottom, rgba(59, 130, 246, 0.08) 0%, transparent 60%)',
           }}
         />
       </div>
