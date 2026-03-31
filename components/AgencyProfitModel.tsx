@@ -25,7 +25,7 @@ export default function AgencyProfitModel() {
           <Card className="w-full max-w-sm p-8 bg-slate-900/50 border-slate-800">
             <div className="space-y-2">
               <h3 className="text-slate-500 text-sm font-mono uppercase tracking-wider">Your Cost (Tier 2)</h3>
-              <div className="text-4xl font-light text-white">$1,498<span className="text-lg text-slate-600">/mo</span></div>
+              <div className="text-4xl font-light text-white">$998<span className="text-lg text-slate-600">/mo</span></div>
               <p className="text-sm text-slate-500 pt-2">Market Leader</p>
             </div>
           </Card>
@@ -37,7 +37,7 @@ export default function AgencyProfitModel() {
           <Card className="w-full max-w-sm p-8 bg-slate-900/50 border-slate-800">
             <div className="space-y-2">
               <h3 className="text-blue-400 text-sm font-mono uppercase tracking-wider">You Charge</h3>
-              <div className="text-4xl font-light text-white">$4,500<span className="text-lg text-slate-600">/mo</span></div>
+              <div className="text-4xl font-light text-white">$3,000<span className="text-lg text-slate-600">/mo</span></div>
               <p className="text-sm text-slate-500 pt-2">Example Rate</p>
             </div>
           </Card>
@@ -50,7 +50,7 @@ export default function AgencyProfitModel() {
             <div className="absolute top-0 left-0 w-1 h-full bg-white" />
             <div className="space-y-2 relative z-10">
               <h3 className="text-white text-sm font-mono uppercase tracking-wider">Your Profit</h3>
-              <div className="text-5xl font-medium text-white">$3,002<span className="text-lg text-slate-500 font-light">/mo</span></div>
+              <div className="text-5xl font-medium text-white">$2,002<span className="text-lg text-slate-500 font-light">/mo</span></div>
               <p className="text-sm text-slate-400 pt-2">Per client margin</p>
             </div>
           </Card>
@@ -60,7 +60,7 @@ export default function AgencyProfitModel() {
         {/* Note */}
         <div className="text-center">
           <p className="text-xs text-slate-600 font-mono">
-            * MARGINS RANGE FROM $1,002/MO (TIER 1) TO $5,002/MO (TIER 3). PARTNERS RETAIN 100% OF END-CLIENT REVENUE.
+            * MARGINS RANGE FROM $1,002/MO (TIER 1) TO $3,002/MO (TIER 3). PARTNERS RETAIN 100% OF END-CLIENT REVENUE.
           </p>
         </div>
 

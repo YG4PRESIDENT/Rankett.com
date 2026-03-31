@@ -14,16 +14,16 @@ const tiers = [
   },
   {
     name: 'Market Leader',
-    youPay: '$1,498',
-    youCharge: '$4,500+',
+    youPay: '$998',
+    youCharge: '$3,000+',
     margin: '200%+',
     description: 'Growth-stage, competitive verticals',
     highlight: true,
   },
   {
     name: 'Category Owner',
-    youPay: '$2,498',
-    youCharge: '$7,500+',
+    youPay: '$1,498',
+    youCharge: '$4,500+',
     margin: '200%+',
     description: 'Industry leaders aiming to own their category',
     highlight: false,
@@ -51,7 +51,7 @@ export default function TheMathSection() {
               The Math Just <span className="text-gradient">Works</span>
             </h2>
             <p className="text-lg text-slate-400 max-w-2xl mx-auto">
-              Pay us monthly. Charge your clients 3-5x more. Keep the difference.
+              Pay us monthly. Charge your clients 3x more. Keep the difference.
             </p>
           </div>
         </FadeInOnScroll>

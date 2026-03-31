@@ -27,7 +27,7 @@ const homepageFaqSchema = {
       "name": "How much can agencies charge clients?",
       "acceptedAnswer": {
         "@type": "Answer",
-        "text": "Tier 1: $1,500/mo → Rankett $498 = $1,002 profit (67%). Tier 2: $4,500/mo → Rankett $1,498 = $3,002 profit (67%). Tier 3: $7,500/mo → Rankett $2,498 = $5,002 profit (67%)."
+        "text": "Tier 1: $1,500/mo → Rankett $498 = $1,002 profit (67%). Tier 2: $3,000/mo → Rankett $998 = $2,002 profit (67%). Tier 3: $4,500/mo → Rankett $1,498 = $3,002 profit (67%)."
       }
     },
     {

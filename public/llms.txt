@@ -23,8 +23,8 @@ Rankett is a done-for-you AI visibility fulfillment platform. We help marketing 
 ## Pricing
 - Partner Access: $299/mo (unlimited audits, white-label platform, custom domain)
 - Fulfillment Tier 1: $498/client/mo (50 queries, 8 blogs, schema, mentions)
-- Fulfillment Tier 2: $1,498/client/mo (150 queries, 36 mentions, TLDR summaries)
-- Fulfillment Tier 3: $2,498/client/mo (250 queries, 70+ mentions, YouTube, reports)
+- Fulfillment Tier 2: $998/client/mo (150 queries, 36 mentions, TLDR summaries)
+- Fulfillment Tier 3: $1,498/client/mo (250 queries, 70+ mentions, YouTube, reports)
 
 ## Contact
 - Website: https://rankett.com

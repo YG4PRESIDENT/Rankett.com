@@ -8,7 +8,7 @@ import FadeInOnScroll from '../scroll/FadeInOnScroll'
 const faqs = [
   {
     question: 'How much can agencies charge clients?',
-    answer: 'Tier 1: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Tier 2: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%). Tier 3: $7,500/mo \u2192 Rankett $2,498 = $5,002 profit (67%).',
+    answer: 'Tier 1: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Tier 2: $3,000/mo \u2192 Rankett $998 = $2,002 profit (67%). Tier 3: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%).',
     align: 'right' as const,
   },
   {

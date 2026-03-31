@@ -6,8 +6,8 @@ import FadeInOnScroll from '../scroll/FadeInOnScroll'
 
 const tiers = [
   { label: 'Local Visibility', price: '$498', charge: '$1,500+' },
-  { label: 'Market Leader', price: '$1,498', charge: '$4,500+', highlighted: true },
-  { label: 'Category Owner', price: '$2,498', charge: '$7,500+' },
+  { label: 'Market Leader', price: '$998', charge: '$3,000+', highlighted: true },
+  { label: 'Category Owner', price: '$1,498', charge: '$4,500+' },
 ]
 
 type CellValue = boolean | string

@@ -28,7 +28,7 @@ const categories: FAQCategory[] = [
       },
       {
         question: 'How is Rankett different from SEO tools?',
-        answer: 'SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + Mention Rate tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages).',
+        answer: 'SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + Mention Rate tracking so AI picks your client first. Agencies charge $1.5k\u2013$4.5k/mo retainers (vs $500 SEO packages).',
       },
       {
         question: 'What is Mention Rate?',
@@ -49,7 +49,7 @@ const categories: FAQCategory[] = [
     faqs: [
       {
         question: 'How much can agencies charge clients?',
-        answer: 'Local Visibility: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Market Leader: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%). Category Owner: $7,500/mo \u2192 Rankett $2,498 = $5,002 profit (67%).',
+        answer: 'Local Visibility: $1,500/mo \u2192 Rankett $498 = $1,002 profit (67%). Market Leader: $3,000/mo \u2192 Rankett $998 = $2,002 profit (67%). Category Owner: $4,500/mo \u2192 Rankett $1,498 = $3,002 profit (67%).',
       },
       {
         question: 'What is Partner pricing ($299/mo)?',
@@ -61,7 +61,7 @@ const categories: FAQCategory[] = [
       },
       {
         question: 'What exactly do you fulfill per tier?',
-        answer: 'Local Visibility ($498): 50-query tracking, 1 answer-focused content asset/week, schema markup, LLM access file, AI source discoverability, semantic refresh. Market Leader ($1,498): 150 queries, 1\u20132 third-party authority placements/mo, answer capture optimization (3\u20136 pages). Category Owner ($2,498): 250 queries, 3\u20135 authority placements/mo, 6\u201312+ pages, multimodal AI indexing (2 vids/mo), visibility-to-dollars reporting.',
+        answer: 'Local Visibility ($498): 50-query tracking, 1 answer-focused content asset/week, schema markup, LLM access file, AI source discoverability, semantic refresh. Market Leader ($998): 150 queries, 1\u20132 third-party authority placements/mo, answer capture optimization (3\u20136 pages). Category Owner ($1,498): 250 queries, 3\u20135 authority placements/mo, 6\u201312+ pages, multimodal AI indexing (2 vids/mo), visibility-to-dollars reporting.',
       },
     ],
   },

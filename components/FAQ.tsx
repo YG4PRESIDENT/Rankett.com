@@ -13,11 +13,11 @@ interface FAQItem {
 const faqData: FAQItem[] = [
   {
     question: "What exactly do you fulfill per tier?",
-    answer: "Tier 1 ($498): 50-query tracking, 8 answer-first blogs/mo, schema/llms.txt, Featured.com mentions. Tier 2 ($1,498): +150 queries, 36 authority mentions, TLDR page summaries. Tier 3 ($2,498): +250 queries, 70+ mentions, YouTube transcripts, dominance-to-dollars reports."
+    answer: "Tier 1 ($498): 50-query tracking, 8 answer-first blogs/mo, schema/llms.txt, Featured.com mentions. Tier 2 ($998): +150 queries, 36 authority mentions, TLDR page summaries. Tier 3 ($1,498): +250 queries, 70+ mentions, YouTube transcripts, dominance-to-dollars reports."
   },
   {
     question: "How is Rankett different from SEO tools?",
-    answer: "SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + Mention Rate tracking so AI picks your client first. Agencies charge $1.5k\u2013$7.5k/mo retainers (vs $500 SEO packages)."
+    answer: "SEO = clicks. AI Visibility = zero-click recommendations. SEO tools track rankings and traffic. Rankett provides content + mentions + Mention Rate tracking so AI picks your client first. Agencies charge $1.5k\u2013$4.5k/mo retainers (vs $500 SEO packages)."
   },
   {
     question: "What is Mention Rate?",
