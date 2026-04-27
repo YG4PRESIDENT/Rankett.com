@@ -61,7 +61,7 @@ const categories: FAQCategory[] = [
       },
       {
         question: 'What exactly do you fulfill per tier?',
-        answer: 'Local Visibility ($498): 50-query tracking, 1 answer-focused content asset/week, schema markup, LLM access file, AI source discoverability, semantic refresh. Market Leader ($998): 150 queries, 1\u20132 third-party authority placements/mo, answer capture optimization (3\u20136 pages). Category Owner ($1,498): 250 queries, 3\u20135 authority placements/mo, 6\u201312+ pages, multimodal AI indexing (2 vids/mo), visibility-to-dollars reporting.',
+        answer: 'Local Visibility ($498): 50-query tracking, 1 answer-focused content asset/week, schema markup, LLM access file, AI source discoverability, semantic refresh. Market Leader ($998): 150 queries, 1 third-party authority placement/mo, answer capture optimization (3\u20136 pages). Category Owner ($1,498): 250 queries, 2 authority placements/mo, 6\u201312+ pages, multimodal AI indexing (2 vids/mo), visibility-to-dollars reporting.',
       },
     ],
   },

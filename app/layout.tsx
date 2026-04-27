@@ -16,8 +16,8 @@ const mono = JetBrains_Mono({
 });
 
 export const metadata = {
-  title: "Rankett | AI Visibility. Your Brand. Our Backend.",
-  description: "Be the solution today. Do none of the work. The invisible AI search fulfillment partner for modern agencies.",
+  title: "Rankett | We handle the AI search layer.",
+  description: "Your SEO team handles rankings. Rankett handles what AI answers when someone asks ChatGPT, Perplexity, or Gemini. Done-for-you AI visibility for agencies.",
 };
 
 export default function RootLayout({

@@ -124,7 +124,7 @@ export default function Team() {
             href="https://app.rankett.com/sign-up"
             className="inline-flex items-center gap-2 px-8 py-3 bg-blue-500 hover:bg-blue-600 text-white font-medium rounded-full transition-all duration-300"
           >
-            Get Started
+            Apply
           </a>
         </motion.div>
       </div>

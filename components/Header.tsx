@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Menu, X, LogIn } from "lucide-react";
+import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { Button } from "./ui/Button";
 import { NAV_LINKS } from "@/lib/constants";
@@ -60,6 +60,10 @@ export default function Header() {
     window.location.href = 'https://app.rankett.com/sign-in';
   }
 
+  const handleApply = () => {
+    window.location.href = 'https://app.rankett.com/sign-up';
+  }
+
   return (
     <header
       className={cn(
@@ -97,13 +101,19 @@ export default function Header() {
           </nav>
 
           {/* CTA Button - Right */}
-          <div className="justify-self-end">
-            <Button
+          <div className="justify-self-end flex items-center gap-4">
+            <button
               onClick={handleLogin}
+              className="text-sm font-medium text-slate-400 hover:text-white transition-colors"
+            >
+              Log in
+            </button>
+            <Button
+              onClick={handleApply}
               variant="primary"
             >
-              <LogIn className="w-4 h-4 mr-2 text-white/70" />
-              Login
+              Apply
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Button>
           </div>
         </div>
@@ -161,9 +171,9 @@ export default function Header() {
           </nav>
 
           {/* Bottom CTA area */}
-          <div className="px-8 pb-12 pt-4 border-t border-slate-800/50">
+          <div className="px-8 pb-12 pt-4 border-t border-slate-800/50 flex flex-col items-center gap-4">
             <button
-              onClick={handleLogin}
+              onClick={handleApply}
               className="w-full py-4 rounded-xl bg-gradient-to-r from-blue-500 to-violet-500 text-white font-bold text-base flex items-center justify-center gap-2 hover:shadow-lg hover:shadow-blue-500/20 transition-all active:scale-[0.98]"
               style={{
                 transitionDelay: isMobileMenuOpen ? '300ms' : '0ms',
@@ -171,8 +181,18 @@ export default function Header() {
                 transform: isMobileMenuOpen ? 'translateY(0)' : 'translateY(12px)'
               }}
             >
-              <LogIn className="w-4 h-4" />
-              Partner Login
+              Apply
+              <ArrowRight className="w-4 h-4" />
+            </button>
+            <button
+              onClick={handleLogin}
+              className="text-sm text-slate-400 hover:text-white transition-colors"
+              style={{
+                transitionDelay: isMobileMenuOpen ? '350ms' : '0ms',
+                opacity: isMobileMenuOpen ? 1 : 0,
+              }}
+            >
+              Log in
             </button>
           </div>
         </div>

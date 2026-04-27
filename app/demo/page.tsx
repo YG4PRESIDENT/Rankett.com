@@ -83,7 +83,7 @@ export default function DemoPage() {
               href="https://app.rankett.com/sign-up"
               className="group inline-flex items-center gap-2 px-6 py-3 md:px-8 md:py-4 bg-white text-slate-900 rounded-full font-bold text-lg hover:bg-slate-100 transition-colors shadow-xl shadow-blue-900/20"
             >
-              Get Access Now
+              Apply
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>

@@ -62,38 +62,44 @@ export default function HeroHome() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 w-full">
         <div className="text-center space-y-6">
           <div className="group"> {/* Added group for hover state management */}
-            <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold tracking-tight">
-              <span 
+            <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight leading-[1.15]">
+              <span
                 className={`transition-colors duration-300 inline-block px-1 ${getWordClasses(0)}`}
                 onMouseEnter={() => handleWordHover(0)}
                 onMouseLeave={() => handleWordHover(null)}
               >
-                AI Visibility.
+                We handle
               </span>{' '}
-              <span 
+              <span
                 className={`text-gradient transition-colors duration-300 inline-block px-1 ${getWordClasses(1)}`}
                 onMouseEnter={() => handleWordHover(1)}
                 onMouseLeave={() => handleWordHover(null)}
               >
-                Your Brand.
-              </span>{' '}
-              <span 
+                the AI search layer.
+              </span>
+              <br className="hidden sm:block" />{' '}
+              <span
                 className={`transition-colors duration-300 inline-block px-1 ${getWordClasses(2)}`}
                 onMouseEnter={() => handleWordHover(2)}
                 onMouseLeave={() => handleWordHover(null)}
               >
-                Our Backend.
+                Your SEO team handles the rest.
               </span>
             </h1>
           </div>
-          <div className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-3xl mx-auto">
-            Be the solution today. <span className="text-white font-medium">Do none of the work.</span>
+          <div className="text-lg sm:text-xl md:text-2xl text-slate-300 max-w-4xl mx-auto leading-relaxed">
+            We&apos;re not an SEO replacement. Your SEO team handles traditional rankings.{' '}
+            <span className="text-white font-semibold">Rankett</span> handles what AI answers when someone asks{' '}
+            <span className="text-white font-medium">ChatGPT</span>,{' '}
+            <span className="text-white font-medium">Perplexity</span>, or{' '}
+            <span className="text-white font-medium">Gemini</span> for a recommendation.{' '}
+            <span className="text-white font-medium">Together your clients have full search coverage.</span>
           </div>
 
           <div className="flex flex-col items-center gap-4 pt-6 md:pt-8 pb-6 md:pb-12">
             <Link href="https://app.rankett.com/sign-up" passHref>
               <Button size="lg" className="shadow-lg shadow-blue-500/50">
-                Get Started
+                Apply
                 <ArrowRight className="w-5 h-5 ml-2" />
               </Button>
             </Link>

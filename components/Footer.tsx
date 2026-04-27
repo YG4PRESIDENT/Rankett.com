@@ -114,14 +114,14 @@ export default function Footer() {
 
           {/* CTA Column */}
           <div className="lg:col-span-3">
-            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Get Started</h3>
+            <h3 className="text-sm font-bold text-white uppercase tracking-wider mb-4">Ready to apply?</h3>
             <div className="mt-4">
               <Button
                 onClick={handleRunAudit}
                 variant="primary"
                 className="w-full"
               >
-                Launch Your AI Tool <ArrowRight className="ml-2 w-4 h-4 text-white/80" />
+                Apply <ArrowRight className="ml-2 w-4 h-4 text-white/80" />
               </Button>
               <p className="text-xs text-slate-400 mt-3 text-center">
                 Start selling AI visibility today.

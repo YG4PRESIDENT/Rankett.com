@@ -11,8 +11,8 @@ export const NAV_LINKS = [
 ];
 
 // CTA Buttons
-export const CTA_PRIMARY = "Start Free Trial";
-export const CTA_SECONDARY = "Login";
+export const CTA_PRIMARY = "Apply";
+export const CTA_SECONDARY = "Log in";
 export const CTA_ANALYZE = "Analyze my website";
 export const CTA_DEMO = "Get Demo";
 

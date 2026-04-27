@@ -17,6 +17,7 @@ import WholesalePricing from "@/components/home/WholesalePricing"; // New
 // Legacy or Utility
 import IndustriesGrid from "@/components/home/IndustriesGrid";
 import FAQChat from "@/components/home/FAQChat";
+import ClosingCTA from "@/components/home/ClosingCTA";
 
 const homepageFaqSchema = {
   "@context": "https://schema.org",
@@ -103,6 +104,9 @@ export default function RankettHome() {
 
         {/* 8. FAQ */}
         <FAQChat />
+
+        {/* 9. Closing CTA */}
+        <ClosingCTA />
       </main>
       <Footer />
     </>

@@ -22,7 +22,7 @@ const deliverables: { name: string; values: [CellValue, CellValue, CellValue] }[
   { name: 'Answer-Focused Content Assets', values: ['1/week', '2/week', '3/week'] },
   { name: 'Query Winning & Tracking', values: ['50 prompts', '150 prompts', '250 prompts'] },
   { name: 'AI Question Coverage', values: ['Included', 'Expanded', 'Aggressive'] },
-  { name: 'Third-Party Authority Placement', values: [false, '1–2/mo', '3–5/mo'] },
+  { name: 'Third-Party Authority Placement', values: [false, '1/mo', '2/mo'] },
   { name: 'Answer Capture Optimization', values: [false, '3–6 pages', '6–12+ pages'] },
   { name: 'Multimodal AI Indexing', values: [false, false, '2 vids/mo'] },
   { name: 'Visibility-to-Dollars Reporting', values: [false, false, true] },

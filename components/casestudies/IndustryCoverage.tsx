@@ -80,7 +80,7 @@ export default function IndustryCoverage() {
                 onClick={() => router.push('/pricing')}
                 variant="primary"
               >
-                Get Started
+                Apply
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
               <Button
